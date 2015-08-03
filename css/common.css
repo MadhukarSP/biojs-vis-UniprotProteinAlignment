@@ -154,21 +154,21 @@
     /*background-image: -o-linear-gradient(top, #eeeeee, #cccccc);*/
 /*}*/
 
-.bars {
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    position: relative;
-}
+/*.bars {*/
+    /*-webkit-transition: all 1s ease;*/
+    /*-moz-transition: all 1s ease;*/
+    /*-o-transition: all 1s ease;*/
+    /*-ms-transition: all 1s ease;*/
+    /*transition: all 1s ease;*/
+    /*position: relative;*/
+/*}*/
 
-.bars:hover {
-    -webkit-transform:scale(1.25);
-    -moz-transform:scale(1.05);
-    -ms-transform:scale(1.25);
-    -o-transform:scale(1.25);
-    transform:scale(1.25);
-}
+/*.bars:hover {*/
+    /*-webkit-transform:scale(1.25);*/
+    /*-moz-transform:scale(1.05);*/
+    /*-ms-transform:scale(1.25);*/
+    /*-o-transform:scale(1.25);*/
+    /*transform:scale(1.25);*/
+/*}*/
 
 
