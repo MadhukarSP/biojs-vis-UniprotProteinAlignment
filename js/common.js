@@ -313,16 +313,16 @@ function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorSca
             .attr("id","hitRect"+i);
 
         hitTexts.append('text')
-            .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(40 + (k*widthBtnBars))})
+            .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(52 + (k*widthBtnBars))})
             .text(hitFromValues[i])
-            .style({'fill':'#fff','font-size':'12px'})
+            .style({'fill':'#000','font-size':'10px'})
             .style("z-index", "10")
             .attr("id","hitFromText"+i);
 
         hitTexts.append('text')
-            .attr({'x':xScale(parseInt(hitToValues[i])-25),'y':(40 + (k*widthBtnBars))})
+            .attr({'x':xScale(parseInt(hitToValues[i])-25),'y':(52 + (k*widthBtnBars))})
             .text(hitToValues[i])
-            .style({'fill':'#fff','font-size':'12px'})
+            .style({'fill':'#000','font-size':'10px'})
             .style("z-index", "10")
             .attr("id","hitToText"+i);
 
@@ -348,15 +348,15 @@ function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorSca
                 .attr("id","hitRect"+(i+j));
 
             hitTexts.append('text')
-                .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(40 + (k*widthBtnBars))})
+                .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
                 .text(hitFromValues[i+j])
-                .style({'fill':'#fff','font-size':'12px'})
+                .style({'fill':'#000','font-size':'10px'})
                 .attr("id","hitFromText"+(i+j));
 
             hitTexts.append('text')
-                .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(40 + (k*widthBtnBars))})
+                .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
                 .text(hitToValues[i+j])
-                .style({'fill':'#fff','font-size':'12px'})
+                .style({'fill':'#000','font-size':'10px'})
                 .attr("id","hitToText"+(i+j));
 
             hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i+j] + " - " + hitToValues[i+j] + "]");
