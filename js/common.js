@@ -264,6 +264,7 @@ function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, co
 
 //Add gaps only if there is consecutive 3 gaps
 function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
+
     if(gaps[i] > 2) {
         var allGapsInQuery = getAllIndexes(sequ[i], "-");
 
@@ -296,6 +297,7 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
 
 //Add the hit bars to the graph
 function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, hseq) {
+
     var hitBars = canvas.append('g')
         .attr("transform", "translate(150,10)")
         .attr('id','hitbars');
