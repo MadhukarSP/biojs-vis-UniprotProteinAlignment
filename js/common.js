@@ -208,7 +208,7 @@ function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, co
             .attr("id","queryFromText"+i);
 
         queryTexts.append('text')
-            .attr({'x':xScale(parseInt(queryToValues[i])-35),'y':(9 + (k*widthBtnBars))})
+            .attr({'x':xScale(parseInt(queryToValues[i])-25),'y':(9 + (k*widthBtnBars))})
             .text(queryToValues[i])
             .style({'fill':'#000','font-size':'10px'})
             .attr("id","queryToText"+i);
