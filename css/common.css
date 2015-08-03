@@ -1,0 +1,174 @@
+/* Overview Styling START */
+
+#bottomxaxis .domain, #topxaxis .domain {
+    fill:none;
+    stroke:#000;
+}
+#bottomxaxis text, #leftyaxis text,#rightyaxis text, #topxaxis text {
+    font-size: 12px;
+}
+
+.wrapperMargin {
+    margin-left: 30px;
+    margin-top: 0px;
+}
+
+/*#barsContainerDiv {*/
+    /*overflow: auto;*/
+    /*height: 300px;*/
+/*}*/
+
+.outer {
+    width: 70%;
+    height: auto;
+    max-height: 350px;
+    overflow-x: auto;
+}
+/*.inner {*/
+    /*width: 800px;*/
+    /*height: 650px;*/
+/*}*/
+#barsContainerDiv{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Overview Styling END */
+
+/* Alignment Styling START */
+
+.btn-custom-width {
+    width: 120px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.organism-info {
+    padding-left: 45px;
+    padding-bottom: 5px;
+}
+
+.table-design {
+    /*"border-collapse: separate" - is important for adding radius to the table*/
+    border-collapse: separate;
+    box-sizing: border-box;
+    border: 2px solid darkgrey;
+    border-radius: 6px;
+    margin-left: 20px;
+    margin-top:10px;
+}
+
+.td-div-design {
+    padding-right: 5px;
+}
+
+/* Alignment Styling END */
+
+/*Custom tooltip*/
+
+.d3-tip {
+    line-height: 1.25;
+    font-weight: bold;
+    padding: 8px;
+    background: #eeeeee;
+    color: #000000;
+    border-radius: 4px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 0.9;
+    color: #000;
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+    margin: -2px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+
+.customTooltip:hover {
+    position: relative;
+}
+
+.customTooltip:hover:after {
+    content: attr(title);
+    padding: 4px 8px;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0px 0px 4px #222;
+    -webkit-box-shadow: 0px 0px 4px #222;
+    box-shadow: 0px 0px 4px #222;
+    background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));
+    background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+    background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+}
+
+
+/* Alignment Styling START */
+
+/*rect[title]:hover {*/
+    /*color: red;*/
+    /*position: relative;*/
+/*}*/
+
+/*rect[title] {*/
+    /*content: attr(title);*/
+    /*padding: 4px 8px;*/
+    /*color: #333;*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 100%;*/
+    /*white-space: nowrap;*/
+    /*z-index: 30px;*/
+    /*-moz-border-radius: 5px;*/
+    /*-webkit-border-radius: 5px;*/
+    /*border-radius: 5px;*/
+    /*-moz-box-shadow: 0px 0px 4px #222;*/
+    /*-webkit-box-shadow: 0px 0px 4px #222;*/
+    /*box-shadow: 0px 0px 4px #222;*/
+    /*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
+    /*background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));*/
+    /*background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);*/
+    /*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
+    /*background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);*/
+    /*background-image: -o-linear-gradient(top, #eeeeee, #cccccc);*/
+/*}*/
+
+.bars {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    position: relative;
+}
+
+.bars:hover {
+    -webkit-transform:scale(1.25);
+    -moz-transform:scale(1.05);
+    -ms-transform:scale(1.25);
+    -o-transform:scale(1.25);
+    transform:scale(1.25);
+}
+
+
