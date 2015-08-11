@@ -65,7 +65,6 @@ function initializeValues() {
             var blast_output = [];
 
             blast_output.push({
-                "def": data.iterations[0].hits[i][def],
                 "score": data.iterations[0].hits[i].hsps[0]["score"],
                 "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
                 "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
@@ -84,7 +83,6 @@ function initializeValues() {
 
             for(var j = 1; j < num_of_regions; j++) {
                 blast_output.push({
-                    "def": data.iterations[0].hits[i][def],
                     'score' : data.iterations[0].hits[i].hsps[j]["score"],
                     'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
                     'query_from' : data.iterations[0].hits[i].hsps[j]["query-from"],
