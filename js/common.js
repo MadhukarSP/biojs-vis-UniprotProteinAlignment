@@ -12,7 +12,7 @@ var percentageIdentityTextSize = 14;
 var radius = 25;
 var circleThickness = 15;
 var gap = 2;
-var gapColor = "white";
+var gapColor = "black";
 
 //Circle text attributes
 var font_size = 8;
@@ -65,6 +65,7 @@ function initializeValues() {
             var blast_output = [];
 
             blast_output.push({
+                "def": data.iterations[0].hits[i][def],
                 "score": data.iterations[0].hits[i].hsps[0]["score"],
                 "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
                 "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
@@ -83,14 +84,17 @@ function initializeValues() {
 
             for(var j = 1; j < num_of_regions; j++) {
                 blast_output.push({
+                    "def": data.iterations[0].hits[i][def],
+                    'score' : data.iterations[0].hits[i].hsps[j]["score"],
+                    'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
                     'query_from' : data.iterations[0].hits[i].hsps[j]["query-from"],
                     'query_to' : data.iterations[0].hits[i].hsps[j]["query-to"],
                     'hit_from' : data.iterations[0].hits[i].hsps[j]["hit-from"],
                     'hit_to' : data.iterations[0].hits[i].hsps[j]["hit-to"],
                     "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
-                    "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
-                    "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
-                    "gaps" : data.iterations[0].hits[i].hsps[0]["gaps"],
+                    "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
+                    "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
+                    "gaps" : data.iterations[0].hits[i].hsps[j]["gaps"],
                     "num_of_regions_left": 0
                 });
             }
@@ -110,13 +114,15 @@ function initializeValues() {
 function drawOverviewBars(blast_data, numberOfHits) {
 
     var enzymeDetails = [];
-    var alignmentLength = [];
+    //var alignmentLength = [];
     var queryFromValues = [];
     var queryToValues = [];
     var hitFromValues = [];
     var hitToValues = [];
     var queryLength = blast_data[0].query_len;
     var numOfRegionsLeft = [];
+    var score = [];
+    var eValue = [];
     var gaps = [];
     var qseq = [];
     var hseq = [];
@@ -125,10 +131,11 @@ function drawOverviewBars(blast_data, numberOfHits) {
     for(var i=0; i < blast_data.length; i++) {
         if(blast_data[i].num_of_regions_left != 0) {
             var identityValue = getIdentityInfo(blast_data, i, blast_data[i].num_of_regions_left);
-            enzymeDetails.push("Organism:" + blast_data[i].organism + ", Identity:"+ identityValue
-            + ",eValue:"+ blast_data[i].evalue + ", score:"+ blast_data[i].score);
+            enzymeDetails.push(blast_data[i].organism + ","+ identityValue + "%");
         }
-        alignmentLength.push(blast_data[i].align_len);
+        //alignmentLength.push(blast_data[i].align_len);
+        score.push("<strong>Score</strong> :"+ blast_data[i].score);
+        eValue.push("<strong>eValue</strong> :"+ blast_data[i].evalue);
         queryFromValues.push(blast_data[i].query_from);
         queryToValues.push(blast_data[i].query_to);
         hitFromValues.push(blast_data[i].hit_from);
@@ -172,16 +179,16 @@ function drawOverviewBars(blast_data, numberOfHits) {
     addAxes(xScale, yScale, enzymeDetails);
 
     //Add the Query bars to the graph
-    addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, colorScale, numOfRegionsLeft, gaps, qseq);
+    addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue);
 
     //Add the Hit bars to the graph
-    addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, hseq);
+    addHitBar(xScale, hitFromValues, hitToValues, queryFromValues,queryToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue);
 }
 
 
 
 //Add the Query bars to the graph
-function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, colorScale, numOfRegionsLeft, gaps, qseq) {
+function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue) {
 
     var queryBars = canvas.append('g')
         .attr("transform", "translate(150,10)")
@@ -190,6 +197,15 @@ function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, co
     var queryTexts = canvas.append('g')
         .attr("transform", "translate(150,10)")
         .attr('id','queryTexts');
+
+    var queryDropDown = canvas.append('div')
+        .attr("transform", "translate(772,10)")
+        .attr('id','queryDropDown')
+        .append('select')
+        .attr('height',15)
+        .style('z-index','199')
+        .append('option')
+        .text('abc');
 
     for(var i= 0, k=0; i<queryFromValues.length;k++) {
 
@@ -213,9 +229,42 @@ function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, co
             .style({'fill':'#000','font-size':'10px'})
             .attr("id","queryToText"+i);
 
-        queryBars.select("#queryRect"+i).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i] + " - " + queryToValues[i] + "]");
-        queryTexts.select("#queryFromText"+i).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i] + " - " + queryToValues[i] + "]");
-        queryTexts.select("#queryToText"+i).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i] + " - " + queryToValues[i] + "]");
+        var qrySymbol="<strong>Qry</strong> ";
+        var sbjSymbol="<strong>Sub</strong> ";
+        var spaces2 = "&nbsp;&nbsp;";
+        var spaces5 = "&nbsp;&nbsp;";
+        var perLine = 100;
+
+        var displayableValue="<br/>";
+        var qrySeqLength = queryFromValues[i] + qseq[i].length;
+        var hitSeqLength = hseq[i].length;
+        var qStart = parseInt(queryFromValues[i]);
+        var qLen = parseInt(queryToValues[i]);
+        var hStart = parseInt(hitFromValues[i]);
+        var hLen = parseInt(hitToValues[i]);
+
+        for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
+            var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+            var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+
+            var gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-");
+            var gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-");
+
+            var qEnd =  qStart+perLine > qLen ? qLen-gapsInQry : qStart+perLine-1-gapsInQry;
+            var hEnd =  hStart+perLine > hLen ? hLen-gapsInSub : hStart+perLine-1-gapsInSub;
+
+            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
+            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+
+            qryStart= qryStart+perLine;
+            sbjStart = sbjStart+perLine;
+            qStart= qStart+perLine-gapsInQry;
+            hStart = hStart+perLine-gapsInSub;
+        }
+
+        queryBars.select("#queryRect"+i).style("cursor","pointer").attr("title","<strong>Query</strong> : "+ queryFromValues[i] + " - " + queryToValues[i] + spaces5 +
+        score[i] + spaces5 + eValue[i] + "<br/>"+
+        displayableValue);
 
         //Add gaps only if there is consecutive 3 gaps
         addQueryGaps(gaps, i, qseq, queryBars, xScale, k);
@@ -246,9 +295,32 @@ function addQueryBar(xScale, alignmentLength, queryFromValues, queryToValues, co
                 .style({'fill':'#000000','font-size':'10px'})
                 .attr("id","queryToText"+(i+j));
 
-            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i+j] + " - " + queryToValues[i+j] + "]");
-            queryTexts.select("#queryFromText"+(i+j)).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i+j] + " - " + queryToValues[i+j] + "]");
-            queryTexts.select("#queryToText"+(i+j)).style("cursor","pointer").attr("title","Query ["+ queryFromValues[i+j] + " - " + queryToValues[i+j] + "]");
+            var displayableValue="<br/>";
+            var qrySeqLength = qseq[i+j].length;
+            var hitSeqLength = hseq[i+j].length;
+            var qStart = parseInt(queryFromValues[i+j]);
+            var qLen = parseInt(queryToValues[i+j]);
+            var hStart = parseInt(hitFromValues[i+j]);
+            var hLen = parseInt(hitToValues[i+j]);
+
+            for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
+                var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+                var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
+                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
+
+                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
+                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+
+                qryStart= qryStart+perLine;
+                sbjStart = sbjStart+perLine;
+                qStart= qStart+perLine;
+                hStart = hStart+perLine;
+            }
+            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer").attr("title","<strong>Query</strong> : "+ queryFromValues[i+j] + " - " + queryToValues[i+j] + spaces5 +
+            score[i+j] + spaces5 + eValue[i+j] + "<br/>"+
+            displayableValue);
+
 
             //Add gaps only if there is consecutive 3 gaps
             addQueryGaps(gaps, (i+j) , qseq, queryBars, xScale, k);
@@ -296,7 +368,7 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
 
 
 //Add the hit bars to the graph
-function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, hseq) {
+function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq,  score, eValue) {
 
     var hitBars = canvas.append('g')
         .attr("transform", "translate(150,10)")
@@ -328,9 +400,37 @@ function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorSca
             .style("z-index", "10")
             .attr("id","hitToText"+i);
 
-        hitBars.select("#hitRect"+i).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i] + " - " + hitToValues[i] + "]");
-        hitTexts.select("#hitFromText"+i).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i] + " - " + hitToValues[i] + "]");
-        hitTexts.select("#hitToText"+i).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i] + " - " + hitToValues[i] + "]");
+        var qrySymbol="<strong>Qry</strong> ";
+        var sbjSymbol="<strong>Sbj</strong> ";
+        var spaces2 = "&nbsp;&nbsp;";
+        var spaces5 = "&nbsp;&nbsp;";
+        var perLine = 100;
+
+        var displayableValue="<br/>";
+        var qrySeqLength = qseq[i].length;
+        var hitSeqLength = hseq[i].length;
+        var qStart = parseInt(queryFromValues[i]);
+        var qLen = parseInt(queryToValues[i]);
+        var hStart = parseInt(hitFromValues[i]);
+        var hLen = parseInt(hitToValues[i]);
+
+        for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
+            var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+            var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+            var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
+            var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
+
+            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
+            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+
+            qryStart= qryStart+perLine;
+            sbjStart = sbjStart+perLine;
+            qStart= qStart+perLine;
+            hStart = hStart+perLine;
+        }
+
+        hitBars.select("#hitRect"+i).style("cursor","pointer").attr("title","<strong>Subject</strong> : "+ hitFromValues[i] + " - " + hitToValues[i] + spaces5 +
+        score[i] + spaces5 + eValue[i] + "<br/>" + displayableValue);
 
         //Add gaps only if there is consecutive 3 gaps
         addHitGaps(gaps, i, hseq, hitBars, xScale, k);
@@ -361,9 +461,31 @@ function addHitBar(xScale, alignmentLength, hitFromValues, hitToValues, colorSca
                 .style({'fill':'#000','font-size':'10px'})
                 .attr("id","hitToText"+(i+j));
 
-            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i+j] + " - " + hitToValues[i+j] + "]");
-            hitTexts.select("#hitFromText"+(i+j)).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i+j] + " - " + hitToValues[i+j] + "]");
-            hitTexts.select("#hitToText"+(i+j)).style("cursor","pointer").attr("title","Subject ["+ hitFromValues[i+j] + " - " + hitToValues[i+j] + "]");
+            var displayableValue="<br/>";
+            var qrySeqLength = qseq[i+j].length;
+            var hitSeqLength = hseq[i+j].length;
+            var qStart = parseInt(queryFromValues[i+j]);
+            var qLen = parseInt(queryToValues[i+j]);
+            var hStart = parseInt(hitFromValues[i+j]);
+            var hLen = parseInt(hitToValues[i+j]);
+
+            for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
+                var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+                var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
+                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
+
+                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
+                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+
+                qryStart= qryStart+perLine;
+                sbjStart = sbjStart+perLine;
+                qStart= qStart+perLine;
+                hStart = hStart+perLine;
+            }
+
+            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title","<strong>Subject</strong> : "+ hitFromValues[i+j] + " - " + hitToValues[i+j] + spaces5 +
+            score[i+j] + spaces5 + eValue[i+j] + "<br/>" + displayableValue);
 
             //Add gaps only if there is consecutive 3 gaps
             addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k);
@@ -600,8 +722,8 @@ function addPattern() {
         .append('pattern')
         .attr('id', 'pattern1')
         .attr('patternUnits', 'userSpaceOnUse')
-        .attr('width', 1)
-        .attr('height', 5)
+        .attr('width', 4)
+        .attr('height', 4)
         .append('path')
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', firstPatternColor)
@@ -611,8 +733,8 @@ function addPattern() {
         .append('pattern')
         .attr('id', 'pattern2')
         .attr('patternUnits', 'userSpaceOnUse')
-        .attr('width', 5)
-        .attr('height', 1)
+        .attr('width', 2)
+        .attr('height', 3)
         .append('path')
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', secondPatternColor)
@@ -627,7 +749,16 @@ function addPattern() {
         .append('path')
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', thirdPatternColor)
-        .attr('stroke-width', 1);
+        .attr('stroke-width', 1)
+        //.append('image')
+        //.attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==')
+        //.attr('x', 0)
+        //.attr('y', 0)
+        //.attr('width', 5)
+        //.attr('height', 5);
+
+//<pattern id="abc" patternUnits="userSpaceOnUse" width="6" height="6"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8cmVjdCB3aWR0aD0nNicgaGVpZ2h0PSc2JyBmaWxsPScjZWVlZWVlJy8+CiAgPGcgaWQ9J2MnPgogICAgPHJlY3Qgd2lkdGg9JzMnIGhlaWdodD0nMycgZmlsbD0nI2U2ZTZlNicvPgogICAgPHJlY3QgeT0nMScgd2lkdGg9JzMnIGhlaWdodD0nMicgZmlsbD0nI2Q4ZDhkOCcvPgogIDwvZz4KICA8dXNlIHhsaW5rOmhyZWY9JyNjJyB4PSczJyB5PSczJy8+Cjwvc3ZnPg==" x="0" y="0" width="6" height="6"> </image> </pattern>
+
 }
 
 //Get percentage identity Information
@@ -676,7 +807,7 @@ function addAxes(xScale, yScale, enzymeDetails) {
     var	yAxisLeft = d3.svg.axis()
         .orient('left')
         .scale(yScale)
-        .tickSize(1)
+        .tickSize(3)
         .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[0]; })
         .tickValues(d3.range(enzymeDetails.length));
 
@@ -688,49 +819,107 @@ function addAxes(xScale, yScale, enzymeDetails) {
         .attr("transform", function (d,i) {return "translate(" + 0 + "," + (30 + (i*widthBtnBars)) + ")"});
 
     //Add y-axis at right identity
+    //var	yAxisRightIdentity = d3.svg.axis()
+    //    .orient('right')
+    //    .scale(yScale)
+    //    .tickSize(3)
+    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[1];})
+    //    .tickValues(d3.range(enzymeDetails.length));
+
+    //var	yAxisRightIdentity = d3.svg.axis()
+    //    .orient('right')
+    //    .scale(yScale)
+    //    .tickSize(3)
+    //    .tickFormat(function(d,i){ return d3.select(this).append("select")
+    //                                        .append("option").text(enzymeDetails[i].split(',')[1])})
+    //    .tickValues(d3.range(enzymeDetails.length));
+
     var	yAxisRightIdentity = d3.svg.axis()
         .orient('right')
         .scale(yScale)
-        .tickSize(1)
-        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[1]; })
+        .tickSize(3)
+        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[1];})
         .tickValues(d3.range(enzymeDetails.length));
+
 
     canvas.append('g')
         .attr("transform", "translate(752,10)")
         .attr('id','rightyaxis')
         .call(yAxisRightIdentity)
         .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (12 + (i*widthBtnBars)) + ")"});
+        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (26 + (i*widthBtnBars)) + ")"});
+
+
+    //var	yAxisRightDropDown = d3.svg.axis()
+    //    .orient('right')
+    //    .scale(yScale)
+    //    .tickSize(0)
+    //    .tickFormat(function(d,i){ return d3.select(this)
+    //        .append("svg")
+    //        .append("g")
+    //                                        .append("select")
+    //                                        .append("option")
+    //                                        .text(enzymeDetails[i].split(',')[1]);})
+    //    .tickValues(d3.range(enzymeDetails.length));
+    //
+    //canvas.append('g')
+    //    .attr("transform", "translate(772,10)")
+    //    .attr('id','rightyaxisDropDown')
+    //    .call(yAxisRightDropDown)
+    //    .selectAll('.tick')
+    //    .append("select")
+    //    .append("option")
+    //    .text(function(d,i) {return enzymeDetails[i].split(',')[1];})
+    //    .attr("transform", function (d,i) {return "translate(" + 20 + "," + (12 + (i*widthBtnBars)) + ")"});
+
+
+
+    //canvas.select('#leftyaxis')
+    //    //.append("svg")
+    //    //.append("g")
+    //    //.style("z-index", "20")
+    //    .append("select")
+    //    //.attr("position","absolute")
+    //    //.style("z-index", "20")
+    //    .append("option")
+    //    .text(function(d,i) {return enzymeDetails[i].split(',')[1];});
+
+
+
+    //canvas.select('#rightyaxis').selectAll('.tick').select('text').remove(this);
+
+
+    //canvas.select('rightyaxis').
 
     //Add y-axis at right eValue
-    var	yAxisRighteValue = d3.svg.axis()
-        .orient('right')
-        .scale(yScale)
-        .tickSize(0)
-        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[2]; })
-        .tickValues(d3.range(enzymeDetails.length));
-
-    canvas.append('g')
-        .attr("transform", "translate(753,10)")
-        .attr('id','rightyaxis')
-        .call(yAxisRighteValue)
-        .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (24 + (i*widthBtnBars)) + ")"});
-
-    //Add y-axis at right Score
-    var	yAxisRightScore = d3.svg.axis()
-        .orient('right')
-        .scale(yScale)
-        .tickSize(0)
-        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[3]; })
-        .tickValues(d3.range(enzymeDetails.length));
-
-    canvas.append('g')
-        .attr("transform", "translate(753,10)")
-        .attr('id','rightyaxis')
-        .call(yAxisRightScore)
-        .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (36 + (i*widthBtnBars)) + ")"});
+    //var	yAxisRighteValue = d3.svg.axis()
+    //    .orient('right')
+    //    .scale(yScale)
+    //    .tickSize(0)
+    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[2]; })
+    //    .tickValues(d3.range(enzymeDetails.length));
+    //
+    //canvas.append('g')
+    //    .attr("transform", "translate(753,10)")
+    //    .attr('id','rightyaxis')
+    //    .call(yAxisRighteValue)
+    //    .selectAll('.tick')
+    //    .attr("transform", function (d,i) {return "translate(" + 0 + "," + (24 + (i*widthBtnBars)) + ")"});
+    //
+    ////Add y-axis at right Score
+    //var	yAxisRightScore = d3.svg.axis()
+    //    .orient('right')
+    //    .scale(yScale)
+    //    .tickSize(0)
+    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[3]; })
+    //    .tickValues(d3.range(enzymeDetails.length));
+    //
+    //canvas.append('g')
+    //    .attr("transform", "translate(753,10)")
+    //    .attr('id','rightyaxis')
+    //    .call(yAxisRightScore)
+    //    .selectAll('.tick')
+    //    .attr("transform", function (d,i) {return "translate(" + 0 + "," + (36 + (i*widthBtnBars)) + ")"});
 }
 
 //Get all the occurrences of the val ('-' hyphen sign) in the sequence

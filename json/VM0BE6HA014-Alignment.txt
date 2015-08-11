@@ -1,0 +1,98 @@
+BLASTP 2.2.32+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro
+A. Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and
+David J. Lipman (1997), "Gapped BLAST and PSI-BLAST: a new
+generation of protein database search programs", Nucleic
+Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Stephen
+F. Altschul, John C. Wootton, E. Michael Gertz, Richa
+Agarwala, Aleksandr Morgulis, Alejandro A. Schaffer, and
+Yi-Kuo Yu (2005) "Protein database searches using
+compositionally adjusted substitution matrices", FEBS J.
+272:5101-5109.
+
+
+RID: VM0BE6HA014
+
+
+Database: All non-redundant GenBank CDS
+translations+PDB+SwissProt+PIR+PRF excluding environmental samples
+from WGS projects
+           70,353,186 sequences; 25,228,092,245 total letters
+Query= sp|Q06141|REG3A_HUMAN Regenerating islet-derived protein 3-alpha
+OS=Homo sapiens GN=REG3A PE=1 SV=1
+
+Length=175
+
+
+                                                                   Score     E
+Sequences producing significant alignments:                       (Bits)  Value
+
+gb|AAX29964.1|  pancreatitis-associated protein [synthetic con...  361     7e-125
+
+ALIGNMENTS
+>gb|AAX29964.1| pancreatitis-associated protein [synthetic construct]
+Length=176
+
+ Score = 361 bits (926),  Expect = 7e-125, Method: Compositional matrix adjust.
+ Identities = 175/175 (100%), Positives = 175/175 (100%), Gaps = 0/175 (0%)
+
+Query  1    MLPPMALPSVSWMLLSCLMLLSQVQGEEPQRELPSARIRCPKGSKAYGSHCYALFLSPKS  60
+            MLPPMALPSVSWMLLSCLMLLSQVQGEEPQRELPSARIRCPKGSKAYGSHCYALFLSPKS
+Sbjct  1    MLPPMALPSVSWMLLSCLMLLSQVQGEEPQRELPSARIRCPKGSKAYGSHCYALFLSPKS  60
+
+Query  61   WTDADLACQKRPSGNLVSVLSGAEGSFVSSLVKSIGNSYSYVWIGLHDPTQGTEPNGEGW  120
+            WTDADLACQKRPSGNLVSVLSGAEGSFVSSLVKSIGNSYSYVWIGLHDPTQGTEPNGEGW
+Sbjct  61   WTDADLACQKRPSGNLVSVLSGAEGSFVSSLVKSIGNSYSYVWIGLHDPTQGTEPNGEGW  120
+
+Query  121  EWSSSDVMNYFAWERNPSTISSPGHCASLSRSTAFLRWKDYNCNVRLPYVCKFTD  175
+            EWSSSDVMNYFAWERNPSTISSPGHCASLSRSTAFLRWKDYNCNVRLPYVCKFTD
+Sbjct  121  EWSSSDVMNYFAWERNPSTISSPGHCASLSRSTAFLRWKDYNCNVRLPYVCKFTD  175
+
+
+  Database: All non-redundant GenBank CDS translations+PDB+SwissProt+PIR+PRF
+excluding environmental samples from WGS projects
+    Posted date:  Jul 23, 2015  6:30 PM
+  Number of letters in database: 25,228,092,245
+  Number of sequences in database:  70,353,186
+
+Lambda      K        H
+   0.317    0.131    0.432 
+Gapped
+Lambda      K        H
+   0.267   0.0410    0.140 
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Number of Sequences: 70353186
+Number of Hits to DB: 496415332
+Number of extensions: 20428440
+Number of successful extensions: 41882
+Number of sequences better than 100: 1001
+Number of HSP's better than 100 without gapping: 0
+Number of HSP's gapped: 41220
+Number of HSP's successfully gapped: 1238
+Length of query: 175
+Length of database: 25228092245
+Length adjustment: 135
+Effective length of query: 40
+Effective length of database: 15730412135
+Effective search space: 629216485400
+Effective search space used: 629216485400
+T: 11
+A: 40
+X1: 16 (7.3 bits)
+X2: 38 (14.6 bits)
+X3: 64 (24.7 bits)
+S1: 41 (20.4 bits)
+S2: 73 (32.7 bits)
+ka-blk-alpha gapped: 1.9
+ka-blk-alpha ungapped: 0.7916
+ka-blk-alpha_v gapped: 42.6028
+ka-blk-alpha_v ungapped: 4.96466
+ka-blk-sigma gapped: 43.6362
+
+
+
+

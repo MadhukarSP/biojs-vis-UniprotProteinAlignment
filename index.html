@@ -5,10 +5,19 @@
     <title>Arc</title>
 
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/jquery-ui.css" type="text/css" rel="stylesheet">
     <link href="css/common.css" type="text/css" rel="stylesheet">
+    <style>
+        .ui-tooltip{
+            max-width: 950px;
+            font-size: 11px;
+        }
+    </style>
+
 
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script>
     <script src="js/d3.min.js" type="text/javascript"></script>
     <script src="js/common.js" type="text/javascript"></script>
 
@@ -37,6 +46,33 @@
 </div>
 
 <div id="patternDiv"></div>
+
+<div class="drop"></div>
+
+<!--<div class="text-center">-->
+
+    <!--<svg height="6" width="6" xmlns="http://www.w3.org/2000/svg" version="1.1"> <defs> <pattern id="abc" patternUnits="userSpaceOnUse" width="6" height="6"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8cmVjdCB3aWR0aD0nNicgaGVpZ2h0PSc2JyBmaWxsPScjZWVlZWVlJy8+CiAgPGcgaWQ9J2MnPgogICAgPHJlY3Qgd2lkdGg9JzMnIGhlaWdodD0nMycgZmlsbD0nI2U2ZTZlNicvPgogICAgPHJlY3QgeT0nMScgd2lkdGg9JzMnIGhlaWdodD0nMicgZmlsbD0nI2Q4ZDhkOCcvPgogIDwvZz4KICA8dXNlIHhsaW5rOmhyZWY9JyNjJyB4PSczJyB5PSczJy8+Cjwvc3ZnPg==" x="0" y="0" width="6" height="6"> </image> </pattern> </defs> </svg>-->
+
+    <!--<svg height="100" width="100" style="float: left;"><rect x="0" y="0" height="100" width="100" style="fill: url(#abc);"></rect></svg>-->
+
+<!--</div>-->
+
+
+
+<script>
+
+    $(function() {
+        $(document).tooltip({
+            content: function() {
+                return $(this).attr('title');
+            },
+            style: {
+                width: "50px",
+                height: "100px"
+            }
+        });
+    })
+</script>
 
 </body>
 </html>

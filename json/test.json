@@ -21,7 +21,7 @@
       "query-len": "770",
       "hits": [
         {
-          "num": "1",
+          "num": "0",
           "id": "gnl|BL_ORD_ID|140988",
           "def": "gi|425906075|sp|Q8NF91.4|SYNE1_HUMAN RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
           "accession": "140988",
@@ -73,9 +73,61 @@
           }
         },
         {
+          "num": "1",
+          "id": "gnl|BL_ORD_ID|140988",
+          "def": "gi|425906075|sp|Q8NF91.4|chimpanzee RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
+          "accession": "140988",
+          "len": "770",
+          "hsps": [
+            {
+              "num": 1,
+              "bit_score": 1424.45,
+              "score": 3686,
+              "evalue": 0,
+              "identity": 686,
+              "positive": 694,
+              "query-from": 51,
+              "query-to": 770,
+              "hit-from": 1,
+              "hit-to": 700,
+              "align-len": 700,
+              "gaps": 20,
+              "qseq": "MLPGLALLLLAAWTARALEVPTDGNAGLLAEPQIAMFCGRLNMHMNVQNGKWDSDPSGTKTCIDTKEGILQYCQEVYPELQITNVVEANQPVTIQNWCKRGRKQCKTHPHFVIPYRCLVGEFVSDALLVPDKCKFLHQERMDVCETHLHWHTVAKETCSEKSTNLHDYGMLLPCGIDKFRGVEFVCCPLAEESDNVDSADAEEDDSDVWWGGADTDYADGSEDKVVEVAEEEEVAEVEEEEADDDEDDEDGDEVEEEAEEPYEEATERTTSIATTTTTTTESVEEVVREVCSEQAETGPCRAMISRWYFDVTEGKCAPFFYGGCGGNRNNFDTEEYCMAVCGSAMSQSLLKTTQEPLARDPVKLPTTAASTPDAVDKYLETPGDENEHAHFQKAKERLEAKHRERMSQVMREWEEAERQAKNLPKADKKAVIQHFQEKVESLEQEAANERQQLVETHMARVEAMLNDRRRLALENYITALQAVPPRPRHVFNMLKKYVRAEQKDRQHTLKHFEHVRMVDPKKAAQIRSQVMTHLRVIYERMNQSLSLLYNVPAVAEEIQDEVDELLQKEQNYSDDVLANMISEPRISYGNDALMPSLTETKTTVELLPVNGEFSLDDLQPWHSFGADSVPANTENEVEPVDARPAADRGLTTRPGSGLTNIKTEEISEVKMDAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIATVIVITL",
+              "hseq": "MLPGLALLLLAAWTARALEVPTDGNAGLLAEPQIAMFCGKLNMHMNVQNGKWESDPSGTKTCIGTKEGILQYCQEVYPELQITNVVEANQPVTIQNWCKRGRKQCKTHAHIVIPYRCLVGEFVSDALLVPDKCKFLHQERMDVCETHLHWHTVAKETCSEKSTNLHDYGMLLPCGIDKFRGVEFVCCPMAEESDNIDSADAEEDDSDVWWGGADTDYADGSEDKVVEVAEEEEVADVEEE-IEDDEDDEDGDEVEEEAEEPYEEATERTTSIAATTTTTTESVEEVVREVCSEQAETGPCRAMISRWYFDVTEGKCAPFFYGGCGGNRNNFDTEEYCMAVCGSV-------------------IPTTAASTPDAVDKYLETPGDENEHAHFQKAKERLEAKHRERMSQVMREWEEAERQAKNLPKADKKAVIQHFQEKVESLEQEAANERQQLVETHMARVEAMLNDRRRLALENYITALQAVPPRPRHVFNMLKKYVRAEQKDRQHTLKHFEHVRMVDPKKAAQIRSQVMTHLRVIYERMNQSLSLLYNVPAVAEEIQDEVDELLQKEQNYSDDVLANMISEPRISYGNDALMPSLTETKTTVELLPVNGEFSLDELQPWHSFGADSVPANTENEVEPVDARPAADRGLTTRPGSGLTNIKTEEISEVKMDAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIATVIVITL",
+              "midline": "MLPGLALLLLAAWTARALEVPTDGNAGLLAEPQIAMFCG+LNMHMNVQNGKW+SDPSGTKTCI TKEGILQYCQEVYPELQITNVVEANQPVTIQNWCKRGRKQCKTH H VIPYRCLVGEFVSDALLVPDKCKFLHQERMDVCETHLHWHTVAKETCSEKSTNLHDYGMLLPCGIDKFRGVEFVCCP+AEESDN+DSADAEEDDSDVWWGGADTDYADGSEDKVVEVAEEEEVA+VEEE  +DDEDDEDGDEVEEEAEEPYEEATERTTSIA TTTTTTESVEEVVREVCSEQAETGPCRAMISRWYFDVTEGKCAPFFYGGCGGNRNNFDTEEYCMAVCGS                    +PTTAASTPDAVDKYLETPGDENEHAHFQKAKERLEAKHRERMSQVMREWEEAERQAKNLPKADKKAVIQHFQEKVESLEQEAANERQQLVETHMARVEAMLNDRRRLALENYITALQAVPPRPRHVFNMLKKYVRAEQKDRQHTLKHFEHVRMVDPKKAAQIRSQVMTHLRVIYERMNQSLSLLYNVPAVAEEIQDEVDELLQKEQNYSDDVLANMISEPRISYGNDALMPSLTETKTTVELLPVNGEFSLD+LQPWHSFGADSVPANTENEVEPVDARPAADRGLTTRPGSGLTNIKTEEISEVKMDAEFRHDSGYEVHHQKLVFFAEDVGSNKGAIIGLMVGGVVIATVIVITL"
+            },
+            {
+              "num": 2,
+              "bit_score": 108.997,
+              "score": 271,
+              "evalue": 3.95454e-21,
+              "identity": 50,
+              "positive": 50,
+              "query-from": 1,
+              "query-to": 50,
+              "hit-from": 721,
+              "hit-to": 770,
+              "align-len": 50,
+              "gaps": 0,
+              "qseq": "VMLKKKQYTSIHHGVVEVDAAVTPEERHLSKMQQNGYENPTYKFFEQMQN",
+              "hseq": "VMLKKKQYTSIHHGVVEVDAAVTPEERHLSKMQQNGYENPTYKFFEQMQN",
+              "midline": "VMLKKKQYTSIHHGVVEVDAAVTPEERHLSKMQQNGYENPTYKFFEQMQN"
+            }
+          ],
+          "stat": {
+            "db-num": "459767",
+            "db-len": "171814008",
+            "hsp-len": "143",
+            "eff-space": "917906647858",
+            "kappa": "0.041",
+            "lambda": "0.267",
+            "entropy": "0.14"
+          }
+        },
+        {
           "num": "2",
           "id": "gnl|BL_ORD_ID|140988",
-          "def": "gi|425906075|sp|Q8NF91.4|SYNE1_HUMAN RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
+          "def": "gi|425906075|sp|Q8NF91.4|Chameleon RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
           "accession": "140988",
           "len": "770",
           "hsps": [
