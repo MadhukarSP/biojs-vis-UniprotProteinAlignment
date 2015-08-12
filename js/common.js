@@ -36,6 +36,10 @@ var yScaleMax = 350;
 
 var widthBtnBars = 60;
 
+var colorAt0 = "#0000FF";
+var colorAt50 = "#00FF00";
+var colorAt100 = "#FF0000";
+
 var firstPatternColor = "#FFFFFF";
 var secondPatternColor = "#CCFF00";
 var thirdPatternColor = "#00FF00";
@@ -65,9 +69,11 @@ function initializeValues() {
             var blast_output = [];
 
             blast_output.push({
+                "def": data.iterations[0].hits[i]["def"],
                 "score": data.iterations[0].hits[i].hsps[0]["score"],
                 "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
                 "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
+                "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
                 "align_len" : data.iterations[0].hits[i].hsps[0]["align-len"],
                 "query_len" : data.iterations[0]["query-len"],
                 "organism" : data.iterations[0].hits[i].def.split("|")[4].split(" ")[0],
@@ -77,14 +83,18 @@ function initializeValues() {
                 "hit_to" : data.iterations[0].hits[i].hsps[0]["hit-to"],   //Extracting value from object with '-' value in it
                 "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
                 "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
+                "midLine": data.iterations[0].hits[i].hsps[0]["midline"],
                 "gaps" : data.iterations[0].hits[i].hsps[0]["gaps"],
                 "num_of_regions_left": (num_of_regions)
             });
 
             for(var j = 1; j < num_of_regions; j++) {
                 blast_output.push({
+                    "def": data.iterations[0].hits[i]["def"],
                     'score' : data.iterations[0].hits[i].hsps[j]["score"],
                     'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
+                    "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
+                    "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
                     'query_from' : data.iterations[0].hits[i].hsps[j]["query-from"],
                     'query_to' : data.iterations[0].hits[i].hsps[j]["query-to"],
                     'hit_from' : data.iterations[0].hits[i].hsps[j]["hit-from"],
@@ -92,6 +102,7 @@ function initializeValues() {
                     "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
                     "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
                     "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
+                    "midLine": data.iterations[0].hits[i].hsps[j]["midline"],
                     "gaps" : data.iterations[0].hits[i].hsps[j]["gaps"],
                     "num_of_regions_left": 0
                 });
@@ -112,7 +123,6 @@ function initializeValues() {
 function drawOverviewBars(blast_data, numberOfHits) {
 
     var enzymeDetails = [];
-    //var alignmentLength = [];
     var queryFromValues = [];
     var queryToValues = [];
     var hitFromValues = [];
@@ -121,19 +131,24 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var numOfRegionsLeft = [];
     var score = [];
     var eValue = [];
+    var def = [];
     var gaps = [];
     var qseq = [];
     var hseq = [];
-
+    var midLine = [];
+    var identities = [];
+    var positives = [];
 
     for(var i=0; i < blast_data.length; i++) {
         if(blast_data[i].num_of_regions_left != 0) {
             var identityValue = getIdentityInfo(blast_data, i, blast_data[i].num_of_regions_left);
             enzymeDetails.push(blast_data[i].organism + ","+ identityValue + "%");
         }
-        //alignmentLength.push(blast_data[i].align_len);
-        score.push("<strong>Score</strong> :"+ blast_data[i].score);
-        eValue.push("<strong>eValue</strong> :"+ blast_data[i].evalue);
+        identities.push(blast_data[i].identity);
+        positives.push(blast_data[i].positive);
+        def.push(blast_data[i].def);
+        score.push(blast_data[i].score);
+        eValue.push(blast_data[i].evalue);
         queryFromValues.push(blast_data[i].query_from);
         queryToValues.push(blast_data[i].query_to);
         hitFromValues.push(blast_data[i].hit_from);
@@ -142,6 +157,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
         gaps.push(blast_data[i].gaps);
         qseq.push(blast_data[i].qseq);
         hseq.push(blast_data[i].hseq);
+        midLine.push(blast_data[i].midLine);
     }
 
     overviewHeight = 60 + ((numberOfHits-1) * 60);
@@ -164,11 +180,9 @@ function drawOverviewBars(blast_data, numberOfHits) {
         .domain([0,numberOfHits])
         .range([yScaleMin,yScaleMax]);
 
-    var colors = ['#0000b4','#0082ca','#0094ff','#0d4bcf','#0066AE','#074285','#00187B','#285964','#405F83','#416545','#4D7069','#6E9985','#7EBC89','#0283AF','#79BCBF','#99C19E'];
-
     var colorScale = d3.scale.linear()
-        .domain([0,queryLength])
-        .range(["#0000FF", "#FF0000"]);
+        .domain([0,queryLength/2, queryLength])
+        .range([colorAt0, colorAt50, colorAt100]);
 
     ////Add the patterns to the canvas
     //addPattern();
@@ -177,16 +191,19 @@ function drawOverviewBars(blast_data, numberOfHits) {
     addAxes(xScale, yScale, enzymeDetails);
 
     //Add the Query bars to the graph
-    addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue);
+    addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
+        gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
 
     //Add the Hit bars to the graph
-    addHitBar(xScale, hitFromValues, hitToValues, queryFromValues,queryToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue);
+    addHitBar(xScale, hitFromValues, hitToValues, queryFromValues,queryToValues, colorScale, numOfRegionsLeft,
+        gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
 }
 
 
 
 //Add the Query bars to the graph
-function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq, score, eValue) {
+function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitToValues, colorScale,
+                     numOfRegionsLeft, gaps, qseq, hseq, score, eValue, midLine, def, identities, positives) {
 
     var queryBars = canvas.append('g')
         .attr("transform", "translate(150,10)")
@@ -229,8 +246,9 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
 
         var qrySymbol="<strong>Qry</strong> ";
         var sbjSymbol="<strong>Sub</strong> ";
+        var space = "&nbsp;";
         var spaces2 = "&nbsp;&nbsp;";
-        var spaces5 = "&nbsp;&nbsp;";
+        var spaces5 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         var perLine = 100;
 
         var displayableValue="<br/>";
@@ -238,21 +256,29 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
         var qLen = parseInt(queryToValues[i]);
+        var queryFullLength = parseInt(queryToValues[i]) - parseInt(queryFromValues[i]) + 1;
         var hStart = parseInt(hitFromValues[i]);
         var hLen = parseInt(hitToValues[i]);
+        var qryEnd;
+        var sbjEnd;
+        var gapsInQry;
+        var gapsInSub;
+        var qEnd;
+        var hEnd;
 
         for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-            var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-            var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+            qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+            sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
 
-            var gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-");
-            var gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-");
+            gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
+            gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
 
-            var qEnd =  qStart+perLine > qLen ? qLen-gapsInQry : qStart+perLine-1-gapsInQry;
-            var hEnd =  hStart+perLine > hLen ? hLen-gapsInSub : hStart+perLine-1-gapsInSub;
+            qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+            hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
 
-            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
-            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
+            displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i].substring(sbjStart, sbjEnd).split(' ').join(space) + "<br/>";
+            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
 
             qryStart= qryStart+perLine;
             sbjStart = sbjStart+perLine;
@@ -260,9 +286,20 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             hStart = hStart+perLine-gapsInSub;
         }
 
-        queryBars.select("#queryRect"+i).style("cursor","pointer").attr("title","<strong>Query</strong> : "+ queryFromValues[i] + " - " + queryToValues[i] + spaces5 +
-        score[i] + spaces5 + eValue[i] + "<br/>"+
+        queryBars.select("#queryRect"+i).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" + def[i] + "<br/><br/><strong>Query</strong>: "+ queryFromValues[i] + " - " + queryToValues[i] + spaces5 +
+        "<strong>Score</strong>: " +score[i] + spaces5 + "<strong>eValue</strong>: " + eValue[i] + spaces5 + "<strong>Identities</strong>: " + identities[i] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " + positives[i] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i] + "/" + queryFullLength +"<br/>"+
         displayableValue);
+
+        //queryBars.select("#queryRect"+i).style("cursor","pointer")
+        //    .attr("title","<table>" +
+        //    "<thead><tr><th><strong>Query</strong></th>" +
+        //    "<th><strong>Score</strong></th>" +
+        //    "<th><strong>eValue</strong></th>" +
+        //    "<th><strong>Identities</strong></th>" +
+        //    "<th><strong>Positives</strong></th>" +
+        //    "</tr></thead></table>"+ queryFromValues[i] + " - " + queryToValues[i] + ":" +
+        //    score[i] + spaces5 + eValue[i] + "<hr>"+
+        //    displayableValue);
 
         //Add gaps only if there is consecutive 3 gaps
         addQueryGaps(gaps, i, qseq, queryBars, xScale, k);
@@ -293,30 +330,38 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 .style({'fill':'#000000','font-size':'10px'})
                 .attr("id","queryToText"+(i+j));
 
-            var displayableValue="<br/>";
-            var qrySeqLength = qseq[i+j].length;
-            var hitSeqLength = hseq[i+j].length;
-            var qStart = parseInt(queryFromValues[i+j]);
-            var qLen = parseInt(queryToValues[i+j]);
-            var hStart = parseInt(hitFromValues[i+j]);
-            var hLen = parseInt(hitToValues[i+j]);
+            displayableValue="<br/>";
+            qrySeqLength = qseq[i+j].length;
+            hitSeqLength = hseq[i+j].length;
+            qStart = parseInt(queryFromValues[i+j]);
+            qLen = parseInt(queryToValues[i+j]);
+            hStart = parseInt(hitFromValues[i+j]);
+            hLen = parseInt(hitToValues[i+j]);
 
             for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-                var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-                var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
-                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
+                qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+                sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
 
-                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
-                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+                gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
+                gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
+
+                qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+                hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+
+                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
+                displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i+j].substring(qryStart, qryEnd).split(' ').join(space) + "<br/>";
+                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
 
                 qryStart= qryStart+perLine;
                 sbjStart = sbjStart+perLine;
-                qStart= qStart+perLine;
-                hStart = hStart+perLine;
+                qStart= qStart+perLine-gapsInQry;
+                hStart = hStart+perLine-gapsInSub;
             }
-            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer").attr("title","<strong>Query</strong> : "+ queryFromValues[i+j] + " - " + queryToValues[i+j] + spaces5 +
-            score[i+j] + spaces5 + eValue[i+j] + "<br/>"+
+            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" +
+            def[i+j] + "<br/><br/><strong>Query</strong>: "+ queryFromValues[i+j] + " - " + queryToValues[i+j] + spaces5 +
+            "<strong>Score</strong>: " +score[i+j] + spaces5 + "<strong>eValue</strong>: " + eValue[i+j] + spaces5 +
+            "<strong>Identities</strong>: " + identities[i+j] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
+            positives[i+j] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i+j] + "/" + queryFullLength +"<br/>"+
             displayableValue);
 
 
@@ -366,7 +411,8 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
 
 
 //Add the hit bars to the graph
-function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToValues, colorScale, numOfRegionsLeft, gaps, qseq, hseq,  score, eValue) {
+function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToValues, colorScale, numOfRegionsLeft,
+                   gaps, qseq, hseq,  score, eValue, midLine, def, identities, positives) {
 
     var hitBars = canvas.append('g')
         .attr("transform", "translate(150,10)")
@@ -400,8 +446,9 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
 
         var qrySymbol="<strong>Qry</strong> ";
         var sbjSymbol="<strong>Sbj</strong> ";
+        var space = "&nbsp;";
         var spaces2 = "&nbsp;&nbsp;";
-        var spaces5 = "&nbsp;&nbsp;";
+        var spaces5 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         var perLine = 100;
 
         var displayableValue="<br/>";
@@ -409,26 +456,36 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
         var qLen = parseInt(queryToValues[i]);
+        var queryFullLength = parseInt(queryToValues[i]) - parseInt(queryFromValues[i]) + 1;
         var hStart = parseInt(hitFromValues[i]);
         var hLen = parseInt(hitToValues[i]);
 
         for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
             var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
             var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-            var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
-            var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
 
-            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
-            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+            var gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
+            var gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
+
+            var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+            var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+
+            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
+            displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i].substring(sbjStart, sbjEnd).split(' ').join(space) + "<br/>";
+            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
 
             qryStart= qryStart+perLine;
             sbjStart = sbjStart+perLine;
-            qStart= qStart+perLine;
-            hStart = hStart+perLine;
+            qStart= qStart+perLine-gapsInQry;
+            hStart = hStart+perLine-gapsInSub;
         }
 
-        hitBars.select("#hitRect"+i).style("cursor","pointer").attr("title","<strong>Subject</strong> : "+ hitFromValues[i] + " - " + hitToValues[i] + spaces5 +
-        score[i] + spaces5 + eValue[i] + "<br/>" + displayableValue);
+        hitBars.select("#hitRect"+i).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" + def[i] +
+        "<br/><br/><strong>Subject</strong>: "+ hitFromValues[i] + " - " + hitToValues[i] + spaces5 +
+        "<strong>Score</strong>: " +score[i] + spaces5 + "<strong>eValue</strong>: " + eValue[i] + spaces5 +
+        "<strong>Identities</strong>: " + identities[i] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
+        positives[i] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i] + "/" + queryFullLength +"<br/>"+
+        displayableValue);
 
         //Add gaps only if there is consecutive 3 gaps
         addHitGaps(gaps, i, hseq, hitBars, xScale, k);
@@ -470,20 +527,29 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
                 var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
                 var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1;
-                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1;
 
-                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd) + spaces2 + qEnd + "<br/>";
-                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd) + spaces2 + hEnd + "<br/><br/>";
+                var gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
+                var gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
+
+                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+
+                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
+                displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i+j].substring(qryStart, qryEnd).split(' ').join(space) + "<br/>";
+                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
 
                 qryStart= qryStart+perLine;
                 sbjStart = sbjStart+perLine;
-                qStart= qStart+perLine;
-                hStart = hStart+perLine;
+                qStart= qStart+perLine-gapsInQry;
+                hStart = hStart+perLine-gapsInSub;
             }
 
-            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title","<strong>Subject</strong> : "+ hitFromValues[i+j] + " - " + hitToValues[i+j] + spaces5 +
-            score[i+j] + spaces5 + eValue[i+j] + "<br/>" + displayableValue);
+            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" +
+            def[i+j] + "<br/><br/><strong>Subject</strong>: "+ hitFromValues[i+j] + " - " + hitToValues[i+j] + spaces5 +
+            "<strong>Score</strong>: " +score[i+j] + spaces5 + "<strong>eValue</strong>: " + eValue[i+j] + spaces5 +
+            "<strong>Identities</strong>: " + identities[i+j] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
+            positives[i+j] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i+j] + "/" + queryFullLength +"<br/>"+
+            displayableValue);
 
             //Add gaps only if there is consecutive 3 gaps
             addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k);
@@ -747,7 +813,7 @@ function addPattern() {
         .append('path')
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', thirdPatternColor)
-        .attr('stroke-width', 1)
+        .attr('stroke-width', 1);
         //.append('image')
         //.attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==')
         //.attr('x', 0)

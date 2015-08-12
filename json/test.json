@@ -75,7 +75,7 @@
         {
           "num": "1",
           "id": "gnl|BL_ORD_ID|140988",
-          "def": "gi|425906075|sp|Q8NF91.4|chimpanzee RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
+          "def": "gi|425906075|sp|Q8NF91.4|Chimpanzee RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
           "accession": "140988",
           "len": "770",
           "hsps": [
