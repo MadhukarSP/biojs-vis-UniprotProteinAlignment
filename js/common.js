@@ -93,8 +93,8 @@ function initializeValues() {
                     "def": data.iterations[0].hits[i]["def"],
                     'score' : data.iterations[0].hits[i].hsps[j]["score"],
                     'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
-                    "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
-                    "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
+                    "identity" : data.iterations[0].hits[i].hsps[j]["identity"],
+                    "positive" : data.iterations[0].hits[i].hsps[j]["positive"],
                     'query_from' : data.iterations[0].hits[i].hsps[j]["query-from"],
                     'query_to' : data.iterations[0].hits[i].hsps[j]["query-to"],
                     'hit_from' : data.iterations[0].hits[i].hsps[j]["hit-from"],
@@ -337,6 +337,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             qLen = parseInt(queryToValues[i+j]);
             hStart = parseInt(hitFromValues[i+j]);
             hLen = parseInt(hitToValues[i+j]);
+            queryFullLength = qLen - qStart + 1;
 
             for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
                 qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
@@ -456,19 +457,25 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
         var qLen = parseInt(queryToValues[i]);
-        var queryFullLength = parseInt(queryToValues[i]) - parseInt(queryFromValues[i]) + 1;
         var hStart = parseInt(hitFromValues[i]);
         var hLen = parseInt(hitToValues[i]);
+        var queryFullLength = hLen - hStart + 1;
+        var qryEnd;
+        var sbjEnd;
+        var gapsInQry;
+        var gapsInSub;
+        var qEnd;
+        var hEnd;
 
         for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-            var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-            var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+            qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+            sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
 
-            var gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
-            var gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
+            gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
+            gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
 
-            var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-            var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+            qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+            hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
 
             displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
             displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i].substring(sbjStart, sbjEnd).split(' ').join(space) + "<br/>";
@@ -516,23 +523,24 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .style({'fill':'#000','font-size':'10px'})
                 .attr("id","hitToText"+(i+j));
 
-            var displayableValue="<br/>";
-            var qrySeqLength = qseq[i+j].length;
-            var hitSeqLength = hseq[i+j].length;
-            var qStart = parseInt(queryFromValues[i+j]);
-            var qLen = parseInt(queryToValues[i+j]);
-            var hStart = parseInt(hitFromValues[i+j]);
-            var hLen = parseInt(hitToValues[i+j]);
+            displayableValue="<br/>";
+            qrySeqLength = qseq[i+j].length;
+            hitSeqLength = hseq[i+j].length;
+            qStart = parseInt(queryFromValues[i+j]);
+            qLen = parseInt(queryToValues[i+j]);
+            hStart = parseInt(hitFromValues[i+j]);
+            hLen = parseInt(hitToValues[i+j]);
+            queryFullLength = hLen - hStart + 1;
 
             for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-                var qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-                var sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+                qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+                sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
 
-                var gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
-                var gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
+                gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
+                gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
 
-                var qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-                var hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+                qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+                hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
 
                 displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
                 displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i+j].substring(qryStart, qryEnd).split(' ').join(space) + "<br/>";
