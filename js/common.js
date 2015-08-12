@@ -166,6 +166,8 @@ function drawOverviewBars(blast_data, numberOfHits) {
         overviewHeight = 300;
     }
 
+    yScaleMax = overviewHeight;
+
     //Add svg elements to the div and specify the attributes to it
     canvas = d3.select('#wrapper')
         .append('svg')
