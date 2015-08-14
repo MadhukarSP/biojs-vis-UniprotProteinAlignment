@@ -924,27 +924,27 @@ function addAxes(xScale, yScale, enzymeDetails) {
         .attr("transform", function (d,i) {return "translate(" + 0 + "," + (26 + (i*widthBtnBars)) + ")"});
 
 
-    //var	yAxisRightDropDown = d3.svg.axis()
-    //    .orient('right')
-    //    .scale(yScale)
-    //    .tickSize(0)
-    //    .tickFormat(function(d,i){ return d3.select(this)
-    //        .append("svg")
-    //        .append("g")
-    //                                        .append("select")
-    //                                        .append("option")
-    //                                        .text(enzymeDetails[i].split(',')[1]);})
-    //    .tickValues(d3.range(enzymeDetails.length));
-    //
-    //canvas.append('g')
-    //    .attr("transform", "translate(772,10)")
-    //    .attr('id','rightyaxisDropDown')
-    //    .call(yAxisRightDropDown)
-    //    .selectAll('.tick')
-    //    .append("select")
-    //    .append("option")
-    //    .text(function(d,i) {return enzymeDetails[i].split(',')[1];})
-    //    .attr("transform", function (d,i) {return "translate(" + 20 + "," + (12 + (i*widthBtnBars)) + ")"});
+    var	yAxisRightDropDown = d3.svg.axis()
+        .orient('right')
+        .scale(yScale)
+        .tickSize(0)
+        .tickFormat(function(d,i){ return d3.select(this)
+            .append("svg")
+            .append("g")
+            .append("select")
+            .append("option")
+            .text(enzymeDetails[i].split(',')[1]);})
+        .tickValues(d3.range(enzymeDetails.length));
+
+    canvas.append('g')
+        .attr("transform", "translate(772,10)")
+        .attr('id','rightyaxisDropDown')
+        .call(yAxisRightDropDown)
+        .selectAll('.tick')
+        .append("select")
+        .append("option")
+        .text(function(d,i) {return "Test";})
+        .attr("transform", function (d,i) {return "translate(" + 20 + "," + (12 + (i*widthBtnBars)) + ")"});
 
 
 
