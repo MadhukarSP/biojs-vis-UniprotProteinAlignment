@@ -22,7 +22,7 @@ var text_weight = "normal";
 var text_anchor = "middle";
 
 //Overview variables
-var overviewWidth = 900;
+var overviewWidth = 950;
 var overviewHeight = 300;
 
 var axesWidth = 900;
@@ -123,6 +123,8 @@ function initializeValues() {
 function drawOverviewBars(blast_data, numberOfHits) {
 
     var enzymeDetails = [];
+    var organismDetails = [];
+    var organismNames = [];
     var queryFromValues = [];
     var queryToValues = [];
     var hitFromValues = [];
@@ -138,12 +140,43 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var midLine = [];
     var identities = [];
     var positives = [];
+    var numOfOrganisms = 1;
+    var flag=1;
+    var identityValue = "";
 
-    for(var i=0; i < blast_data.length; i++) {
+    for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
-            var identityValue = getIdentityInfo(blast_data, i, blast_data[i].num_of_regions_left);
-            enzymeDetails.push(blast_data[i].organism + ","+ identityValue + "%");
+
+
+            var regions = blast_data[i].num_of_regions_left + i;
+            flag=1;
+
+            if(regions + i < blast_data.length
+                && blast_data[i].query_from == blast_data[regions].query_from
+                && blast_data[i].query_to == blast_data[regions].query_to
+                && blast_data[i].hit_from == blast_data[regions].hit_from
+                && blast_data[i].hit_to == blast_data[regions].hit_to
+                && blast_data[i].identity == blast_data[regions].identity
+                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left) {
+
+                numOfOrganisms++;
+                organismNames.push(blast_data[i].organism);
+                i=i+regions;
+                continue;
+            }
         }
+
+        if(flag == 1) {
+            organismNames.push(blast_data[i].organism);
+            console.log("organismNames"+ organismNames);
+            organismDetails.push(numOfOrganisms + ","+ organismNames);
+            identityValue = getIdentityInfo(blast_data, i, blast_data[i].num_of_regions_left);
+            enzymeDetails.push(identityValue);
+            numOfOrganisms = 1;
+            organismNames = [];
+            flag=0;
+        }
+
         identities.push(blast_data[i].identity);
         positives.push(blast_data[i].positive);
         def.push(blast_data[i].def);
@@ -158,15 +191,19 @@ function drawOverviewBars(blast_data, numberOfHits) {
         qseq.push(blast_data[i].qseq);
         hseq.push(blast_data[i].hseq);
         midLine.push(blast_data[i].midLine);
+
+        i++;
     }
 
-    overviewHeight = 60 + ((numberOfHits-1) * 60);
+    //overviewHeight = 60 + ((numberOfHits-1) * 60);
+
+    yScaleMax = 60 + ((organismDetails.length -1) * 60);
+    overviewHeight = yScaleMax;
 
     if(overviewHeight < 300) {
         overviewHeight = 300;
+        yScaleMax = overviewHeight;
     }
-
-    yScaleMax = overviewHeight;
 
     //Add svg elements to the div and specify the attributes to it
     canvas = d3.select('#wrapper')
@@ -190,7 +227,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
     //addPattern();
 
     //Add axes to the graph
-    addAxes(xScale, yScale, enzymeDetails);
+    addAxes(xScale, yScale, enzymeDetails, organismDetails);
 
     //Add the Query bars to the graph
     addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
@@ -848,7 +885,7 @@ function getIdentityInfo(blast_data, index, num_of_regions) {
 }
 
 //Add axes to the graph
-function addAxes(xScale, yScale, enzymeDetails) {
+function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
 
     //Add x-axis at top
     var canvas_top_axis = d3.select('#xAxis_at_top')
@@ -882,7 +919,7 @@ function addAxes(xScale, yScale, enzymeDetails) {
         .orient('left')
         .scale(yScale)
         .tickSize(3)
-        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[0]; })
+        .tickFormat(function(d,i){ return enzymeDetails[i]; })
         .tickValues(d3.range(enzymeDetails.length));
 
     canvas.append('g')
@@ -912,8 +949,8 @@ function addAxes(xScale, yScale, enzymeDetails) {
         .orient('right')
         .scale(yScale)
         .tickSize(3)
-        .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[1];})
-        .tickValues(d3.range(enzymeDetails.length));
+        .tickFormat(function(d,i){ return organismDetails[i].split(',')[0];})
+        .tickValues(d3.range(organismDetails.length));
 
 
     canvas.append('g')
@@ -928,23 +965,44 @@ function addAxes(xScale, yScale, enzymeDetails) {
         .orient('right')
         .scale(yScale)
         .tickSize(0)
-        .tickFormat(function(d,i){ return d3.select(this)
-            .append("svg")
-            .append("g")
-            .append("select")
-            .append("option")
-            .text(enzymeDetails[i].split(',')[1]);})
-        .tickValues(d3.range(enzymeDetails.length));
+        .tickFormat(function(d,i){return "";})
+        //.tickFormat(function(d,i){ return d3.select(this)
+            //.append("svg")
+            //.append("g")
+            //.append("p")
+            //.append("select")
+            //.append("option")
+            //.text(enzymeDetails[i].split(',')[1]);})
+        .tickValues(d3.range(organismDetails.length));
+
+    var optionStart = "<option>"
+    var optionEnd = "</option>"
 
     canvas.append('g')
-        .attr("transform", "translate(772,10)")
+        //.attr("transform", "translate(782,24)")
         .attr('id','rightyaxisDropDown')
         .call(yAxisRightDropDown)
         .selectAll('.tick')
+        .attr("transform", function (d,i) {return "translate(" + 775 + "," + (24 + (i*widthBtnBars)) + ")"})
+        .append("foreignObject")
+        .attr("width", 200)
+        .attr("height",55)
+        .append("xhtml:body")
+        .style("font", "12px")
+        .style("z-index", 9)
+        .append("p")
+
         .append("select")
-        .append("option")
-        .text(function(d,i) {return "Test";})
-        .attr("transform", function (d,i) {return "translate(" + 20 + "," + (12 + (i*widthBtnBars)) + ")"});
+        //.append("option")
+        .html(function(d,i) {
+            var optionValues = "";
+            for(var k=1; k< organismDetails[i].split(',').length;k++) {
+                optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
+            }
+
+            return optionValues;
+        })
+        //.attr("transform", function (d,i) {return "translate(" + 40 + "," + (26 + (i*widthBtnBars)) + ")"});
 
 
 
