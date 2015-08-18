@@ -983,16 +983,16 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .attr('id','rightyaxisDropDown')
         .call(yAxisRightDropDown)
         .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 775 + "," + (24 + (i*widthBtnBars)) + ")"})
+        .attr("transform", function (d,i) {return "translate(" + 775 + "," + (20 + (i*widthBtnBars)) + ")"})
         .append("foreignObject")
-        .attr("width", 200)
-        .attr("height",55)
+        .attr("width", 160)
+        .attr("height",35)
         .append("xhtml:body")
         .style("font", "12px")
         .style("z-index", 9)
         .append("p")
-
         .append("select")
+        .attr("class","form-control")
         //.append("option")
         .html(function(d,i) {
             var optionValues = "";
