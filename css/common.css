@@ -123,57 +123,16 @@
     background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
 }
 
-.form-control {
+/* Select dropdown styling*/
+select.form-control {
     height: 28px;
     padding-top: 4px;
     padding-bottom: 4px;
 }
 
-/* Alignment Styling START */
-
-/*rect[title]:hover {*/
-    /*color: red;*/
-    /*position: relative;*/
-/*}*/
-
-/*rect[title] {*/
-    /*content: attr(title);*/
-    /*padding: 4px 8px;*/
-    /*color: #333;*/
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 100%;*/
-    /*white-space: nowrap;*/
-    /*z-index: 30px;*/
-    /*-moz-border-radius: 5px;*/
-    /*-webkit-border-radius: 5px;*/
-    /*border-radius: 5px;*/
-    /*-moz-box-shadow: 0px 0px 4px #222;*/
-    /*-webkit-box-shadow: 0px 0px 4px #222;*/
-    /*box-shadow: 0px 0px 4px #222;*/
-    /*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
-    /*background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #eeeeee),color-stop(1, #cccccc));*/
-    /*background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);*/
-    /*background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);*/
-    /*background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);*/
-    /*background-image: -o-linear-gradient(top, #eeeeee, #cccccc);*/
-/*}*/
-
-/*.bars {*/
-    /*-webkit-transition: all 1s ease;*/
-    /*-moz-transition: all 1s ease;*/
-    /*-o-transition: all 1s ease;*/
-    /*-ms-transition: all 1s ease;*/
-    /*transition: all 1s ease;*/
-    /*position: relative;*/
-/*}*/
-
-/*.bars:hover {*/
-    /*-webkit-transform:scale(1.25);*/
-    /*-moz-transform:scale(1.05);*/
-    /*-ms-transform:scale(1.25);*/
-    /*-o-transform:scale(1.25);*/
-    /*transform:scale(1.25);*/
-/*}*/
-
+/* Tooltip design*/
+.ui-tooltip{
+    max-width: 950px;
+    font-size: 11px;
+}
 

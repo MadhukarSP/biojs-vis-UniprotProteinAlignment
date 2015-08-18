@@ -329,17 +329,6 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         "<strong>Score</strong>: " +score[i] + spaces5 + "<strong>eValue</strong>: " + eValue[i] + spaces5 + "<strong>Identities</strong>: " + identities[i] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " + positives[i] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i] + "/" + queryFullLength +"<br/>"+
         displayableValue);
 
-        //queryBars.select("#queryRect"+i).style("cursor","pointer")
-        //    .attr("title","<table>" +
-        //    "<thead><tr><th><strong>Query</strong></th>" +
-        //    "<th><strong>Score</strong></th>" +
-        //    "<th><strong>eValue</strong></th>" +
-        //    "<th><strong>Identities</strong></th>" +
-        //    "<th><strong>Positives</strong></th>" +
-        //    "</tr></thead></table>"+ queryFromValues[i] + " - " + queryToValues[i] + ":" +
-        //    score[i] + spaces5 + eValue[i] + "<hr>"+
-        //    displayableValue);
-
         //Add gaps only if there is consecutive 3 gaps
         addQueryGaps(gaps, i, qseq, queryBars, xScale, k);
 
@@ -861,15 +850,6 @@ function addPattern() {
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', thirdPatternColor)
         .attr('stroke-width', 1);
-        //.append('image')
-        //.attr('xlink:href', 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc1JyBoZWlnaHQ9JzUnPgogIDxyZWN0IHdpZHRoPSc1JyBoZWlnaHQ9JzUnIGZpbGw9J3doaXRlJy8+CiAgPHBhdGggZD0nTTAgNUw1IDBaTTYgNEw0IDZaTS0xIDFMMSAtMVonIHN0cm9rZT0nIzg4OCcgc3Ryb2tlLXdpZHRoPScxJy8+Cjwvc3ZnPg==')
-        //.attr('x', 0)
-        //.attr('y', 0)
-        //.attr('width', 5)
-        //.attr('height', 5);
-
-//<pattern id="abc" patternUnits="userSpaceOnUse" width="6" height="6"> <image xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNicgaGVpZ2h0PSc2Jz4KICA8cmVjdCB3aWR0aD0nNicgaGVpZ2h0PSc2JyBmaWxsPScjZWVlZWVlJy8+CiAgPGcgaWQ9J2MnPgogICAgPHJlY3Qgd2lkdGg9JzMnIGhlaWdodD0nMycgZmlsbD0nI2U2ZTZlNicvPgogICAgPHJlY3QgeT0nMScgd2lkdGg9JzMnIGhlaWdodD0nMicgZmlsbD0nI2Q4ZDhkOCcvPgogIDwvZz4KICA8dXNlIHhsaW5rOmhyZWY9JyNjJyB4PSczJyB5PSczJy8+Cjwvc3ZnPg==" x="0" y="0" width="6" height="6"> </image> </pattern>
-
 }
 
 //Get percentage identity Information
@@ -929,22 +909,6 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .selectAll('.tick')
         .attr("transform", function (d,i) {return "translate(" + 0 + "," + (30 + (i*widthBtnBars)) + ")"});
 
-    //Add y-axis at right identity
-    //var	yAxisRightIdentity = d3.svg.axis()
-    //    .orient('right')
-    //    .scale(yScale)
-    //    .tickSize(3)
-    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[1];})
-    //    .tickValues(d3.range(enzymeDetails.length));
-
-    //var	yAxisRightIdentity = d3.svg.axis()
-    //    .orient('right')
-    //    .scale(yScale)
-    //    .tickSize(3)
-    //    .tickFormat(function(d,i){ return d3.select(this).append("select")
-    //                                        .append("option").text(enzymeDetails[i].split(',')[1])})
-    //    .tickValues(d3.range(enzymeDetails.length));
-
     var	yAxisRightIdentity = d3.svg.axis()
         .orient('right')
         .scale(yScale)
@@ -993,7 +957,6 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .append("p")
         .append("select")
         .attr("class","form-control")
-        //.append("option")
         .html(function(d,i) {
             var optionValues = "";
             for(var k=1; k< organismDetails[i].split(',').length;k++) {
@@ -1001,57 +964,7 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
             }
 
             return optionValues;
-        })
-        //.attr("transform", function (d,i) {return "translate(" + 40 + "," + (26 + (i*widthBtnBars)) + ")"});
-
-
-
-    //canvas.select('#leftyaxis')
-    //    //.append("svg")
-    //    //.append("g")
-    //    //.style("z-index", "20")
-    //    .append("select")
-    //    //.attr("position","absolute")
-    //    //.style("z-index", "20")
-    //    .append("option")
-    //    .text(function(d,i) {return enzymeDetails[i].split(',')[1];});
-
-
-
-    //canvas.select('#rightyaxis').selectAll('.tick').select('text').remove(this);
-
-
-    //canvas.select('rightyaxis').
-
-    //Add y-axis at right eValue
-    //var	yAxisRighteValue = d3.svg.axis()
-    //    .orient('right')
-    //    .scale(yScale)
-    //    .tickSize(0)
-    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[2]; })
-    //    .tickValues(d3.range(enzymeDetails.length));
-    //
-    //canvas.append('g')
-    //    .attr("transform", "translate(753,10)")
-    //    .attr('id','rightyaxis')
-    //    .call(yAxisRighteValue)
-    //    .selectAll('.tick')
-    //    .attr("transform", function (d,i) {return "translate(" + 0 + "," + (24 + (i*widthBtnBars)) + ")"});
-    //
-    ////Add y-axis at right Score
-    //var	yAxisRightScore = d3.svg.axis()
-    //    .orient('right')
-    //    .scale(yScale)
-    //    .tickSize(0)
-    //    .tickFormat(function(d,i){ return enzymeDetails[i].split(',')[3]; })
-    //    .tickValues(d3.range(enzymeDetails.length));
-    //
-    //canvas.append('g')
-    //    .attr("transform", "translate(753,10)")
-    //    .attr('id','rightyaxis')
-    //    .call(yAxisRightScore)
-    //    .selectAll('.tick')
-    //    .attr("transform", function (d,i) {return "translate(" + 0 + "," + (36 + (i*widthBtnBars)) + ")"});
+        });
 }
 
 //Get all the occurrences of the val ('-' hyphen sign) in the sequence
