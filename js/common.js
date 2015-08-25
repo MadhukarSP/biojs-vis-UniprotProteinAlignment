@@ -33,25 +33,25 @@ var secondPatternColor = "#CCFF00";
 var thirdPatternColor = "#00FF00";
 
 
-var QueryBarX_translate = 150;
+var QueryBarX_translate = 140;
 var QueryBarY_translate = 10;
 
-var QueryTextX_translate = 150;
+var QueryTextX_translate = 140;
 var QueryTextY_translate = 10;
 
-var x_axis_top_x_translate = 150;
+var x_axis_top_x_translate = 140;
 var x_axis_top_y_translate = 20;
 
-var x_axis_bottom_x_translate = 150;
+var x_axis_bottom_x_translate = 140;
 var x_axis_bottom_y_translate = 5;
 
 var QueryDropDownX_translate = 10;
 var QueryDropDownY_translate = 25;
 
-var hitBarX_translate = 150;
+var hitBarX_translate = 140;
 var hitBarY_translate = 10;
 
-var hitTextX_translate = 150;
+var hitTextX_translate = 140;
 var hitTextY_translate = 10;
 
 var ellipse = "...";
@@ -199,21 +199,6 @@ function initializeValues() {
     });
 }
 
-//function compare(a,b) {
-//
-//    var aQueryLen = parseInt(a.query_to) - parseInt(a.query_from);
-//    var bQueryLen = parseInt(b.query_to) - parseInt(b.query_from);
-//
-//    var aHitLen = parseInt(a.hit_to) - parseInt(a.hit_from);
-//    var bHitLen = parseInt(b.hit_to) - parseInt(b.hit_from);
-//
-//    if ((a.query_to - a.query_from) < (a.query_to - a.query_from))
-//        return -1;
-//    if (a.last_nom > b.last_nom)
-//        return 1;
-//    return 0;
-//}
-
 //Draw Overview bars for query and subject
 function drawOverviewBars(blast_data, numberOfHits) {
 
@@ -339,7 +324,6 @@ function addAxes(xScale, yScale, organismDetails) {
         .scale(xScale);
 
     canvas_top_axis.append('g')
-        //.attr("transform", "translate(180,20)")
         .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
         .attr('id','topxaxis')
         .call(xTopAxis);
@@ -371,6 +355,26 @@ function addAxes(xScale, yScale, organismDetails) {
     var selectStart = '<select class="form-control">';
     var selectEnd = "</select>";
 
+    var dropdownStart = "<div class='btn-group'>";
+    var btnStart = "<button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>";
+    var btnEnd = "<span class='caret'></span></button>";
+    var ulStart = "<ul class='dropdown-menu'>";
+    var liStart = "<li><a href='#'>";
+    var liEnd = "</a></li>";
+    var ulEnd = "</ul>";
+    var dropdownEnd = "</div>";
+
+    //<div class="btn-group">
+    //    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
+    //    <ul class="dropdown-menu">
+    //    <li><a href="#">Action</a></li>
+    //    <li><a href="#">Another action</a></li>
+    //    <li><a href="#">Something else here</a></li>
+    //    <li class="divider"></li>
+    //    <li><a href="#">Separated link</a></li>
+    //    </ul>
+    //    </div>
+
     canvas.append('g')
         //.attr("transform", "translate(782,24)")
         .attr('id','rightyaxisDropDown')
@@ -395,6 +399,12 @@ function addAxes(xScale, yScale, organismDetails) {
                     optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
                 }
                 optionValues = optionValues + selectEnd;
+
+                //optionValues = dropdownStart + btnStart + (organismDetails[i].split(',').length -1) + " hits" + btnEnd + ulStart;
+                //for(var k=1; k< organismDetails[i].split(',').length;k++) {
+                //    optionValues = optionValues + liStart + organismDetails[i].split(',')[k] + liEnd;
+                //}
+                //optionValues = ulEnd + dropdownEnd;
             } else {
                 optionValues = organismDetails[i].split(',')[1];
             }
@@ -519,13 +529,13 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             .attr('onclick', "clickedOnBar(evt)");
 
         queryTexts.append('text')
-            .attr({'x':xScale(parseInt(queryFromValues[i])+5),'y':(9 + (k*widthBtnBars))})
+            .attr({'x':xScale(parseInt(queryFromValues[i])),'y':(9 + (k*widthBtnBars))})
             .text(queryFromValues[i])
             .style({'fill':'#000','font-size':'10px'})
             .attr("id","queryFromText"+i);
 
         queryTexts.append('text')
-            .attr({'x':xScale(parseInt(queryToValues[i])-25),'y':(9 + (k*widthBtnBars))})
+            .attr({'x':xScale(parseInt(queryToValues[i])-10),'y':(9 + (k*widthBtnBars))})
             .text(queryToValues[i])
             .style({'fill':'#000','font-size':'10px'})
             .attr("id","queryToText"+i);
