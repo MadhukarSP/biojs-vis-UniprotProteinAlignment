@@ -137,7 +137,7 @@
 /* Select dropdown styling*/
 select.form-control {
     height: 24px;
-    width: 100px;
+    width: 120px;
     padding-top: 2px;
     padding-bottom: 4px;
 }
@@ -165,5 +165,13 @@ select.form-control {
     font-size: 11px;
     font-family: monospace;
     margin-left: 0px;
+}
+
+.truncateText {
+    white-space:nowrap;
+    -moz-text-overflow:ellipsis;
+    text-overflow:ellipsis;
+    width:120px;
+    overflow:hidden
 }
 

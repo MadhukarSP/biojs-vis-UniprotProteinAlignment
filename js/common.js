@@ -33,25 +33,25 @@ var secondPatternColor = "#CCFF00";
 var thirdPatternColor = "#00FF00";
 
 
-var QueryBarX_translate = 10;
+var QueryBarX_translate = 150;
 var QueryBarY_translate = 10;
 
-var QueryTextX_translate = 10;
+var QueryTextX_translate = 150;
 var QueryTextY_translate = 10;
 
-var x_axis_top_x_translate = 12;
+var x_axis_top_x_translate = 150;
 var x_axis_top_y_translate = 20;
 
-var x_axis_bottom_x_translate = 12;
+var x_axis_bottom_x_translate = 150;
 var x_axis_bottom_y_translate = 5;
 
-var QueryDropDownX_translate = 625;
+var QueryDropDownX_translate = 10;
 var QueryDropDownY_translate = 25;
 
-var hitBarX_translate = 10;
+var hitBarX_translate = 150;
 var hitBarY_translate = 10;
 
-var hitTextX_translate = 10;
+var hitTextX_translate = 150;
 var hitTextY_translate = 10;
 
 var ellipse = "...";
@@ -64,6 +64,17 @@ $(document).ready(function() {
 
     addPattern();
     initializeValues();
+
+    $(document).tooltip({
+        content: function() {
+            return $(this).attr('title');
+        },
+        style: {
+            width: "50px",
+            height: "100px"
+        },
+        track: true
+    });
 });
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
@@ -373,6 +384,8 @@ function addAxes(xScale, yScale, organismDetails) {
         .style("font", "12px")
         .style("z-index", 9)
         .append("p")
+        .attr("class","truncateText")
+        .style("cursor","pointer")
         .html(function(d,i) {
             var optionValues = "";
 
@@ -387,6 +400,11 @@ function addAxes(xScale, yScale, organismDetails) {
             }
 
             return optionValues;
+        })
+        .attr("title",function(i) {
+            if(organismDetails[i].split(',').length <= 2) {
+                return organismDetails[i].split(',')[1];
+            }
         });
 }
 
