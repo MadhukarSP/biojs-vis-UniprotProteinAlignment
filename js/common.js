@@ -68,59 +68,113 @@ $(document).ready(function() {
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
 function initializeValues() {
-    $.getJSON("json/NCBI_BLAST_Result.json", function(data) {
+    $.getJSON("json/NCBI_Output_Query_Seq_1.json", function(data) {
 
         var all_blast_output = [];
 
-        var numberOfHits = data.iterations[0].hits.length;
+        var dataObj = data.BlastOutput2["report"]["results"]["search"];
+
+        var numberOfHits = dataObj.hits.length;
 
         for (var i = 0; i < numberOfHits; i++) {
 
-            var num_of_regions = data.iterations[0].hits[i].hsps.length;
+            var num_of_regions = dataObj.hits[i].hsps.length;
             var blast_output = [];
 
             blast_output.push({
-                "def": data.iterations[0].hits[i]["def"],
-                "score": data.iterations[0].hits[i].hsps[0]["score"],
-                "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
-                "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
-                "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
-                "align_len" : data.iterations[0].hits[i].hsps[0]["align_len"],
-                "query_len" : data.iterations[0]["query_len"],
-                "organism" : data.iterations[0].hits[i].def.split("|")[4].split(" ")[0],
-                "query_from" : data.iterations[0].hits[i].hsps[0]["query_from"],
-                "query_to" : data.iterations[0].hits[i].hsps[0]["query_to"],
-                "hit_from" : data.iterations[0].hits[i].hsps[0]["hit_from"],
-                "hit_to" : data.iterations[0].hits[i].hsps[0]["hit_to"],   //Extracting value from object with '-' value in it
-                "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
-                "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
-                "midLine": data.iterations[0].hits[i].hsps[0]["midline"],
-                "gaps" : data.iterations[0].hits[i].hsps[0]["gaps"],
+                "def": dataObj.hits[i]["description"][0]["id"] + dataObj.hits[i]["description"][0]["title"],
+                "score": dataObj.hits[i].hsps[0]["score"],
+                "evalue" : dataObj.hits[i].hsps[0]["evalue"],
+                "identity" : dataObj.hits[i].hsps[0]["identity"],
+                "positive" : dataObj.hits[i].hsps[0]["positive"],
+                "align_len" : dataObj.hits[i].hsps[0]["align_len"],
+                "query_len" : dataObj["query_len"],
+                "organism" : dataObj.hits[i]["description"][0]["sciname"],
+                "query_from" : dataObj.hits[i].hsps[0]["query_from"],
+                "query_to" : dataObj.hits[i].hsps[0]["query_to"],
+                "hit_from" : dataObj.hits[i].hsps[0]["hit_from"],
+                "hit_to" : dataObj.hits[i].hsps[0]["hit_to"],   //Extracting value from object with '-' value in it
+                "qseq" : dataObj.hits[i].hsps[0]["qseq"],
+                "hseq" : dataObj.hits[i].hsps[0]["hseq"],
+                "midLine": dataObj.hits[i].hsps[0]["midline"],
+                "gaps" : dataObj.hits[i].hsps[0]["gaps"],
                 "num_of_regions_left": (num_of_regions)
             });
 
             for(var j = 1; j < num_of_regions; j++) {
                 blast_output.push({
-                    "def": data.iterations[0].hits[i]["def"],
-                    'score' : data.iterations[0].hits[i].hsps[j]["score"],
-                    'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
-                    "identity" : data.iterations[0].hits[i].hsps[j]["identity"],
-                    "positive" : data.iterations[0].hits[i].hsps[j]["positive"],
-                    'query_from' : data.iterations[0].hits[i].hsps[j]["query_from"],
-                    'query_to' : data.iterations[0].hits[i].hsps[j]["query_to"],
-                    'hit_from' : data.iterations[0].hits[i].hsps[j]["hit_from"],
-                    'hit_to' : data.iterations[0].hits[i].hsps[j]["hit_to"],
-                    "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
-                    "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
-                    "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
-                    "midLine": data.iterations[0].hits[i].hsps[j]["midline"],
-                    "gaps" : data.iterations[0].hits[i].hsps[j]["gaps"],
+                    "def": dataObj.hits[i]["description"][0]["id"] + dataObj.hits[i]["description"][0]["title"],
+                    'score' : dataObj.hits[i].hsps[j]["score"],
+                    'evalue' : dataObj.hits[i].hsps[j]["evalue"],
+                    "identity" : dataObj.hits[i].hsps[j]["identity"],
+                    "positive" : dataObj.hits[i].hsps[j]["positive"],
+                    'query_from' : dataObj.hits[i].hsps[j]["query_from"],
+                    'query_to' : dataObj.hits[i].hsps[j]["query_to"],
+                    'hit_from' : dataObj.hits[i].hsps[j]["hit_from"],
+                    'hit_to' : dataObj.hits[i].hsps[j]["hit_to"],
+                    "align_len" : dataObj.hits[i].hsps[j]["align-len"],
+                    "qseq" : dataObj.hits[i].hsps[j]["qseq"],
+                    "hseq" : dataObj.hits[i].hsps[j]["hseq"],
+                    "midLine": dataObj.hits[i].hsps[j]["midline"],
+                    "gaps" : dataObj.hits[i].hsps[j]["gaps"],
                     "num_of_regions_left": 0
                 });
             }
 
             all_blast_output.push.apply(all_blast_output, blast_output);
         }
+
+        //var all_blast_output = [];
+        //
+        //var numberOfHits = data.iterations[0].hits.length;
+
+        //for (var i = 0; i < numberOfHits; i++) {
+        //
+        //    var num_of_regions = data.iterations[0].hits[i].hsps.length;
+        //    var blast_output = [];
+        //
+        //    blast_output.push({
+        //        "def": data.iterations[0].hits[i]["def"],
+        //        "score": data.iterations[0].hits[i].hsps[0]["score"],
+        //        "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
+        //        "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
+        //        "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
+        //        "align_len" : data.iterations[0].hits[i].hsps[0]["align_len"],
+        //        "query_len" : data.iterations[0]["query_len"],
+        //        "organism" : data.iterations[0].hits[i].def.split("|")[4].split(" ")[0],
+        //        "query_from" : data.iterations[0].hits[i].hsps[0]["query_from"],
+        //        "query_to" : data.iterations[0].hits[i].hsps[0]["query_to"],
+        //        "hit_from" : data.iterations[0].hits[i].hsps[0]["hit_from"],
+        //        "hit_to" : data.iterations[0].hits[i].hsps[0]["hit_to"],   //Extracting value from object with '-' value in it
+        //        "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
+        //        "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
+        //        "midLine": data.iterations[0].hits[i].hsps[0]["midline"],
+        //        "gaps" : data.iterations[0].hits[i].hsps[0]["gaps"],
+        //        "num_of_regions_left": (num_of_regions)
+        //    });
+        //
+        //    for(var j = 1; j < num_of_regions; j++) {
+        //        blast_output.push({
+        //            "def": data.iterations[0].hits[i]["def"],
+        //            'score' : data.iterations[0].hits[i].hsps[j]["score"],
+        //            'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
+        //            "identity" : data.iterations[0].hits[i].hsps[j]["identity"],
+        //            "positive" : data.iterations[0].hits[i].hsps[j]["positive"],
+        //            'query_from' : data.iterations[0].hits[i].hsps[j]["query_from"],
+        //            'query_to' : data.iterations[0].hits[i].hsps[j]["query_to"],
+        //            'hit_from' : data.iterations[0].hits[i].hsps[j]["hit_from"],
+        //            'hit_to' : data.iterations[0].hits[i].hsps[j]["hit_to"],
+        //            "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
+        //            "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
+        //            "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
+        //            "midLine": data.iterations[0].hits[i].hsps[j]["midline"],
+        //            "gaps" : data.iterations[0].hits[i].hsps[j]["gaps"],
+        //            "num_of_regions_left": 0
+        //        });
+        //    }
+        //
+        //    all_blast_output.push.apply(all_blast_output, blast_output);
+        //}
 
         //Draw overview bars [Query, Subject and Gaps]
         drawOverviewBars(all_blast_output, numberOfHits);
