@@ -214,7 +214,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
 
     //overviewHeight = 60 + ((numberOfHits-1) * 60);
 
-    yScaleMax = 60 + ((organismDetails.length -1) * 60);
+    yScaleMax = 65 + ((organismDetails.length -1) * 60);
     overviewHeight = yScaleMax;
 
     if(overviewHeight < 300) {
