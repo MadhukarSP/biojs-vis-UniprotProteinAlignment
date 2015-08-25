@@ -3,24 +3,11 @@ var tooltip;
 //Circle position
 var width = 220;
 var height = 220;
-var diagram_x_pos = width/2;
-var diagram_y_pos = height/2;
-
-var percentageIdentityTextSize = 14;
 
 //Circle attributes
 var radius = 25;
-var circleThickness = 15;
-var gap = 2;
 var gapColor = "#ffffff";
 var gapLineColor = "#000000";
-
-//Circle text attributes
-var font_size = 8;
-var font_family = "Arial";
-var num_color = "#222222";
-var text_weight = "normal";
-var text_anchor = "middle";
 
 //Overview variables
 var overviewWidth = 800;
@@ -132,9 +119,6 @@ function initializeValues() {
                 });
             }
 
-            //addTable(table_id, donut_id);
-            //Draw alignment arcs for each region [Query, Subject and Gaps]
-            //drawAlignmentCircle(blast_output, 0, num_of_regions, table_id, donut_id);
             all_blast_output.push.apply(all_blast_output, blast_output);
         }
 
@@ -165,7 +149,6 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var positives = [];
     var numOfOrganisms = 1;
     var flag=1;
-    var identityValue = "";
 
     for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
@@ -396,24 +379,20 @@ function clickedOnBar(evt) {
                 .append($('<td>').text(qStart).attr("class","text-left"))
                 .append($('<td>').text(qSeq.substring(qryStart, qryEnd).trim()))
                 .append($('<td>').text(qEnd))
-        );
-
-        $("#sequenceInfo").find('tbody')
+            )
             .append($('<tr>')
                 .append($('<td>').text(""))
                 .append($('<td>').text(""))
                 .append($('<td>').text(midLine.substring(sbjStart, sbjEnd)))
                 .append($('<td>').text(""))
-        );
-
-        $("#sequenceInfo").find('tbody')
+            )
             .append($('<tr>')
                 .attr("class","row-bottom-padding")
                 .append($('<td>').html(sbjSymbol))
                 .append($('<td>').text(hStart).attr("class","text-left"))
                 .append($('<td>').text(hSeq.substring(sbjStart, sbjEnd).trim()))
                 .append($('<td>').text(hEnd))
-        );
+            );
 
         qryStart= qryStart+perLine;
         sbjStart = sbjStart+perLine;
@@ -793,18 +772,6 @@ function addPattern() {
         .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
         .attr('stroke', thirdPatternColor)
         .attr('stroke-width', 1);
-}
-
-//Get percentage identity Information
-function getIdentityInfo(blast_data, index, num_of_regions) {
-    var totalAlignment=0;
-
-    for (var i=0; i<num_of_regions; i++) {
-        totalAlignment = totalAlignment + parseInt(blast_data[index+i].align_len);
-    }
-    var identity = ((totalAlignment/blast_data[index].query_len) * 100).toFixed(2);
-
-    return identity;
 }
 
 //Get all the occurrences of the val ('-' hyphen sign) in the sequence
