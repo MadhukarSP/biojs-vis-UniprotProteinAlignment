@@ -136,8 +136,8 @@
 
 /* Select dropdown styling*/
 select.form-control {
-    height: 26px;
-    width: 120px;
+    height: 24px;
+    width: 80px;
     padding-top: 2px;
     padding-bottom: 4px;
 }
