@@ -33,25 +33,25 @@ var secondPatternColor = "#CCFF00";
 var thirdPatternColor = "#00FF00";
 
 
-var QueryBarX_translate = 150;
+var QueryBarX_translate = 140;
 var QueryBarY_translate = 10;
 
-var QueryTextX_translate = 150;
+var QueryTextX_translate = 140;
 var QueryTextY_translate = 10;
 
-var x_axis_top_x_translate = 150;
+var x_axis_top_x_translate = 140;
 var x_axis_top_y_translate = 20;
 
-var x_axis_bottom_x_translate = 150;
+var x_axis_bottom_x_translate = 140;
 var x_axis_bottom_y_translate = 5;
 
 var QueryDropDownX_translate = 10;
 var QueryDropDownY_translate = 25;
 
-var hitBarX_translate = 150;
+var hitBarX_translate = 140;
 var hitBarY_translate = 10;
 
-var hitTextX_translate = 150;
+var hitTextX_translate = 140;
 var hitTextY_translate = 10;
 
 var ellipse = "...";
