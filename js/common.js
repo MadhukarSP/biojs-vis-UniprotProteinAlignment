@@ -67,6 +67,9 @@ var hitBarY_translate = 10;
 var hitTextX_translate = 10;
 var hitTextY_translate = 10;
 
+var ellipse = "...";
+var overlapThreshold = 20.0;
+
 var canvas;
 var index = 0;
 
@@ -491,17 +494,28 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 .attr('class', "bars")
                 .attr('onclick', "clickedOnBar(evt)");
 
-            queryTexts.append('text')
-                .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
-                .text(queryFromValues[i+j])
-                .style({'fill':'#000000','font-size':'10px'})
-                .attr("id","queryFromText"+(i+j));
+            if(xScale(parseInt(queryToValues[i+j])-25) - xScale(parseInt(queryFromValues[i+j])+5) < overlapThreshold) {
+                queryTexts.append('text')
+                    .attr({'x':xScale((parseInt(queryToValues[i+j])-25 + parseInt(queryFromValues[i+j])+5)/2),'y':(6 + (k*widthBtnBars))})
+                    .text(ellipse)
+                    .style({'fill':'#000000','font-size':'20px'})
+                    .style("cursor","pointer")
+                    .attr("id","queryEllipse"+(i+j))
+                    .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
+            } else {
+                queryTexts.append('text')
+                    .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
+                    .text(queryFromValues[i+j])
+                    .style({'fill':'#000000','font-size':'10px'})
+                    .attr("id","queryFromText"+(i+j));
 
-            queryTexts.append('text')
-                .attr({'x':xScale(parseInt(queryToValues[i+j])-25),'y':(9 + (k*widthBtnBars))})
-                .text(queryToValues[i+j])
-                .style({'fill':'#000000','font-size':'10px'})
-                .attr("id","queryToText"+(i+j));
+                queryTexts.append('text')
+                    .attr({'x':xScale(parseInt(queryToValues[i+j])-25),'y':(9 + (k*widthBtnBars))})
+                    .text(queryToValues[i+j])
+                    .style({'fill':'#000000','font-size':'10px'})
+                    .attr("id","queryToText"+(i+j));
+            }
+
 
             qrySeqLength = qseq[i+j].length;
             hitSeqLength = hseq[i+j].length;
@@ -646,17 +660,31 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .attr('class', "bars")
                 .attr('onclick', "clickedOnBar(evt)");
 
-            hitTexts.append('text')
-                .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
-                .text(hitFromValues[i+j])
-                .style({'fill':'#000','font-size':'10px'})
-                .attr("id","hitFromText"+(i+j));
 
-            hitTexts.append('text')
-                .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
-                .text(hitToValues[i+j])
-                .style({'fill':'#000','font-size':'10px'})
-                .attr("id","hitToText"+(i+j));
+            if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
+
+                hitTexts.append('text')
+                    .attr({'x':xScale((parseInt(hitToValues[i+j])-25 + parseInt(hitFromValues[i+j])+2)/2),'y':(50 + (k*widthBtnBars))})
+                    .text(ellipse)
+                    .style({'fill':'#000000','font-size':'20px'})
+                    .style("cursor","pointer")
+                    .attr("id","hitEllipse"+(i+j))
+                    .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
+            } else {
+
+                hitTexts.append('text')
+                    .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
+                    .text(hitFromValues[i+j])
+                    .style({'fill':'#000000','font-size':'10px'})
+                    .attr("id","hitFromText"+(i+j));
+
+                hitTexts.append('text')
+                    .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
+                    .text(hitToValues[i+j])
+                    .style({'fill':'#000000','font-size':'10px'})
+                    .attr("id","hitToText"+(i+j));
+            }
+
 
             qrySeqLength = qseq[i+j].length;
             hitSeqLength = hseq[i+j].length;
