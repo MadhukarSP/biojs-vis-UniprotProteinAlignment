@@ -273,7 +273,6 @@ function addAxes(xScale, yScale, organismDetails) {
         .attr('id','bottomxaxis')
         .call(xAxis);
 
-
     var	yAxisRightDropDown = d3.svg.axis()
         .orient('right')
         .scale(yScale)
@@ -303,7 +302,7 @@ function addAxes(xScale, yScale, organismDetails) {
             var optionValues = "";
 
             if(organismDetails[i].split(',').length > 2) {
-                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + optionEnd;
+                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
                 for(var k=1; k< organismDetails[i].split(',').length;k++) {
                     optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
                 }
@@ -639,6 +638,22 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .attr('class', "bars")
                 .attr('onclick', "clickedOnBar(evt)");
 
+            qrySeqLength = qseq[i+j].length;
+            hitSeqLength = hseq[i+j].length;
+            qStart = parseInt(queryFromValues[i+j]);
+            qLen = parseInt(queryToValues[i+j]);
+            hStart = parseInt(hitFromValues[i+j]);
+            hLen = parseInt(hitToValues[i+j]);
+            queryFullLength = hLen - hStart + 1;
+
+            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer")
+                .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
+                "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+                "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+                "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+                "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
+                .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
+
 
             if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
 
@@ -648,6 +663,12 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                     .style({'fill':'#000000','font-size':'20px'})
                     .style("cursor","pointer")
                     .attr("id","hitEllipse"+(i+j))
+                    .attr('onclick', "clickedOnBar(evt)")
+                    .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
+                    "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+                    "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+                    "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+                    "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
                     .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
             } else {
 
@@ -665,21 +686,7 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             }
 
 
-            qrySeqLength = qseq[i+j].length;
-            hitSeqLength = hseq[i+j].length;
-            qStart = parseInt(queryFromValues[i+j]);
-            qLen = parseInt(queryToValues[i+j]);
-            hStart = parseInt(hitFromValues[i+j]);
-            hLen = parseInt(hitToValues[i+j]);
-            queryFullLength = hLen - hStart + 1;
 
-            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer")
-                .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
-                "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
-                "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
-                "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
-                "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-                .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
 
             //Add gaps only if there is consecutive 3 gaps
             addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k);
