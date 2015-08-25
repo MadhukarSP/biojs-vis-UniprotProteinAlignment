@@ -12,7 +12,8 @@ var percentageIdentityTextSize = 14;
 var radius = 25;
 var circleThickness = 15;
 var gap = 2;
-var gapColor = "black";
+var gapColor = "#ffffff";
+var gapLineColor = "#000000";
 
 //Circle text attributes
 var font_size = 8;
@@ -22,10 +23,10 @@ var text_weight = "normal";
 var text_anchor = "middle";
 
 //Overview variables
-var overviewWidth = 950;
+var overviewWidth = 800;
 var overviewHeight = 300;
 
-var axesWidth = 900;
+var axesWidth = 800;
 var axesHeight = 25;
 
 var xScaleMin = 0;
@@ -44,6 +45,28 @@ var firstPatternColor = "#FFFFFF";
 var secondPatternColor = "#CCFF00";
 var thirdPatternColor = "#00FF00";
 
+
+var QueryBarX_translate = 10;
+var QueryBarY_translate = 10;
+
+var QueryTextX_translate = 10;
+var QueryTextY_translate = 10;
+
+var x_axis_top_x_translate = 40;
+var x_axis_top_y_translate = 20;
+
+var x_axis_bottom_x_translate = 40;
+var x_axis_bottom_y_translate = 5;
+
+var QueryDropDownX_translate = 625;
+var QueryDropDownY_translate = 25;
+
+var hitBarX_translate = 10;
+var hitBarY_translate = 10;
+
+var hitTextX_translate = 10;
+var hitTextY_translate = 10;
+
 var canvas;
 var index = 0;
 
@@ -55,7 +78,7 @@ $(document).ready(function() {
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
 function initializeValues() {
-    $.getJSON("json/test.json", function(data) {
+    $.getJSON("json/NCBI_BLAST_Result.json", function(data) {
 
         var all_blast_output = [];
 
@@ -63,8 +86,6 @@ function initializeValues() {
 
         for (var i = 0; i < numberOfHits; i++) {
 
-            var table_id = "table" + i;
-            var donut_id = "donut" + i;
             var num_of_regions = data.iterations[0].hits[i].hsps.length;
             var blast_output = [];
 
@@ -74,13 +95,13 @@ function initializeValues() {
                 "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
                 "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
                 "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
-                "align_len" : data.iterations[0].hits[i].hsps[0]["align-len"],
-                "query_len" : data.iterations[0]["query-len"],
+                "align_len" : data.iterations[0].hits[i].hsps[0]["align_len"],
+                "query_len" : data.iterations[0]["query_len"],
                 "organism" : data.iterations[0].hits[i].def.split("|")[4].split(" ")[0],
-                "query_from" : data.iterations[0].hits[i].hsps[0]["query-from"],
-                "query_to" : data.iterations[0].hits[i].hsps[0]["query-to"],
-                "hit_from" : data.iterations[0].hits[i].hsps[0]["hit-from"],
-                "hit_to" : data.iterations[0].hits[i].hsps[0]["hit-to"],   //Extracting value from object with '-' value in it
+                "query_from" : data.iterations[0].hits[i].hsps[0]["query_from"],
+                "query_to" : data.iterations[0].hits[i].hsps[0]["query_to"],
+                "hit_from" : data.iterations[0].hits[i].hsps[0]["hit_from"],
+                "hit_to" : data.iterations[0].hits[i].hsps[0]["hit_to"],   //Extracting value from object with '-' value in it
                 "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
                 "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
                 "midLine": data.iterations[0].hits[i].hsps[0]["midline"],
@@ -95,10 +116,10 @@ function initializeValues() {
                     'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
                     "identity" : data.iterations[0].hits[i].hsps[j]["identity"],
                     "positive" : data.iterations[0].hits[i].hsps[j]["positive"],
-                    'query_from' : data.iterations[0].hits[i].hsps[j]["query-from"],
-                    'query_to' : data.iterations[0].hits[i].hsps[j]["query-to"],
-                    'hit_from' : data.iterations[0].hits[i].hsps[j]["hit-from"],
-                    'hit_to' : data.iterations[0].hits[i].hsps[j]["hit-to"],
+                    'query_from' : data.iterations[0].hits[i].hsps[j]["query_from"],
+                    'query_to' : data.iterations[0].hits[i].hsps[j]["query_to"],
+                    'hit_from' : data.iterations[0].hits[i].hsps[j]["hit_from"],
+                    'hit_to' : data.iterations[0].hits[i].hsps[j]["hit_to"],
                     "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
                     "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
                     "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
@@ -108,9 +129,9 @@ function initializeValues() {
                 });
             }
 
-            addTable(table_id, donut_id);
+            //addTable(table_id, donut_id);
             //Draw alignment arcs for each region [Query, Subject and Gaps]
-            drawAlignmentCircle(blast_output, 0, num_of_regions, table_id, donut_id);
+            //drawAlignmentCircle(blast_output, 0, num_of_regions, table_id, donut_id);
             all_blast_output.push.apply(all_blast_output, blast_output);
         }
 
@@ -147,7 +168,6 @@ function drawOverviewBars(blast_data, numberOfHits) {
     for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
 
-
             var regions = blast_data[i].num_of_regions_left + i;
             flag=1;
 
@@ -156,7 +176,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
                 && blast_data[i].query_to == blast_data[regions].query_to
                 && blast_data[i].hit_from == blast_data[regions].hit_from
                 && blast_data[i].hit_to == blast_data[regions].hit_to
-                && blast_data[i].identity == blast_data[regions].identity
+                //&& blast_data[i].identity == blast_data[regions].identity
                 && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left) {
 
                 numOfOrganisms++;
@@ -239,27 +259,109 @@ function drawOverviewBars(blast_data, numberOfHits) {
 }
 
 
+function clickedOnBar(evt) {
+    var svgobj = evt.target;
+
+    //alert(svgobj.getAttribute('alignmentInfo'));
+
+    var alignmentInfo = svgobj.getAttribute('alignmentInfo').split("::");
+
+    var def = alignmentInfo[0].split("def:")[1];
+    var qryOrSub = alignmentInfo[1].split(":")[1];
+    var score = alignmentInfo[2].split(":")[1];
+    var eValue = alignmentInfo[3].split(":")[1];
+    var identity = alignmentInfo[4].split(":")[1];
+    var positive = alignmentInfo[5].split(":")[1];
+    var gaps = alignmentInfo[6].split(":")[1];
+
+    $("#sequenceInfo > tbody").html("");
+
+    $("#fromToValue").text(qryOrSub);
+    $("#defValue").text(def);
+    $("#scoreValue").text(score);
+    $("#eValue").text(eValue);
+    $("#identityValue").text(identity);
+    $("#positiveValue").text(positive);
+    $("#gapValue").text(gaps);
+
+
+    var qrySymbol="<strong>Qry</strong> ";
+    var sbjSymbol="<strong>Sub</strong> ";
+    var perLine = 50;
+
+    var qrySeqLength = alignmentInfo[7].split(":")[1] + alignmentInfo[9].split(":")[1];
+    var hitSeqLength = alignmentInfo[14].split(":")[1].length;
+    var qStart = parseInt(alignmentInfo[7].split(":")[1]);
+    var qLen = parseInt(alignmentInfo[8].split(":")[1]);
+    var hStart = parseInt(alignmentInfo[12].split(":")[1]);
+    var hLen = parseInt(alignmentInfo[13].split(":")[1]);
+    var qryEnd;
+    var sbjEnd;
+    var gapsInQry;
+    var gapsInSub;
+    var qEnd;
+    var hEnd;
+    var qSeq = alignmentInfo[10].split(":")[1];
+    var midLine = alignmentInfo[11].split(":")[1];
+    var hSeq = alignmentInfo[14].split(":")[1];
+
+
+
+    for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
+        qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
+        sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
+
+        gapsInQry = getAllIndexes(qSeq.substring(qryStart, qryEnd), "-").length;
+        gapsInSub = getAllIndexes(hSeq.substring(sbjStart, sbjEnd), "-").length;
+
+        qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
+        hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
+
+        $("#sequenceInfo").find('tbody')
+            .append($('<tr>')
+                .append($('<td>').html(qrySymbol))
+                .append($('<td>').text(qStart).attr("class","text-left"))
+                .append($('<td>').text(qSeq.substring(qryStart, qryEnd).trim()))
+                .append($('<td>').text(qEnd))
+        );
+
+        $("#sequenceInfo").find('tbody')
+            .append($('<tr>')
+                .append($('<td>').text(""))
+                .append($('<td>').text(""))
+                .append($('<td>').text(midLine.substring(sbjStart, sbjEnd)))
+                .append($('<td>').text(""))
+        );
+
+        $("#sequenceInfo").find('tbody')
+            .append($('<tr>')
+                .attr("class","row-bottom-padding")
+                .append($('<td>').html(sbjSymbol))
+                .append($('<td>').text(hStart).attr("class","text-left"))
+                .append($('<td>').text(hSeq.substring(sbjStart, sbjEnd).trim()))
+                .append($('<td>').text(hEnd))
+        );
+
+        qryStart= qryStart+perLine;
+        sbjStart = sbjStart+perLine;
+        qStart= qStart+perLine-gapsInQry;
+        hStart = hStart+perLine-gapsInSub;
+    }
+
+
+}
 
 //Add the Query bars to the graph
 function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitToValues, colorScale,
                      numOfRegionsLeft, gaps, qseq, hseq, score, eValue, midLine, def, identities, positives) {
 
     var queryBars = canvas.append('g')
-        .attr("transform", "translate(150,10)")
+        .attr("transform", "translate(" + QueryBarX_translate + "," + QueryBarY_translate + ")")
         .attr('id','querybars');
 
     var queryTexts = canvas.append('g')
-        .attr("transform", "translate(150,10)")
+        .attr("transform", "translate(" + QueryTextX_translate + "," + QueryTextY_translate + ")")
         .attr('id','queryTexts');
-
-    var queryDropDown = canvas.append('div')
-        .attr("transform", "translate(772,10)")
-        .attr('id','queryDropDown')
-        .append('select')
-        .attr('height',15)
-        .style('z-index','199')
-        .append('option')
-        .text('abc');
 
     for(var i= 0, k=0; i<queryFromValues.length;k++) {
 
@@ -269,7 +371,8 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             .style('fill',colorScale(queryToValues[i] - queryFromValues[i] + 1))
             .attr('width',xScale(queryToValues[i] - queryFromValues[i]))
             .attr('id', "queryRect"+i)
-            .attr('class', "bars");
+            .attr('class', "bars")
+            .attr('onclick', "clickedOnBar(evt)");
 
         queryTexts.append('text')
             .attr({'x':xScale(parseInt(queryFromValues[i])+5),'y':(9 + (k*widthBtnBars))})
@@ -283,14 +386,6 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             .style({'fill':'#000','font-size':'10px'})
             .attr("id","queryToText"+i);
 
-        var qrySymbol="<strong>Qry</strong> ";
-        var sbjSymbol="<strong>Sub</strong> ";
-        var space = "&nbsp;";
-        var spaces2 = "&nbsp;&nbsp;";
-        var spaces5 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        var perLine = 100;
-
-        var displayableValue="<br/>";
         var qrySeqLength = queryFromValues[i] + qseq[i].length;
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
@@ -298,36 +393,14 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         var queryFullLength = parseInt(queryToValues[i]) - parseInt(queryFromValues[i]) + 1;
         var hStart = parseInt(hitFromValues[i]);
         var hLen = parseInt(hitToValues[i]);
-        var qryEnd;
-        var sbjEnd;
-        var gapsInQry;
-        var gapsInSub;
-        var qEnd;
-        var hEnd;
 
-        for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-            qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-            sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-
-            gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
-            gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
-
-            qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-            hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
-
-            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
-            displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i].substring(sbjStart, sbjEnd).split(' ').join(space) + "<br/>";
-            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
-
-            qryStart= qryStart+perLine;
-            sbjStart = sbjStart+perLine;
-            qStart= qStart+perLine-gapsInQry;
-            hStart = hStart+perLine-gapsInSub;
-        }
-
-        queryBars.select("#queryRect"+i).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" + def[i] + "<br/><br/><strong>Query</strong>: "+ queryFromValues[i] + " - " + queryToValues[i] + spaces5 +
-        "<strong>Score</strong>: " +score[i] + spaces5 + "<strong>eValue</strong>: " + eValue[i] + spaces5 + "<strong>Identities</strong>: " + identities[i] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " + positives[i] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i] + "/" + queryFullLength +"<br/>"+
-        displayableValue);
+        queryBars.select("#queryRect"+i).style("cursor","pointer")
+            .attr("alignmentInfo", "def:" + def[i] + "::Query:"+ queryFromValues[i] + " - " + queryToValues[i] +
+            "::Score:" +score[i] + "::eValue:" + eValue[i] + "::Identities:" + identities[i] + "/" + queryFullLength +
+            "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
+            "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i] + "::midLineSeq:"+ midLine[i] +
+            "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i])
+            .attr("title", "Query co-ordinates (" + queryFromValues[i] + " - " + queryToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
         addQueryGaps(gaps, i, qseq, queryBars, xScale, k);
@@ -344,7 +417,9 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 .attr({'x':xScale(queryFromValues[i+j]),'y':(10 + (k*widthBtnBars))})
                 .attr('width',xScale(queryToValues[i+j] - queryFromValues[i+j]))
                 .attr('fill', 'url(#pattern' + j +')')
-                .attr("id","queryRect"+(i+j));
+                .attr("id","queryRect"+(i+j))
+                .attr('class', "bars")
+                .attr('onclick', "clickedOnBar(evt)");
 
             queryTexts.append('text')
                 .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
@@ -358,7 +433,6 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 .style({'fill':'#000000','font-size':'10px'})
                 .attr("id","queryToText"+(i+j));
 
-            displayableValue="<br/>";
             qrySeqLength = qseq[i+j].length;
             hitSeqLength = hseq[i+j].length;
             qStart = parseInt(queryFromValues[i+j]);
@@ -367,31 +441,13 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             hLen = parseInt(hitToValues[i+j]);
             queryFullLength = qLen - qStart + 1;
 
-            for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-                qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-                sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-
-                gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
-                gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
-
-                qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-                hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
-
-                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
-                displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i+j].substring(qryStart, qryEnd).split(' ').join(space) + "<br/>";
-                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
-
-                qryStart= qryStart+perLine;
-                sbjStart = sbjStart+perLine;
-                qStart= qStart+perLine-gapsInQry;
-                hStart = hStart+perLine-gapsInSub;
-            }
-            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" +
-            def[i+j] + "<br/><br/><strong>Query</strong>: "+ queryFromValues[i+j] + " - " + queryToValues[i+j] + spaces5 +
-            "<strong>Score</strong>: " +score[i+j] + spaces5 + "<strong>eValue</strong>: " + eValue[i+j] + spaces5 +
-            "<strong>Identities</strong>: " + identities[i+j] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
-            positives[i+j] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i+j] + "/" + queryFullLength +"<br/>"+
-            displayableValue);
+            queryBars.select("#queryRect"+(i+j)).style("cursor","pointer")
+                .attr("alignmentInfo", "def:" + def[i+j] + "::Query:"+ queryFromValues[i+j] + " - " + queryToValues[i+j] +
+                "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+                "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+                "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+                "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
+                .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
 
 
             //Add gaps only if there is consecutive 3 gaps
@@ -424,9 +480,19 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
 
                 bars.append('rect')
                     .attr('height',15)
-                    .style("z-index", "20")
+                    .style("z-index", "18")
                     .attr({'x':xScale(initialValue),'y':(10 + (k*widthBtnBars))})
                     .style('fill',gapColor)
+                    .attr('width',xScale(parseInt(initialValue+x) - initialValue))
+                    .attr("id","queryRectGapBackground"+(i+l));
+
+                bars.select("#queryRectGapBackground"+(i+l)).style("cursor","pointer").attr("title","Query Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+
+                bars.append('rect')
+                    .attr('height',2)
+                    .style("z-index", "20")
+                    .attr({'x':xScale(initialValue),'y':(16 + (k*widthBtnBars))})
+                    .style('fill',gapLineColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","queryRectGap"+(i+l));
 
@@ -444,11 +510,11 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                    gaps, qseq, hseq,  score, eValue, midLine, def, identities, positives) {
 
     var hitBars = canvas.append('g')
-        .attr("transform", "translate(150,10)")
+        .attr("transform", "translate(" + hitBarX_translate + "," + hitBarY_translate + ")")
         .attr('id','hitbars');
 
     var hitTexts = canvas.append('g')
-        .attr("transform", "translate(150,10)")
+        .attr("transform", "translate(" + hitTextX_translate + "," + hitTextY_translate + ")")
         .attr('id','hitTexts');
 
     for(var i= 0, k=0; i<hitFromValues.length;k++) {
@@ -457,7 +523,9 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             .attr({'x':xScale(hitFromValues[i]),'y':(27 + (k*widthBtnBars))})
             .style('fill',colorScale(hitToValues[i] - hitFromValues[i]+1))
             .attr('width',xScale(hitToValues[i] - hitFromValues[i]))
-            .attr("id","hitRect"+i);
+            .attr("id","hitRect"+i)
+            .attr('class', "bars")
+            .attr('onclick', "clickedOnBar(evt)");
 
         hitTexts.append('text')
             .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(52 + (k*widthBtnBars))})
@@ -473,14 +541,6 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             .style("z-index", "10")
             .attr("id","hitToText"+i);
 
-        var qrySymbol="<strong>Qry</strong> ";
-        var sbjSymbol="<strong>Sbj</strong> ";
-        var space = "&nbsp;";
-        var spaces2 = "&nbsp;&nbsp;";
-        var spaces5 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-        var perLine = 100;
-
-        var displayableValue="<br/>";
         var qrySeqLength = qseq[i].length;
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
@@ -488,39 +548,14 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
         var hStart = parseInt(hitFromValues[i]);
         var hLen = parseInt(hitToValues[i]);
         var queryFullLength = hLen - hStart + 1;
-        var qryEnd;
-        var sbjEnd;
-        var gapsInQry;
-        var gapsInSub;
-        var qEnd;
-        var hEnd;
 
-        for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-            qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-            sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-
-            gapsInQry = getAllIndexes(qseq[i].substring(qryStart, qryEnd), "-").length;
-            gapsInSub = getAllIndexes(hseq[i].substring(sbjStart, sbjEnd), "-").length;
-
-            qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-            hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
-
-            displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
-            displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i].substring(sbjStart, sbjEnd).split(' ').join(space) + "<br/>";
-            displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
-
-            qryStart= qryStart+perLine;
-            sbjStart = sbjStart+perLine;
-            qStart= qStart+perLine-gapsInQry;
-            hStart = hStart+perLine-gapsInSub;
-        }
-
-        hitBars.select("#hitRect"+i).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" + def[i] +
-        "<br/><br/><strong>Subject</strong>: "+ hitFromValues[i] + " - " + hitToValues[i] + spaces5 +
-        "<strong>Score</strong>: " +score[i] + spaces5 + "<strong>eValue</strong>: " + eValue[i] + spaces5 +
-        "<strong>Identities</strong>: " + identities[i] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
-        positives[i] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i] + "/" + queryFullLength +"<br/>"+
-        displayableValue);
+        hitBars.select("#hitRect"+i).style("cursor","pointer")
+            .attr("alignmentInfo", "def:" + def[i] + "::Subject:"+ hitFromValues[i] + " - " + hitToValues[i] +
+            "::Score:" +score[i] + "::eValue:" + eValue[i] + "::Identities:" + identities[i] + "/" + queryFullLength +
+            "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
+            "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i] + "::midLineSeq:"+ midLine[i] +
+            "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i])
+            .attr("title", "Subject co-ordinates (" + hitFromValues[i] + " - " + hitToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
         addHitGaps(gaps, i, hseq, hitBars, xScale, k);
@@ -537,7 +572,9 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .attr({'x':xScale(hitFromValues[i+j]),'y':(27 + (k*widthBtnBars))})
                 .attr('width',xScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j])))
                 .attr('fill', 'url(#pattern' + j +')')
-                .attr("id","hitRect"+(i+j));
+                .attr("id","hitRect"+(i+j))
+                .attr('class', "bars")
+                .attr('onclick', "clickedOnBar(evt)");
 
             hitTexts.append('text')
                 .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
@@ -551,7 +588,6 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .style({'fill':'#000','font-size':'10px'})
                 .attr("id","hitToText"+(i+j));
 
-            displayableValue="<br/>";
             qrySeqLength = qseq[i+j].length;
             hitSeqLength = hseq[i+j].length;
             qStart = parseInt(queryFromValues[i+j]);
@@ -560,32 +596,13 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             hLen = parseInt(hitToValues[i+j]);
             queryFullLength = hLen - hStart + 1;
 
-            for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
-                qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
-                sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
-
-                gapsInQry = getAllIndexes(qseq[i+j].substring(qryStart, qryEnd), "-").length;
-                gapsInSub = getAllIndexes(hseq[i+j].substring(sbjStart, sbjEnd), "-").length;
-
-                qEnd =  qStart+perLine > qLen ? qLen : qStart+perLine-1-gapsInQry;
-                hEnd =  hStart+perLine > hLen ? hLen : hStart+perLine-1-gapsInSub;
-
-                displayableValue = displayableValue + qrySymbol + qStart + spaces2 + qseq[i+j].substring(qryStart, qryEnd).split(' ').join(space) + spaces2 + qEnd + "<br/>";
-                displayableValue = displayableValue + spaces5 + spaces5 + spaces2 + spaces2 + midLine[i+j].substring(qryStart, qryEnd).split(' ').join(space) + "<br/>";
-                displayableValue = displayableValue + sbjSymbol + hStart + spaces2 + hseq[i+j].substring(sbjStart, sbjEnd).split(' ').join(space) + spaces2 + hEnd + "<br/><br/>";
-
-                qryStart= qryStart+perLine;
-                sbjStart = sbjStart+perLine;
-                qStart= qStart+perLine-gapsInQry;
-                hStart = hStart+perLine-gapsInSub;
-            }
-
-            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer").attr("title", "<strong>ALIGNMENTS</strong><br/>" +
-            def[i+j] + "<br/><br/><strong>Subject</strong>: "+ hitFromValues[i+j] + " - " + hitToValues[i+j] + spaces5 +
-            "<strong>Score</strong>: " +score[i+j] + spaces5 + "<strong>eValue</strong>: " + eValue[i+j] + spaces5 +
-            "<strong>Identities</strong>: " + identities[i+j] + "/" + queryFullLength + spaces5 + "<strong>Positives</strong>: " +
-            positives[i+j] + "/" + queryFullLength + spaces5 + "<strong>Gaps</strong>: " + gaps[i+j] + "/" + queryFullLength +"<br/>"+
-            displayableValue);
+            hitBars.select("#hitRect"+(i+j)).style("cursor","pointer")
+                .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
+                "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+                "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+                "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+                "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
+                .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
 
             //Add gaps only if there is consecutive 3 gaps
             addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k);
@@ -620,6 +637,16 @@ function addHitGaps(gaps, i, sequ, bars, xScale, k) {
                     .attr({'x':xScale(initialValue),'y':(27 + (k*widthBtnBars))})
                     .style('fill',gapColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
+                    .attr("id","hitRectGapBackground"+(i+l));
+
+                bars.select("#hitRectGapBackground"+(i+l)).style("cursor","pointer").attr("title","Subject Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+
+                bars.append('rect')
+                    .attr('height',2)
+                    .style("z-index", "20")
+                    .attr({'x':xScale(initialValue),'y':(33 + (k*widthBtnBars))})
+                    .style('fill',gapLineColor)
+                    .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","hitRectGap"+(i+l));
 
                 bars.select("#hitRectGap"+(i+l)).style("cursor","pointer").attr("title","Subject Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
@@ -629,188 +656,6 @@ function addHitGaps(gaps, i, sequ, bars, xScale, k) {
     }
 }
 
-//Draw alignment arcs for each region [Query, Subject and Gaps]
-function drawAlignmentCircle(blast_data, index, num_of_regions, table_id, donut_id) {
-
-    //Initialize the alignment information
-    var percentageIdentity = initAlignmentInfo(blast_data, index, table_id, num_of_regions);
-
-    if(percentageIdentity == "100.00") {
-        percentageIdentity = 100;
-    }
-
-    var canvas = d3.select("#"+ donut_id)
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate("+ diagram_x_pos +","+ diagram_y_pos +")");
-
-    //Start and End of arc
-    var myScale = d3.scale.linear().domain([0, blast_data[index].query_len]).range([0, 2 * Math.PI]);
-    var arcs = [];
-
-    //Percentage Identity text at center of circle
-    canvas.append("text")
-        .attr("font-size", percentageIdentityTextSize)
-        .attr("transform", "translate(-15,5)")
-        .text(percentageIdentity);
-
-    var color = ['red', '#00B7EB', 'yellow','orange'];
-
-    for(var i = 0, j=0; j < num_of_regions; i = i + 2, j++) {
-        addQueryArc(canvas, arcs[i], blast_data[index+j], myScale, color[j]);
-        addHitArc(canvas, arcs[i+1], blast_data[index+j], myScale, j+1, color[j]);
-    }
-}
-
-//Append Query arc to the circle
-function addQueryArc(canvas, arc, data, scale, color) {
-
-    arc = d3.svg.arc().innerRadius(radius).outerRadius(radius+circleThickness)
-        .startAngle(scale(data.query_from))
-        .endAngle(scale(data.query_to));
-
-    //Append the query arc to the canvas
-    canvas.append("path").attr("d", arc).attr("fill",color)
-        .attr("class", "customTooltip")
-        .style("cursor","pointer")
-        .attr("title","Query ["+ data.query_from + " - " + data.query_to + "]");
-
-    canvas.append("text")
-        .attr("transform", function(d) {
-            return "translate("+ fnStartPoints(arc.innerRadius()(d), arc.outerRadius()(d),
-                    arc.startAngle()(d)) + ")";
-        })
-        .attr("font-size", font_size)
-        .attr("font-family", font_family)
-        .attr("text-anchor", text_anchor)
-        .attr("fill", num_color)
-        .attr("font-weight", text_weight)
-        .text(data.query_from)
-        .style("cursor","pointer")
-        .attr("title","Query ["+ data.query_from + " - " + data.query_to + "]");
-
-    canvas.append("text")
-        .attr("transform", function(d) {
-            return "translate("+ fnEndPoints(arc.innerRadius()(d), arc.outerRadius()(d),
-                    arc.endAngle()(d)) + ")";
-        })
-        .attr("font-size", font_size)
-        .attr("font-family", font_family)
-        .attr("text-anchor", text_anchor)
-        .attr("fill", num_color)
-        .attr("font-weight", text_weight)
-        .text(data.query_to)
-        .style("cursor","pointer")
-        .attr("title","Query ["+ data.query_from + " - " + data.query_to + "]")
-        .attr("class", "customTooltip");
-
-    //Add gaps only if there is consecutive 3 gaps
-    if(data.gaps > 2) {
-        var allGapsInQuery = getAllIndexes(data.qseq, "-");
-
-        for(var i= 0; i<allGapsInQuery.length;) {
-            var j=0;
-            var initialValue = allGapsInQuery[i];
-            while((allGapsInQuery[i]+1) == allGapsInQuery[i+1]) {
-                j++;
-                i++;
-            }
-
-            if(j>1) {
-
-                arc = d3.svg.arc().innerRadius(radius).outerRadius(radius+circleThickness)
-                    .startAngle(scale(initialValue))
-                    .endAngle(scale(parseInt(initialValue+j)));
-
-                //Append the Query gap to the canvas
-                canvas.append("path").attr("d", arc).attr("fill",gapColor)
-                    .style("z-index", "20")
-                    .attr("id","queryGaps"+index);
-
-                canvas.select("#queryGaps"+index).style("cursor","pointer")
-                    .attr("title","Query ["+ initialValue + " - " + (parseInt(initialValue)+j) + "]")
-                    .attr("class", "customTooltip");
-
-                index++;
-            }
-            i++;
-        }
-    }
-}
-
-//Append hit arc to the circle
-function addHitArc(canvas, arc, data, scale, regionNum, color) {
-
-    arc = d3.svg.arc().innerRadius(radius+circleThickness*regionNum+gap*regionNum)
-        .outerRadius(radius+circleThickness*(regionNum+1)+gap*regionNum)
-        .startAngle(scale(data.query_from))
-        .endAngle(scale(data.query_to));
-
-    //Append the hit arc to the canvas
-    canvas.append("path").attr("d", arc).attr("fill",color)
-        .style("cursor","pointer")
-        .attr("title","Subject ["+ data.hit_from + " - " + data.hit_to + "]");
-
-    canvas.append("text")
-        .attr("transform", function(d) {
-            return "translate("+ fnStartPoints(arc.innerRadius()(d), arc.outerRadius()(d),
-                    arc.startAngle()(d)) + ")";
-        })
-        .attr("font-size", font_size)
-        .attr("font-family", font_family)
-        .attr("text-anchor", text_anchor)
-        .attr("fill", num_color)
-        .attr("font-weight", text_weight)
-        .text(data.hit_from)
-        .style("cursor","pointer")
-        .attr("title","Subject ["+ data.hit_from + " - " + data.hit_to + "]");
-
-    canvas.append("text")
-        .attr("transform", function(d) {
-            return "translate("+ fnEndPoints(arc.innerRadius()(d), arc.outerRadius()(d),
-                    arc.endAngle()(d)) + ")";
-        })
-        .attr("font-size", font_size)
-        .attr("font-family", font_family)
-        .attr("text-anchor", text_anchor)
-        .attr("fill", num_color)
-        .attr("font-weight", text_weight)
-        .text(data.hit_to)
-        .style("cursor","pointer")
-        .attr("title","Subject ["+ data.hit_from + " - " + data.hit_to + "]");
-
-    //Add gaps only if there is consecutive 3 gaps
-    if(data.gaps > 2) {
-        var allGapsInHit = getAllIndexes(data.hseq, "-");
-
-        for(var i= 0; i<allGapsInHit.length;) {
-            var j=0;
-            var initialValue = allGapsInHit[i];
-            while((allGapsInHit[i]+1) == allGapsInHit[i+1]) {
-                j++;
-                i++;
-            }
-
-            if(j>1) {
-                arc = d3.svg.arc().innerRadius(radius+circleThickness*regionNum+gap*regionNum)
-                    .outerRadius(radius+circleThickness*(regionNum+1)+gap*regionNum)
-                    .startAngle(scale(initialValue))
-                    .endAngle(scale(parseInt(initialValue+j)));
-
-                //Append the hit gap to the canvas
-                canvas.append("path").attr("d", arc).attr("fill",gapColor)
-                    .style("z-index", "20")
-                    .attr("id","hitGaps"+index);
-
-                canvas.select("#hitGaps"+index).style("cursor","pointer").attr("title","Subject ["+ initialValue + " - " + (parseInt(initialValue)+j) + "]");
-
-                index++;
-            }
-            i++;
-        }
-    }
-}
 
 //Add different patterns used for displaying different regions in the Overview screen
 function addPattern() {
@@ -876,7 +721,8 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .scale(xScale);
 
     canvas_top_axis.append('g')
-        .attr("transform", "translate(180,20)")
+        //.attr("transform", "translate(180,20)")
+        .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
         .attr('id','topxaxis')
         .call(xTopAxis);
 
@@ -890,39 +736,10 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .scale(xScale);
 
     canvas_bottom_axis.append('g')
-        .attr("transform", "translate(180,5)")
+        //.attr("transform", "translate(180,5)")
+        .attr("transform", "translate(" + x_axis_bottom_x_translate + "," + x_axis_bottom_y_translate + ")")
         .attr('id','bottomxaxis')
         .call(xAxis);
-
-    //Add y-axis at left organism
-    var	yAxisLeft = d3.svg.axis()
-        .orient('left')
-        .scale(yScale)
-        .tickSize(3)
-        .tickFormat(function(d,i){ return enzymeDetails[i]; })
-        .tickValues(d3.range(enzymeDetails.length));
-
-    canvas.append('g')
-        .attr("transform", "translate(150,10)")
-        .attr('id','leftyaxis')
-        .call(yAxisLeft)
-        .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (30 + (i*widthBtnBars)) + ")"});
-
-    var	yAxisRightIdentity = d3.svg.axis()
-        .orient('right')
-        .scale(yScale)
-        .tickSize(3)
-        .tickFormat(function(d,i){ return organismDetails[i].split(',')[0];})
-        .tickValues(d3.range(organismDetails.length));
-
-
-    canvas.append('g')
-        .attr("transform", "translate(752,10)")
-        .attr('id','rightyaxis')
-        .call(yAxisRightIdentity)
-        .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 0 + "," + (26 + (i*widthBtnBars)) + ")"});
 
 
     var	yAxisRightDropDown = d3.svg.axis()
@@ -930,24 +747,19 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .scale(yScale)
         .tickSize(0)
         .tickFormat(function(d,i){return "";})
-        //.tickFormat(function(d,i){ return d3.select(this)
-            //.append("svg")
-            //.append("g")
-            //.append("p")
-            //.append("select")
-            //.append("option")
-            //.text(enzymeDetails[i].split(',')[1]);})
         .tickValues(d3.range(organismDetails.length));
 
-    var optionStart = "<option>"
-    var optionEnd = "</option>"
+    var optionStart = "<option>";
+    var optionEnd = "</option>";
+    var selectStart = '<select class="form-control">';
+    var selectEnd = "</select>";
 
     canvas.append('g')
         //.attr("transform", "translate(782,24)")
         .attr('id','rightyaxisDropDown')
         .call(yAxisRightDropDown)
         .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + 775 + "," + (20 + (i*widthBtnBars)) + ")"})
+        .attr("transform", function (d,i) {return "translate(" + QueryDropDownX_translate + "," + (QueryDropDownY_translate + (i*widthBtnBars)) + ")"})
         .append("foreignObject")
         .attr("width", 160)
         .attr("height",35)
@@ -955,12 +767,17 @@ function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
         .style("font", "12px")
         .style("z-index", 9)
         .append("p")
-        .append("select")
-        .attr("class","form-control")
         .html(function(d,i) {
             var optionValues = "";
-            for(var k=1; k< organismDetails[i].split(',').length;k++) {
-                optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
+
+            if(organismDetails[i].split(',').length > 2) {
+                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + optionEnd;
+                for(var k=1; k< organismDetails[i].split(',').length;k++) {
+                    optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
+                }
+                optionValues = optionValues + selectEnd;
+            } else {
+                optionValues = organismDetails[i].split(',')[1];
             }
 
             return optionValues;
@@ -976,137 +793,3 @@ function getAllIndexes(sequence, val) {
     return indexes;
 }
 
-//Initialize alignment information like percentage identity, score, eValue and organism name
-function initAlignmentInfo(blast_data, index, table_id, num_of_regions) {
-
-    var totalAlignment=0;
-
-    for (var i=0; i<num_of_regions; i++) {
-        totalAlignment = totalAlignment + parseInt(blast_data[index+i].align_len);
-    }
-    var identity = ((totalAlignment/blast_data[index].query_len) * 100).toFixed(2);
-    var score = blast_data[index].score;
-    var eValue = displayableEvalue(blast_data, index);
-    var organism = blast_data[index].organism;
-
-    //Add the values to corresponding DIV's
-    $("#" + table_id + " .identity").text("Identity: "+ identity);
-    $("#" + table_id + " .score").text("Score: "+ score);
-    $("#" + table_id + " .evalue").text("E-value: "+ eValue);
-    $("#" + table_id + " .organism").text(organism);
-
-    return identity;
-}
-
-//Convert e-value to a display format
-function displayableEvalue(blast_data, index) {
-
-    var eValue = blast_data[index].evalue;
-
-    if(eValue.toString().indexOf("e") !== -1) {
-        var firstValue = blast_data[index].evalue.split("e")[0];
-        var secondValue = blast_data[index].evalue.split("e")[1];
-
-        return (parseFloat(firstValue).toFixed(2) + "e" + secondValue);
-    } else {
-        return blast_data[index].evalue;
-    }
-}
-
-//Add html table to the div. Inside this table alignment circles [Arcs] will be drawn
-function addTable(table_id, donut_id) {
-    $(".diagrams").append('<table class="table-design col-md-3" id="' + table_id + '">'
-    + '<tbody>'
-    + '<tr>'
-    + '<td rowspan="3">'
-    + '<svg class="diagram" id="'+ donut_id +'"></svg>'
-    + '</td>'
-    + '<td class="td-div-design">'
-    + '<button class="btn btn-default btn-custom-width identity" disabled></button>'
-    + '</td>'
-    + '</tr>'
-
-    + '<tr>'
-    + '<td class="td-div-design">'
-    + '<button class="btn btn-default btn-custom-width score" disabled></button>'
-    + '</td>'
-    + '</tr>'
-
-    + '<tr>'
-    + '<td class="td-div-design">'
-    + '<button class="btn btn-default btn-custom-width evalue" disabled></button>'
-    + '</td>'
-    + '</tr>'
-
-    + '<tr>'
-    + '<td class="organism-info" colspan="2">'
-    + '<button class="btn btn-default organism" style="font-size: 12px" disabled></button>'
-    + '</td>'
-    + '</tr>'
-    + '</tbody>'
-    + '</table>');
-}
-
-//Place text in the centroid of the arc
-function fnCentroid(inner, outer, start, end) {
-
-    var r = (inner  + outer) / 2, a = ((start + end) / 2) - (Math.PI/2);
-    return [ Math.cos(a) * r, Math.sin(a) * r ];
-}
-
-//Place text at the start of the arc
-function fnStartPoints(inner, outer, start) {
-
-    var r = (inner  + outer - 4) / 2, a = ((start+0.15)) - (Math.PI/2);
-    return [ Math.cos(a) * r, Math.sin(a) * r ];
-}
-
-//Place text at the end of the arc
-function fnEndPoints(inner, outer, end) {
-
-    var r = (inner  + outer - 4) / 2, a = ((end -0.15)) - (Math.PI/2);
-    return [ Math.cos(a) * r, Math.sin(a) * r ];
-}
-
-function mouseover() {
-    d3.select(this).select("circle").transition()
-        .duration(750)
-        .attr("r", 36);
-}
-
-function mouseout() {
-    d3.select(this).select("circle").transition()
-        .duration(750)
-        .attr("r", 8);
-}
-
-function wrap(text, width) {
-    text.each(function() {
-        var text = d3.select(this),
-            words = text.text().split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            y = text.attr("y"),
-            dy = parseFloat(text.attr("dy")),
-            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
-        while (word = words.pop()) {
-            line.push(word);
-            tspan.text(line.join(" "));
-            if (tspan.node().getComputedTextLength() > width) {
-                line.pop();
-                tspan.text(line.join(" "));
-                line = [word];
-                tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-            }
-        }
-    });
-}
-
-//Important. Keep this for transition and animation
-//var transit = d3.select("svg").selectAll("#querybars rect")
-//    .data(alignmentLength)
-//    .transition()
-//    .duration(1000)
-//    .attr("width", function(d) {return xscale(d); });

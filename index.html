@@ -18,29 +18,101 @@
 <body>
 
 <!--Overview information display starts here-->
-<h2 class="text-center">OVERVIEW</h2>
+<h2 class="text-center">Protein Alignment</h2>
 <hr>
 
+<!--Add legend to the graph-->
+<div id="legend" class="col-md-offset-3 col-md-6">
+    <svg width="600" height="90">
+        <text transform="translate(270,10)">Identity %</text>
+        <defs>
+            <linearGradient y1="0%" y2="0%" x1="0%" x2="100%" id="blast-gradient">
+                <stop offset="0%" stop-color="#FF0000"></stop>
+                <stop offset="50%" stop-color="#00FF00"></stop>
+                <stop offset="100%" stop-color="#0000FF"></stop>
+            </linearGradient>
+        </defs>
+        <rect width="560" height="15" fill="url(#blast-gradient)" transform="translate(20,20)"></rect>
+        <g class="x axis" transform="translate(20,30)">
+            <g class="tick" transform="translate(560,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">0</text>
+            </g>
+            <g class="tick" transform="translate(448,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">20</text>
+            </g>
+            <g class="tick" transform="translate(336,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">40</text>
+            </g>
+            <g class="tick" transform="translate(224,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">60</text>
+            </g>
+            <g class="tick" transform="translate(112,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">80</text>
+            </g>
+            <g class="tick" transform="translate(0,0)" style="opacity: 1;">
+                <line y2="6" x2="0"></line>
+                <text y="9" x="0" dy=".71em" style="text-anchor: middle;">100</text>
+            </g>
+        </g>
+
+    </svg>
+
+</div>
 <div id="xAxis_at_top"></div>
-<div class="outer">
+<div class="outer col-md-7">
     <div id="wrapper" class="wrapperMargin">
+    </div>
+</div>
+<div class="rightTable col-md-5" > <!--style="border:1px solid #eeeeee;border-radius: 10px"-->
+    <div id="tableWrapper" class="wrapperMargin" >
+        <p style="padding-left: 8px"><strong>ALIGNMENT INFORMATION</strong></p>
+        <p id="defValue" style="padding-left: 8px"></p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>From-To</th>
+                <th>Score</th>
+                <th>eValue</th>
+                <th>Identity</th>
+                <th>Positive</th>
+                <th>Gaps</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td id="fromToValue"></td>
+                <td id="scoreValue"></td>
+                <td id="eValue"></td>
+                <td id="identityValue"></td>
+                <td id="positiveValue"></td>
+                <td id="gapValue"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table" id="sequenceInfo">
+            <caption style="padding-left: 8px">SEQUENCE INFORMATION</caption>
+            <thead>
+            <tr>
+                <th>Qry/Sub</th>
+                <th>Start</th>
+                <th>Sequence</th>
+                <th>End</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </div>
 <div id="xAxis_at_bottom"></div>
 
-<hr>
-<!--Alignment information display starts here-->
-<h2 class="text-center">ALIGNMENTS</h2>
-<hr>
-<div style="padding-left: 20px">
-    <div class="diagrams">
-
-    </div>
-</div>
 
 <div id="patternDiv"></div>
-
-<div class="drop"></div>
 
 <script>
 
