@@ -170,13 +170,13 @@ function drawOverviewBars(blast_data, numberOfHits) {
             var regions = i + blast_data[i].num_of_regions_left ;
             flag=1;
 
-            if((regions + i) < blast_data.length
+            if(regions < blast_data.length
                 && blast_data[i].query_from == blast_data[regions].query_from
                 && blast_data[i].query_to == blast_data[regions].query_to
                 && blast_data[i].hit_from == blast_data[regions].hit_from
                 && blast_data[i].hit_to == blast_data[regions].hit_to
-                //&& blast_data[i].identity == blast_data[regions].identity
-                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left) {
+                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left
+                && blast_data[i].gaps == blast_data[regions].gaps) {
 
                 numOfOrganisms++;
                 organismNames.push(blast_data[i].organism);
