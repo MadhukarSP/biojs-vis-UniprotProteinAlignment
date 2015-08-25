@@ -143,7 +143,6 @@ function initializeValues() {
 //Draw Overview bars for query and subject
 function drawOverviewBars(blast_data, numberOfHits) {
 
-    var enzymeDetails = [];
     var organismDetails = [];
     var organismNames = [];
     var queryFromValues = [];
@@ -168,10 +167,10 @@ function drawOverviewBars(blast_data, numberOfHits) {
     for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
 
-            var regions = blast_data[i].num_of_regions_left + i;
+            var regions = i + blast_data[i].num_of_regions_left ;
             flag=1;
 
-            if(regions + i < blast_data.length
+            if((regions + i) < blast_data.length
                 && blast_data[i].query_from == blast_data[regions].query_from
                 && blast_data[i].query_to == blast_data[regions].query_to
                 && blast_data[i].hit_from == blast_data[regions].hit_from
@@ -181,7 +180,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
 
                 numOfOrganisms++;
                 organismNames.push(blast_data[i].organism);
-                i=i+regions;
+                i = i + blast_data[i].num_of_regions_left;
                 continue;
             }
         }
@@ -190,8 +189,6 @@ function drawOverviewBars(blast_data, numberOfHits) {
             organismNames.push(blast_data[i].organism);
             console.log("organismNames"+ organismNames);
             organismDetails.push(numOfOrganisms + ","+ organismNames);
-            identityValue = getIdentityInfo(blast_data, i, blast_data[i].num_of_regions_left);
-            enzymeDetails.push(identityValue);
             numOfOrganisms = 1;
             organismNames = [];
             flag=0;
@@ -247,7 +244,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
     //addPattern();
 
     //Add axes to the graph
-    addAxes(xScale, yScale, enzymeDetails, organismDetails);
+    addAxes(xScale, yScale, organismDetails);
 
     //Add the Query bars to the graph
     addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
@@ -258,11 +255,84 @@ function drawOverviewBars(blast_data, numberOfHits) {
         gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
 }
 
+//Add axes to the graph
+function addAxes(xScale, yScale, organismDetails) {
 
+    //Add x-axis at top
+    var canvas_top_axis = d3.select('#xAxis_at_top')
+        .append('svg')
+        .attr({'width':axesWidth,'height':axesHeight});
+    var	xTopAxis = d3.svg.axis()
+        .orient('top')
+        .scale(xScale);
+
+    canvas_top_axis.append('g')
+        //.attr("transform", "translate(180,20)")
+        .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
+        .attr('id','topxaxis')
+        .call(xTopAxis);
+
+    //Add x-axis at bottom
+    var canvas_bottom_axis = d3.select('#xAxis_at_bottom')
+        .append('svg')
+        .attr({'width':axesWidth,'height':axesHeight});
+
+    var	xAxis = d3.svg.axis()
+        .orient('bottom') //Text will be placed at bottom
+        .scale(xScale);
+
+    canvas_bottom_axis.append('g')
+        //.attr("transform", "translate(180,5)")
+        .attr("transform", "translate(" + x_axis_bottom_x_translate + "," + x_axis_bottom_y_translate + ")")
+        .attr('id','bottomxaxis')
+        .call(xAxis);
+
+
+    var	yAxisRightDropDown = d3.svg.axis()
+        .orient('right')
+        .scale(yScale)
+        .tickSize(0)
+        .tickFormat(function(d,i){return "";})
+        .tickValues(d3.range(organismDetails.length));
+
+    var optionStart = "<option>";
+    var optionEnd = "</option>";
+    var selectStart = '<select class="form-control">';
+    var selectEnd = "</select>";
+
+    canvas.append('g')
+        //.attr("transform", "translate(782,24)")
+        .attr('id','rightyaxisDropDown')
+        .call(yAxisRightDropDown)
+        .selectAll('.tick')
+        .attr("transform", function (d,i) {return "translate(" + QueryDropDownX_translate + "," + (QueryDropDownY_translate + (i*widthBtnBars)) + ")"})
+        .append("foreignObject")
+        .attr("width", 160)
+        .attr("height",35)
+        .append("xhtml:body")
+        .style("font", "12px")
+        .style("z-index", 9)
+        .append("p")
+        .html(function(d,i) {
+            var optionValues = "";
+
+            if(organismDetails[i].split(',').length > 2) {
+                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + optionEnd;
+                for(var k=1; k< organismDetails[i].split(',').length;k++) {
+                    optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
+                }
+                optionValues = optionValues + selectEnd;
+            } else {
+                optionValues = organismDetails[i].split(',')[1];
+            }
+
+            return optionValues;
+        });
+}
+
+//Catch on click event on bars
 function clickedOnBar(evt) {
     var svgobj = evt.target;
-
-    //alert(svgobj.getAttribute('alignmentInfo'));
 
     var alignmentInfo = svgobj.getAttribute('alignmentInfo').split("::");
 
@@ -707,81 +777,6 @@ function getIdentityInfo(blast_data, index, num_of_regions) {
     var identity = ((totalAlignment/blast_data[index].query_len) * 100).toFixed(2);
 
     return identity;
-}
-
-//Add axes to the graph
-function addAxes(xScale, yScale, enzymeDetails, organismDetails) {
-
-    //Add x-axis at top
-    var canvas_top_axis = d3.select('#xAxis_at_top')
-        .append('svg')
-        .attr({'width':axesWidth,'height':axesHeight});
-    var	xTopAxis = d3.svg.axis()
-        .orient('top')
-        .scale(xScale);
-
-    canvas_top_axis.append('g')
-        //.attr("transform", "translate(180,20)")
-        .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
-        .attr('id','topxaxis')
-        .call(xTopAxis);
-
-    //Add x-axis at bottom
-    var canvas_bottom_axis = d3.select('#xAxis_at_bottom')
-        .append('svg')
-        .attr({'width':axesWidth,'height':axesHeight});
-
-    var	xAxis = d3.svg.axis()
-        .orient('bottom') //Text will be placed at bottom
-        .scale(xScale);
-
-    canvas_bottom_axis.append('g')
-        //.attr("transform", "translate(180,5)")
-        .attr("transform", "translate(" + x_axis_bottom_x_translate + "," + x_axis_bottom_y_translate + ")")
-        .attr('id','bottomxaxis')
-        .call(xAxis);
-
-
-    var	yAxisRightDropDown = d3.svg.axis()
-        .orient('right')
-        .scale(yScale)
-        .tickSize(0)
-        .tickFormat(function(d,i){return "";})
-        .tickValues(d3.range(organismDetails.length));
-
-    var optionStart = "<option>";
-    var optionEnd = "</option>";
-    var selectStart = '<select class="form-control">';
-    var selectEnd = "</select>";
-
-    canvas.append('g')
-        //.attr("transform", "translate(782,24)")
-        .attr('id','rightyaxisDropDown')
-        .call(yAxisRightDropDown)
-        .selectAll('.tick')
-        .attr("transform", function (d,i) {return "translate(" + QueryDropDownX_translate + "," + (QueryDropDownY_translate + (i*widthBtnBars)) + ")"})
-        .append("foreignObject")
-        .attr("width", 160)
-        .attr("height",35)
-        .append("xhtml:body")
-        .style("font", "12px")
-        .style("z-index", 9)
-        .append("p")
-        .html(function(d,i) {
-            var optionValues = "";
-
-            if(organismDetails[i].split(',').length > 2) {
-                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + optionEnd;
-                for(var k=1; k< organismDetails[i].split(',').length;k++) {
-                    optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
-                }
-                optionValues = optionValues + selectEnd;
-            } else {
-                optionValues = organismDetails[i].split(',')[1];
-            }
-
-            return optionValues;
-        });
 }
 
 //Get all the occurrences of the val ('-' hyphen sign) in the sequence

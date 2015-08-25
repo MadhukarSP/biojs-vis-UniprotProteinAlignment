@@ -15,7 +15,7 @@
   },
   "iterations": [
     {
-      "iter-num": "1",
+      "iter_num": "1",
       "query_ID": "Query_1",
       "query_def": "sp|Q8NF91|SYNE1_HUMAN Nesprin-1 OS=Homo sapiens GN=SYNE1 PE=1 SV=4",
       "query_len": "770",
@@ -410,7 +410,7 @@
           {
               "num": "10",
               "id": "gnl|BL_ORD_ID|140988",
-              "def": "gi|425906075|sp|Q8NF91.4|Equus_caballus RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
+              "def": "gi|425906075|sp|Q8NF91.4|Equus_Malettus RecName: Full=Nesprin-1; AltName: Full=Enaptin; AltName: Full=Myocyte nuclear envelope protein 1; Short=Myne-1; AltName: Full=Nuclear envelope spectrin repeat protein 1; AltName: Full=Synaptic nuclear envelope protein 1; Short=Syne-1 [Homo sapiens]",
               "accession": "140988",
               "len": 749,
               "hsps": [
