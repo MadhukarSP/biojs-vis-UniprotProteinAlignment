@@ -52,10 +52,10 @@ var QueryBarY_translate = 10;
 var QueryTextX_translate = 10;
 var QueryTextY_translate = 10;
 
-var x_axis_top_x_translate = 40;
+var x_axis_top_x_translate = 12;
 var x_axis_top_y_translate = 20;
 
-var x_axis_bottom_x_translate = 40;
+var x_axis_bottom_x_translate = 12;
 var x_axis_bottom_y_translate = 5;
 
 var QueryDropDownX_translate = 625;

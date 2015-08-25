@@ -9,7 +9,7 @@
 }
 
 .wrapperMargin {
-    margin-left: 15px;
+    margin-left: 0px;
     margin-top: 0px;
 }
 
@@ -24,6 +24,7 @@
     max-height: 350px;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-left: 0px;
 }
 
 .rightTable {
@@ -157,8 +158,12 @@ select.form-control {
 }
 
 .table {
-    font-size: 12px;
     white-space: pre;
+}
+
+.rightTable {
+    font-size: 11px;
     font-family: monospace;
+    margin-left: 0px;
 }
 
