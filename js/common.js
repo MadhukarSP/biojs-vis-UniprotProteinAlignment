@@ -68,7 +68,7 @@ $(document).ready(function() {
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
 function initializeValues() {
-    $.getJSON("json/NCBI_Output_Query_Seq_1.json", function(data) {
+    $.getJSON("json/NCBI_Output_Query_Seq_2.json", function(data) {
 
         var all_blast_output = [];
 
