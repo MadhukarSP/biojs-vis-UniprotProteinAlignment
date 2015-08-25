@@ -98,7 +98,8 @@ function initializeValues() {
                 "hseq" : dataObj.hits[i].hsps[0]["hseq"],
                 "midLine": dataObj.hits[i].hsps[0]["midline"],
                 "gaps" : dataObj.hits[i].hsps[0]["gaps"],
-                "num_of_regions_left": (num_of_regions)
+                "num_of_regions_left": (num_of_regions),
+                "added":"N"
             });
 
             for(var j = 1; j < num_of_regions; j++) {
@@ -124,62 +125,83 @@ function initializeValues() {
             all_blast_output.push.apply(all_blast_output, blast_output);
         }
 
-        //var all_blast_output = [];
-        //
-        //var numberOfHits = data.iterations[0].hits.length;
+        var final_output = [];
 
-        //for (var i = 0; i < numberOfHits; i++) {
-        //
-        //    var num_of_regions = data.iterations[0].hits[i].hsps.length;
-        //    var blast_output = [];
-        //
-        //    blast_output.push({
-        //        "def": data.iterations[0].hits[i]["def"],
-        //        "score": data.iterations[0].hits[i].hsps[0]["score"],
-        //        "evalue" : data.iterations[0].hits[i].hsps[0]["evalue"],
-        //        "identity" : data.iterations[0].hits[i].hsps[0]["identity"],
-        //        "positive" : data.iterations[0].hits[i].hsps[0]["positive"],
-        //        "align_len" : data.iterations[0].hits[i].hsps[0]["align_len"],
-        //        "query_len" : data.iterations[0]["query_len"],
-        //        "organism" : data.iterations[0].hits[i].def.split("|")[4].split(" ")[0],
-        //        "query_from" : data.iterations[0].hits[i].hsps[0]["query_from"],
-        //        "query_to" : data.iterations[0].hits[i].hsps[0]["query_to"],
-        //        "hit_from" : data.iterations[0].hits[i].hsps[0]["hit_from"],
-        //        "hit_to" : data.iterations[0].hits[i].hsps[0]["hit_to"],   //Extracting value from object with '-' value in it
-        //        "qseq" : data.iterations[0].hits[i].hsps[0]["qseq"],
-        //        "hseq" : data.iterations[0].hits[i].hsps[0]["hseq"],
-        //        "midLine": data.iterations[0].hits[i].hsps[0]["midline"],
-        //        "gaps" : data.iterations[0].hits[i].hsps[0]["gaps"],
-        //        "num_of_regions_left": (num_of_regions)
-        //    });
-        //
-        //    for(var j = 1; j < num_of_regions; j++) {
-        //        blast_output.push({
-        //            "def": data.iterations[0].hits[i]["def"],
-        //            'score' : data.iterations[0].hits[i].hsps[j]["score"],
-        //            'evalue' : data.iterations[0].hits[i].hsps[j]["evalue"],
-        //            "identity" : data.iterations[0].hits[i].hsps[j]["identity"],
-        //            "positive" : data.iterations[0].hits[i].hsps[j]["positive"],
-        //            'query_from' : data.iterations[0].hits[i].hsps[j]["query_from"],
-        //            'query_to' : data.iterations[0].hits[i].hsps[j]["query_to"],
-        //            'hit_from' : data.iterations[0].hits[i].hsps[j]["hit_from"],
-        //            'hit_to' : data.iterations[0].hits[i].hsps[j]["hit_to"],
-        //            "align_len" : data.iterations[0].hits[i].hsps[j]["align-len"],
-        //            "qseq" : data.iterations[0].hits[i].hsps[j]["qseq"],
-        //            "hseq" : data.iterations[0].hits[i].hsps[j]["hseq"],
-        //            "midLine": data.iterations[0].hits[i].hsps[j]["midline"],
-        //            "gaps" : data.iterations[0].hits[i].hsps[j]["gaps"],
-        //            "num_of_regions_left": 0
-        //        });
-        //    }
-        //
-        //    all_blast_output.push.apply(all_blast_output, blast_output);
-        //}
+        //if(all_blast_output[currentObj].num_of_regions_left != 0) {
+
+        for(var currentObj=0; currentObj< all_blast_output.length;) {
+
+            var nextObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+
+            if(all_blast_output[currentObj].added == "Y") {
+                currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+                continue;
+            }
+
+            all_blast_output[currentObj].added = "Y";
+            final_output.push(all_blast_output[currentObj]);
+            //final_output.push.apply(final_output, all_blast_output[currentObj]);
+            var num_of_regions = final_output[final_output.length-1].num_of_regions_left;
+            for(var i=1; i < num_of_regions;i++) {
+                final_output.push(all_blast_output[currentObj + i]);
+                //final_output.push.apply(final_output, all_blast_output[currentObj+i]);
+            }
+            var flag=1;
+
+            for(var j=nextObj; j<all_blast_output.length;) {
+
+                if(all_blast_output[j].added == "N") {
+                    if(all_blast_output[currentObj].query_from == all_blast_output[j].query_from
+                        && all_blast_output[currentObj].query_to == all_blast_output[j].query_to
+                        && all_blast_output[currentObj].hit_from == all_blast_output[j].hit_from
+                        && all_blast_output[currentObj].hit_to == all_blast_output[j].hit_to
+                        && all_blast_output[currentObj].num_of_regions_left == all_blast_output[j].num_of_regions_left
+                        && all_blast_output[currentObj].gaps == all_blast_output[j].gaps) {
+
+                        all_blast_output[j].added = "Y";
+                        final_output.push(all_blast_output[j++]);
+                        //final_output.push.apply(final_output, all_blast_output[j++]);
+                        num_of_regions = final_output[final_output.length-1].num_of_regions_left;
+                        for(var i=1; i< num_of_regions;i++) {
+                            final_output.push(all_blast_output[j++]);
+                            //final_output.push.apply(final_output, all_blast_output[j++]);
+                        }
+                        flag=0;
+                    }
+                }
+                if(j>=all_blast_output.length) {
+                    break;
+                } else {
+                    if(flag==1) {
+                        j = j + all_blast_output[j].num_of_regions_left;
+                    }
+                    flag=1;
+                }
+            }
+
+            currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+
+        }
 
         //Draw overview bars [Query, Subject and Gaps]
-        drawOverviewBars(all_blast_output, numberOfHits);
+        drawOverviewBars(final_output, numberOfHits);
     });
 }
+
+//function compare(a,b) {
+//
+//    var aQueryLen = parseInt(a.query_to) - parseInt(a.query_from);
+//    var bQueryLen = parseInt(b.query_to) - parseInt(b.query_from);
+//
+//    var aHitLen = parseInt(a.hit_to) - parseInt(a.hit_from);
+//    var bHitLen = parseInt(b.hit_to) - parseInt(b.hit_from);
+//
+//    if ((a.query_to - a.query_from) < (a.query_to - a.query_from))
+//        return -1;
+//    if (a.last_nom > b.last_nom)
+//        return 1;
+//    return 0;
+//}
 
 //Draw Overview bars for query and subject
 function drawOverviewBars(blast_data, numberOfHits) {
@@ -227,7 +249,6 @@ function drawOverviewBars(blast_data, numberOfHits) {
 
         if(flag == 1) {
             organismNames.push(blast_data[i].organism);
-            console.log("organismNames"+ organismNames);
             organismDetails.push(numOfOrganisms + ","+ organismNames);
             numOfOrganisms = 1;
             organismNames = [];
