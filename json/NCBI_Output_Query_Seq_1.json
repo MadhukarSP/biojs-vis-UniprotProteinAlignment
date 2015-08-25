@@ -1,0 +1,3553 @@
+{
+  "BlastOutput2": {
+    "report": {
+      "program": "blastp",
+      "version": "BLASTP 2.2.32+",
+      "reference": "Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), \"Gapped BLAST and PSI-BLAST: a new generation of protein database search programs\", Nucleic Acids Res. 25:3389-3402.",
+      "search_target": {
+        "db": "nr"
+      },
+      "params": {
+        "matrix": "BLOSUM62",
+        "expect": 10,
+        "gap_open": 11,
+        "gap_extend": 1,
+        "filter": "F",
+        "cbs": 2
+      },
+      "results": {
+        "search": {
+          "query_id": "Query_80825",
+          "query_title": "unnamed protein product",
+          "query_len": 247,
+          "hits": [
+            {
+              "num": 1,
+              "description": [
+                {
+                  "id": "gi|119586406|gb|EAW66002.1|",
+                  "accession": "EAW66002",
+                  "title": "granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1), isoform CRA_a [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 520.776,
+                  "score": 1340,
+                  "evalue": 0,
+                  "identity": 247,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 2,
+              "description": [
+                {
+                  "id": "gi|221625528|ref|NP_004122.2|",
+                  "accession": "NP_004122",
+                  "title": "granzyme B precursor [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|317373361|sp|P10144.2|GRAB_HUMAN",
+                  "accession": "P10144",
+                  "title": "RecName: Full=Granzyme B; AltName: Full=C11; AltName: Full=CTLA-1; AltName: Full=Cathepsin G-like 1; Short=CTSGL1; AltName: Full=Cytotoxic T-lymphocyte proteinase 2; Short=Lymphocyte protease; AltName: Full=Fragmentin-2; AltName: Full=Granzyme-2; AltName: Full=Human lymphocyte protein; Short=HLP; AltName: Full=SECT; AltName: Full=T-cell serine protease 1-3E; Flags: Precursor",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 519.62,
+                  "score": 1337,
+                  "evalue": 0,
+                  "identity": 247,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 3,
+              "description": [
+                {
+                  "id": "gi|38532130|gb|AAR23323.1|",
+                  "accession": "AAR23323",
+                  "title": "endogenous granzyme B precursor [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 519.235,
+                  "score": 1336,
+                  "evalue": 0,
+                  "identity": 246,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 4,
+              "description": [
+                {
+                  "id": "gi|306682|gb|AAA67124.1|",
+                  "accession": "AAA67124",
+                  "title": "cytotoxic T-lymphocyte-associated serine esterase 1 [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|338296|gb|AAA36627.1|",
+                  "accession": "AAA36627",
+                  "title": "serine protease-like protein precursor [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 517.694,
+                  "score": 1332,
+                  "evalue": 0,
+                  "identity": 246,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 5,
+              "description": [
+                {
+                  "id": "gi|338011|gb|AAA36603.1|",
+                  "accession": "AAA36603",
+                  "title": "proteolytic serine esterase [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 517.309,
+                  "score": 1331,
+                  "evalue": 0,
+                  "identity": 246,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKR IPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 6,
+              "description": [
+                {
+                  "id": "gi|60810338|gb|AAX36144.1|",
+                  "accession": "AAX36144",
+                  "title": "granzyme B [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 515.768,
+                  "score": 1327,
+                  "evalue": 0,
+                  "identity": 245,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 7,
+              "description": [
+                {
+                  "id": "gi|20988818|gb|AAH30195.1|",
+                  "accession": "AAH30195",
+                  "title": "Granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1) [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|157928058|gb|ABW03325.1|",
+                  "accession": "ABW03325",
+                  "title": "granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1) [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                },
+                {
+                  "id": "gi|307685311|dbj|BAJ20586.1|",
+                  "accession": "BAJ20586",
+                  "title": "granzyme B [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 515.768,
+                  "score": 1327,
+                  "evalue": 0,
+                  "identity": 245,
+                  "positive": 247,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 8,
+              "description": [
+                {
+                  "id": "gi|181159|gb|AAB59528.1|",
+                  "accession": "AAB59528",
+                  "title": "serine protease B [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 515.383,
+                  "score": 1326,
+                  "evalue": 0,
+                  "identity": 245,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKCAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNK AQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 9,
+              "description": [
+                {
+                  "id": "gi|181186|gb|AAA75490.1|",
+                  "accession": "AAA75490",
+                  "title": "granzyme B [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 515.383,
+                  "score": 1326,
+                  "evalue": 0,
+                  "identity": 245,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKR IPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 10,
+              "description": [
+                {
+                  "id": "gi|181137|gb|AAA52118.1|",
+                  "accession": "AAA52118",
+                  "title": "serine esterase [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 514.612,
+                  "score": 1324,
+                  "evalue": 0,
+                  "identity": 245,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINGTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSIN TLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 11,
+              "description": [
+                {
+                  "id": "gi|114652461|ref|XP_509879.2|",
+                  "accession": "XP_509879",
+                  "title": "PREDICTED: granzyme B [Pan troglodytes]",
+                  "taxid": 9598,
+                  "sciname": "Pan troglodytes"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 513.457,
+                  "score": 1321,
+                  "evalue": 0,
+                  "identity": 242,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKTLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNYSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQVCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQK+LKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKN+SNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQ CSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 12,
+              "description": [
+                {
+                  "id": "gi|649134086|gb|AIC58564.1|",
+                  "accession": "AIC58564",
+                  "title": "GZMB, partial [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 513.072,
+                  "score": 1320,
+                  "evalue": 0,
+                  "identity": 244,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQTILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRH",
+                  "midline": "MQ ILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 13,
+              "description": [
+                {
+                  "id": "gi|397475475|ref|XP_003809164.1|",
+                  "accession": "XP_003809164",
+                  "title": "PREDICTED: granzyme B [Pan paniscus]",
+                  "taxid": 9597,
+                  "sciname": "Pan paniscus"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 513.072,
+                  "score": 1320,
+                  "evalue": 0,
+                  "identity": 242,
+                  "positive": 246,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKTLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNYSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQACSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQK+LKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKN+SNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQ CSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 14,
+              "description": [
+                {
+                  "id": "gi|767980375|ref|XP_011534987.1|",
+                  "accession": "XP_011534987",
+                  "title": "PREDICTED: granzyme B isoform X1 [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|119586407|gb|EAW66003.1|",
+                  "accession": "EAW66003",
+                  "title": "granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1), isoform CRA_b [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 235,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 484.952,
+                  "score": 1247,
+                  "evalue": 1.60384e-171,
+                  "identity": 229,
+                  "positive": 230,
+                  "query_from": 18,
+                  "query_to": 247,
+                  "hit_from": 6,
+                  "hit_to": 235,
+                  "align_len": 230,
+                  "gaps": 0,
+                  "qseq": "AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "SGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "+GEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 15,
+              "description": [
+                {
+                  "id": "gi|37926376|gb|AAP70244.1|",
+                  "accession": "AAP70244",
+                  "title": "granzyme B variant [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 235,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 483.411,
+                  "score": 1243,
+                  "evalue": 8.18737e-171,
+                  "identity": 228,
+                  "positive": 230,
+                  "query_from": 18,
+                  "query_to": 247,
+                  "hit_from": 6,
+                  "hit_to": 235,
+                  "align_len": 230,
+                  "gaps": 0,
+                  "qseq": "AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "SGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "+GEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 16,
+              "description": [
+                {
+                  "id": "gi|14278216|pdb|1IAU|A",
+                  "accession": "1IAU_A",
+                  "title": "Chain A, Human Granzyme B In Complex With Ac-Iepd-Cho",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 227,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 479.945,
+                  "score": 1234,
+                  "evalue": 1.24303e-169,
+                  "identity": 227,
+                  "positive": 227,
+                  "query_from": 21,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 227,
+                  "align_len": 227,
+                  "gaps": 0,
+                  "qseq": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 17,
+              "description": [
+                {
+                  "id": "gi|13096242|pdb|1FQ3|A",
+                  "accession": "1FQ3_A",
+                  "title": "Chain A, Crystal Structure Of Human Granzyme B",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|13096243|pdb|1FQ3|B",
+                  "accession": "1FQ3_B",
+                  "title": "Chain B, Crystal Structure Of Human Granzyme B",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                }
+              ],
+              "len": 227,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 478.019,
+                  "score": 1229,
+                  "evalue": 6.34553e-169,
+                  "identity": 226,
+                  "positive": 227,
+                  "query_from": 21,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 227,
+                  "align_len": 227,
+                  "gaps": 0,
+                  "qseq": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIQDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "midline": "IIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLI+DDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY"
+                }
+              ]
+            },
+            {
+              "num": 18,
+              "description": [
+                {
+                  "id": "gi|426376592|ref|XP_004055081.1|",
+                  "accession": "XP_004055081",
+                  "title": "PREDICTED: granzyme B isoform 1 [Gorilla gorilla gorilla]",
+                  "taxid": 9595,
+                  "sciname": "Gorilla gorilla gorilla"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 473.781,
+                  "score": 1218,
+                  "evalue": 1.96756e-166,
+                  "identity": 233,
+                  "positive": 241,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQFIPVKRAMPHPAYNLKNFSSDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQACSVAGWGQTAPMGKYSHTLQEVKMTVQEDRKCESELRHYYNSTIELCVGDPEIKKASFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRVCTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQFIPVKR +PHPAYN KNFS+DIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQ CSVAGWGQTAP+GK+SHTLQEVKMTVQEDRKCES+LRHYY+STIELCVGDPEIKK SFKGDSGGPLVCNKVAQGIVSYGRNNGMPPR CTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 19,
+              "description": [
+                {
+                  "id": "gi|297694843|ref|XP_002824669.1|",
+                  "accession": "XP_002824669",
+                  "title": "PREDICTED: granzyme B isoform X1 [Pongo abelii]",
+                  "taxid": 9601,
+                  "sciname": "Pongo abelii"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 469.544,
+                  "score": 1207,
+                  "evalue": 9.64429e-165,
+                  "identity": 231,
+                  "positive": 238,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQEQTQQLIPVKRAVRHPAYNPKNFSNDIMLLQLEKKAKRTTAVQPLRLPSNKAQVKPGQACSVAGWGQTAPTGKYSHTLQEVEMTVQEDRKCKSDLRHYYDSTIELCVGDPEIKKASFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRVCTKVSSFVHWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR + HPAYNPKNFSNDIMLLQLE+KAKRT AVQPLRLPSNKAQVKPGQ CSVAGWGQTAP GK+SHTLQEV+MTVQEDRKC+SDLRHYYDSTIELCVGDPEIKK SFKGDSGGPLVCNKVAQGIVSYGRNNGMPPR CTKVSSFVHWIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 20,
+              "description": [
+                {
+                  "id": "gi|402875860|ref|XP_003901712.1|",
+                  "accession": "XP_003901712",
+                  "title": "PREDICTED: granzyme B [Papio anubis]",
+                  "taxid": 9555,
+                  "sciname": "Papio anubis"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 444.891,
+                  "score": 1143,
+                  "evalue": 5.91861e-155,
+                  "identity": 218,
+                  "positive": 229,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEVKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQVCDVAGWGQTTPEGKYSHTLQEVKLTVEEDQTCKSRLRHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGRNNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHE KPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S LRHYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYGRNNG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 21,
+              "description": [
+                {
+                  "id": "gi|795418461|ref|XP_011946523.1|",
+                  "accession": "XP_011946523",
+                  "title": "PREDICTED: granzyme B [Cercocebus atys]",
+                  "taxid": 9531,
+                  "sciname": "Cercocebus atys"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 440.654,
+                  "score": 1132,
+                  "evalue": 2.35193e-153,
+                  "identity": 216,
+                  "positive": 229,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEVKPHSRPYMAYLMIWDQKSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQVCDVAGWGQTTPEGKYSHTLQEVKLTVEDDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGRSNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHE KPHSRPYMAYLMIWDQKSLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV++D+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYGR+NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 22,
+              "description": [
+                {
+                  "id": "gi|806638560|ref|NP_001292863.1|",
+                  "accession": "NP_001292863",
+                  "title": "granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1) precursor [Macaca nemestrina]",
+                  "taxid": 9545,
+                  "sciname": "Macaca nemestrina"
+                },
+                {
+                  "id": "gi|187944146|gb|ACD40304.1|",
+                  "accession": "ACD40304",
+                  "title": "granzyme B [Macaca nemestrina]",
+                  "taxid": 9545,
+                  "sciname": "Macaca nemestrina"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 438.728,
+                  "score": 1127,
+                  "evalue": 4.60801e-153,
+                  "identity": 217,
+                  "positive": 228,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVQPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AVQPLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 23,
+              "description": [
+                {
+                  "id": "gi|795328652|ref|XP_011826411.1|",
+                  "accession": "XP_011826411",
+                  "title": "PREDICTED: granzyme B isoform X1 [Mandrillus leucophaeus]",
+                  "taxid": 9568,
+                  "sciname": "Mandrillus leucophaeus"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 439.113,
+                  "score": 1128,
+                  "evalue": 1.21113e-152,
+                  "identity": 215,
+                  "positive": 228,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEVKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQVCDVAGWGQTTPEGKYSHTLQEVKLTVEDDQTCKSRLHHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGRSNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHE KPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV++D+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYGR+NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 24,
+              "description": [
+                {
+                  "id": "gi|355693192|gb|EHH27795.1|",
+                  "accession": "EHH27795",
+                  "title": "hypothetical protein EGK_18079 [Macaca mulatta]",
+                  "taxid": 9544,
+                  "sciname": "Macaca mulatta"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 437.187,
+                  "score": 1123,
+                  "evalue": 5.47005e-152,
+                  "identity": 216,
+                  "positive": 227,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGRYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNPKNFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L  YYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 25,
+              "description": [
+                {
+                  "id": "gi|544446625|ref|XP_005561055.1|",
+                  "accession": "XP_005561055",
+                  "title": "PREDICTED: granzyme B isoform X2 [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 435.647,
+                  "score": 1119,
+                  "evalue": 2.36476e-151,
+                  "identity": 215,
+                  "positive": 227,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLRRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLL R DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 26,
+              "description": [
+                {
+                  "id": "gi|683880895|gb|AIN44000.1|",
+                  "accession": "AIN44000",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                },
+                {
+                  "id": "gi|683880898|gb|AIN44001.1|",
+                  "accession": "AIN44001",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                },
+                {
+                  "id": "gi|683880901|gb|AIN44002.1|",
+                  "accession": "AIN44002",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                },
+                {
+                  "id": "gi|683880907|gb|AIN44004.1|",
+                  "accession": "AIN44004",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 434.106,
+                  "score": 1115,
+                  "evalue": 3.34448e-151,
+                  "identity": 215,
+                  "positive": 227,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLRRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLL R DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 27,
+              "description": [
+                {
+                  "id": "gi|635126212|ref|XP_007984546.1|",
+                  "accession": "XP_007984546",
+                  "title": "PREDICTED: granzyme B [Chlorocebus sabaeus]",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 316,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 436.802,
+                  "score": 1122,
+                  "evalue": 3.45364e-151,
+                  "identity": 214,
+                  "positive": 226,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 70,
+                  "hit_to": 316,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVQPLRLPRNKAQVKPGQVCDVAGWGQMTPMGKYSHTLQEVKLTVEEDQTCESHLGRYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGLSNGKPPRVCTKVSSFIRWIKKTTKRH",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AVQPLRLP NKAQVKPGQ C VAGWGQ  P+GK+SHTLQEVK+TV+ED+ CES L  YYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG +NG PPR CTKVSSF+ WIKKT KR+"
+                }
+              ]
+            },
+            {
+              "num": 28,
+              "description": [
+                {
+                  "id": "gi|683880892|gb|AIN43999.1|",
+                  "accession": "AIN43999",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                },
+                {
+                  "id": "gi|683880904|gb|AIN44003.1|",
+                  "accession": "AIN44003",
+                  "title": "granzyme B [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 432.95,
+                  "score": 1112,
+                  "evalue": 8.46833e-151,
+                  "identity": 214,
+                  "positive": 227,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 1,
+                  "hit_to": 247,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLRRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLEKKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLL R DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLE+KAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 29,
+              "description": [
+                {
+                  "id": "gi|355778491|gb|EHH63527.1|",
+                  "accession": "EHH63527",
+                  "title": "hypothetical protein EGM_16513 [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 433.335,
+                  "score": 1113,
+                  "evalue": 2.07946e-150,
+                  "identity": 214,
+                  "positive": 226,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLRRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYAHTLQEVKLTVEEDQTCKSRLGRYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLL R DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNPKNFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK++HTLQEVK+TV+ED+ C+S L  YYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 30,
+              "description": [
+                {
+                  "id": "gi|109083203|ref|XP_001114420.1|",
+                  "accession": "XP_001114420",
+                  "title": "PREDICTED: granzyme B isoform 3 [Macaca mulatta]",
+                  "taxid": 9544,
+                  "sciname": "Macaca mulatta"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 431.024,
+                  "score": 1107,
+                  "evalue": 1.48567e-149,
+                  "identity": 213,
+                  "positive": 225,
+                  "query_from": 1,
+                  "query_to": 247,
+                  "hit_from": 35,
+                  "hit_to": 281,
+                  "align_len": 247,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "MQPILLLLAFLLLRRTDAGEIIGGHEAKPHSRPYMAYLMIWDQMSLKSCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVQPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYAHTLQEVKLTVEEDQTCKSRLGRYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "MQPILLLLAFLLL R DAGEIIGGHEAKPHSRPYMAYLMIWDQ SLK CGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AVQPLRLP NKAQVKPGQ C VAGWGQT P GK++HTLQEVK+TV+ED+ C+S L  YYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 31,
+              "description": [
+                {
+                  "id": "gi|795361067|ref|XP_011786102.1|",
+                  "accession": "XP_011786102",
+                  "title": "PREDICTED: granzyme B isoform X1 [Colobus angolensis palliatus]",
+                  "taxid": 336983,
+                  "sciname": "Colobus angolensis palliatus"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 426.787,
+                  "score": 1096,
+                  "evalue": 7.25704e-148,
+                  "identity": 210,
+                  "positive": 225,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 35,
+                  "hit_to": 280,
+                  "align_len": 246,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEVKPHSRPYMAYLTIWDQMSLKRCGGFLIQEDFVLTAAHCWGSSINVTLGAHNINKQERTQQFIPVKRAIPHPAYNPEKFSSDIMLLQLERKAKRTTAVQPLRLPRNKAQVKPGQACSVAGWGQTTPMGKYSDTLQEVKLTVEEDQTCKSHLGHYYDSTVELCVGDPKIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVPWIKKTMKR",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHE KPHSRPYMAYL IWDQ SLKRCGGFLI++DFVLTAAHCWGSSINVTLGAHNI +QE TQQFIPVKR IPHPAYNP+ FS+DIMLLQLERKAKRT AVQPLRLP NKAQVKPGQ CSVAGWGQT P+GK+S TLQEVK+TV+ED+ C+S L HYYDST+ELCVGDP+I+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 32,
+              "description": [
+                {
+                  "id": "gi|544446623|ref|XP_005561054.1|",
+                  "accession": "XP_005561054",
+                  "title": "PREDICTED: granzyme B isoform X1 [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 315,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 423.32,
+                  "score": 1087,
+                  "evalue": 5.66049e-146,
+                  "identity": 199,
+                  "positive": 212,
+                  "query_from": 18,
+                  "query_to": 247,
+                  "hit_from": 86,
+                  "hit_to": 315,
+                  "align_len": 230,
+                  "gaps": 0,
+                  "qseq": "AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "SGEIIGGHEAKPHSRPYMAYLMIWDQMSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVKPLRLPRNKAQVKPGQACDVAGWGQTTPDGKYSHTLQEVKLTVEEDQTCKSRLGHYYDSTVELCVGDPEIQKASFKGDSGGPLVCNKVAQGIVSYGQRNGKPPRVCTKVSSFVRWIKKTMKRH",
+                  "midline": "+GEIIGGHEAKPHSRPYMAYLMIWDQ SLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AV+PLRLP NKAQVKPGQ C VAGWGQT P GK+SHTLQEVK+TV+ED+ C+S L HYYDST+ELCVGDPEI+K SFKGDSGGPLVCNKVAQGIVSYG+ NG PPR CTKVSSFV WIKKTMKR+"
+                }
+              ]
+            },
+            {
+              "num": 33,
+              "description": [
+                {
+                  "id": "gi|724826474|ref|XP_010361997.1|",
+                  "accession": "XP_010361997",
+                  "title": "PREDICTED: granzyme B [Rhinopithecus roxellana]",
+                  "taxid": 61622,
+                  "sciname": "Rhinopithecus roxellana"
+                }
+              ],
+              "len": 281,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 422.165,
+                  "score": 1084,
+                  "evalue": 6.11758e-146,
+                  "identity": 208,
+                  "positive": 227,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 35,
+                  "hit_to": 279,
+                  "align_len": 245,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPILLLLAFLLLPRTDAGEIIGGHEVKPHSRPYMAHLMIWDQKSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIEKQERTQQIIPVKRAIPHPAYNPEKISSDIMLLQLERKAKRTSAVQPLGLPRNKAQVKPGQACSVAGWGQTAPMGKYSNTLLEVKLTVEKDQTCKSHLGHYYDSTVELCVGDPKIQKASFKGDSGGPLVCNKVAQGIVSYGQSNGKPPRACTKVSSFVRWIKKTMK",
+                  "midline": "MQPILLLLAFLLLPR DAGEIIGGHE KPHSRPYMA+LMIWDQKSLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNI++QE TQQ IPVKR IPHPAYNP+  S+DIMLLQLERKAKRT AVQPL LP NKAQVKPGQ CSVAGWGQTAP+GK+S+TL EVK+TV++D+ C+S L HYYDST+ELCVGDP+I+K SFKGDSGGPLVCNKVAQGIVSYG++NG PPRACTKVSSFV WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 34,
+              "description": [
+                {
+                  "id": "gi|817259797|ref|XP_012323554.1|",
+                  "accession": "XP_012323554",
+                  "title": "PREDICTED: granzyme B [Aotus nancymaae]",
+                  "taxid": 37293,
+                  "sciname": "Aotus nancymaae"
+                }
+              ],
+              "len": 304,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 418.698,
+                  "score": 1075,
+                  "evalue": 2.90978e-144,
+                  "identity": 207,
+                  "positive": 223,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 35,
+                  "hit_to": 279,
+                  "align_len": 245,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSHPYMAYLAIWDQKSLKRCGGFLVREDFVLTAAHCWGSSINVTLGAHNIKKQERTQQSIPVRRTFCHPDYNPENFSSDIMLLQLERKAKRTTAVQPLRLPSSKAQVKPGQVCSVAGWGRTTPMGTYSHTLREVNLTVQEDQKCESHLRNYYDGTVELCVGDPEIKKASFKGDSGGPLVCNKVAQGIVSYGPGNGTSPRAFTKVSSFVHWIKKIMR",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHS PYMAYL IWDQKSLKRCGGFL+R+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV+R   HP YNP+NFS+DIMLLQLERKAKRT AVQPLRLPS+KAQVKPGQ CSVAGWG+T P+G +SHTL+EV +TVQED+KCES LR+YYD T+ELCVGDPEIKK SFKGDSGGPLVCNKVAQGIVSYG  NG  PRA TKVSSFVHWIKK M+"
+                }
+              ]
+            },
+            {
+              "num": 35,
+              "description": [
+                {
+                  "id": "gi|391852078|ref|NP_001254677.1|",
+                  "accession": "NP_001254677",
+                  "title": "granzyme B precursor [Callithrix jacchus]",
+                  "taxid": 9483,
+                  "sciname": "Callithrix jacchus"
+                },
+                {
+                  "id": "gi|197205428|gb|ACH47963.1|",
+                  "accession": "ACH47963",
+                  "title": "granzyme B [Callithrix jacchus]",
+                  "taxid": 9483,
+                  "sciname": "Callithrix jacchus"
+                }
+              ],
+              "len": 270,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 415.616,
+                  "score": 1067,
+                  "evalue": 1.40223e-143,
+                  "identity": 207,
+                  "positive": 224,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 245,
+                  "align_len": 245,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSHPYMAYLAIWDQESLKRCGGFLVREDFVLTAAHCWGSSINVTLGAHNIKKQERTQQSMPVRRTFCHPDYNPENFSSDIMLLQLERKAKRTTAVQPLRLPSSKAQVKPGQVCSVAGWGRTTPMGTYSHTLQAVNLTVQEDRKCESCLRNYYDSTVELCVGDPEIKKASFKGDSGGPLVCNKVAQGIVSHGPRNGKSPRAFTKVSSFVHWIKKTMR",
+                  "midline": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHS PYMAYL IWDQ+SLKRCGGFL+R+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ +PV+R   HP YNP+NFS+DIMLLQLERKAKRT AVQPLRLPS+KAQVKPGQ CSVAGWG+T P+G +SHTLQ V +TVQEDRKCES LR+YYDST+ELCVGDPEIKK SFKGDSGGPLVCNKVAQGIVS+G  NG  PRA TKVSSFVHWIKKTM+"
+                }
+              ]
+            },
+            {
+              "num": 36,
+              "description": [
+                {
+                  "id": "gi|725559183|ref|XP_003924294.2|",
+                  "accession": "XP_003924294",
+                  "title": "PREDICTED: granzyme B [Saimiri boliviensis boliviensis]",
+                  "taxid": 39432,
+                  "sciname": "Saimiri boliviensis boliviensis"
+                }
+              ],
+              "len": 270,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 414.461,
+                  "score": 1064,
+                  "evalue": 3.95744e-143,
+                  "identity": 204,
+                  "positive": 222,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 245,
+                  "align_len": 245,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPVLILLAFLLLPRADTGEIIGGQEAKPHSHPYMAYLVIWDQKSLKRCGGFLVREDFVLTAAHCWGSSINVTLGAHNIKKQETTQQSIPVRRTFCHPDYNPENFSSDIMLLQLERKAKRTTAVQPLRLPRSKAQVKPGQVCSVAGWGWTTPTGTYSHTLREVNLTVQEDQKCESHLRNYYDSTVELCVGDPEIKKASFKGDSGGPLVCNKVAQGIVSYGKGNGMSPRAFTKVSSFVRWIKKTMR",
+                  "midline": "MQP+L+LLAFLLLPRAD GEIIGG EAKPHS PYMAYL+IWDQKSLKRCGGFL+R+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV+R   HP YNP+NFS+DIMLLQLERKAKRT AVQPLRLP +KAQVKPGQ CSVAGWG T P G +SHTL+EV +TVQED+KCES LR+YYDST+ELCVGDPEIKK SFKGDSGGPLVCNKVAQGIVSYG+ NGM PRA TKVSSFV WIKKTM+"
+                }
+              ]
+            },
+            {
+              "num": 37,
+              "description": [
+                {
+                  "id": "gi|667273962|ref|XP_008571833.1|",
+                  "accession": "XP_008571833",
+                  "title": "PREDICTED: granzyme B-like [Galeopterus variegatus]",
+                  "taxid": 482537,
+                  "sciname": "Galeopterus variegatus"
+                },
+                {
+                  "id": "gi|667273965|ref|XP_008571834.1|",
+                  "accession": "XP_008571834",
+                  "title": "PREDICTED: granzyme B-like [Galeopterus variegatus]",
+                  "taxid": 482537,
+                  "sciname": "Galeopterus variegatus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 387.111,
+                  "score": 993,
+                  "evalue": 1.17302e-132,
+                  "identity": 180,
+                  "positive": 205,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 14,
+                  "hit_to": 245,
+                  "align_len": 232,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PRAQAGEIIGGHEAKPHSRPYMAYLQIWDRESLKRCGGFLIREDFVLTAAHCVGSSINVTLGAHNIKEQEETQQVITVRRAIPHPAYNPKNFSSDIMLLRLEKKAKRTAAVRPLRLPGGKARVKPGEVCSVAGWGRTARMGKFSDTLQEVELTVQADEKCEFRLANYYNNAVEMCVGDPKIKRATFKADSGGPLVCNNVAQGIVSYGPSDGTSPRVCTKVSSFLHWIKKTMK",
+                  "midline": "PRA AGEIIGGHEAKPHSRPYMAYL IWD++SLKRCGGFLIR+DFVLTAAHC GSSINVTLGAHNIKEQE TQQ I V+R IPHPAYNPKNFS+DIMLL+LE+KAKRT AV+PLRLP  KA+VKPG+ CSVAGWG+TA +GK S TLQEV++TVQ D KCE  L +YY++ +E+CVGDP+IK+ +FK DSGGPLVCN VAQGIVSYG ++G  PR CTKVSSF+HWIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 38,
+              "description": [
+                {
+                  "id": "gi|594665204|ref|XP_007180723.1|",
+                  "accession": "XP_007180723",
+                  "title": "PREDICTED: granzyme B [Balaenoptera acutorostrata scammoni]",
+                  "taxid": 310752,
+                  "sciname": "Balaenoptera acutorostrata scammoni"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 380.948,
+                  "score": 977,
+                  "evalue": 3.1789e-130,
+                  "identity": 180,
+                  "positive": 201,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 17,
+                  "hit_to": 246,
+                  "align_len": 231,
+                  "gaps": 1,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RAKAGEIIGGHEAKRHSRPYMAYLQIWDQDDRKRCGGFLIREDFVLTAAHCWGSSVNVTLGAHNIKVRERTQQVIPVRKAIPHPDYNKKNYSNDIMLLKLERKAKRTAAVRPLSLPRGKARVKPGQVCSVAGWGQVA-MGTYSDTLQEVKLTIQEDQKCESHLRNYYNNAIQLCVGDPKENKASFKGDSGGPLVCNNVAQGIVSYGQKNGSPPRACTKVSSFLPWIKKTMK",
+                  "midline": "RA AGEIIGGHEAK HSRPYMAYL IWDQ   KRCGGFLIR+DFVLTAAHCWGSS+NVTLGAHNIK +E TQQ IPV++ IPHP YN KN+SNDIMLL+LERKAKRT AV+PL LP  KA+VKPGQ CSVAGWGQ A +G +S TLQEVK+T+QED+KCES LR+YY++ I+LCVGDP+  K SFKGDSGGPLVCN VAQGIVSYG+ NG PPRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 39,
+              "description": [
+                {
+                  "id": "gi|444728861|gb|ELW69303.1|",
+                  "accession": "ELW69303",
+                  "title": "Granzyme B [Tupaia chinensis]",
+                  "taxid": 246437,
+                  "sciname": "Tupaia chinensis"
+                }
+              ],
+              "len": 249,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 380.563,
+                  "score": 976,
+                  "evalue": 4.87576e-130,
+                  "identity": 177,
+                  "positive": 203,
+                  "query_from": 5,
+                  "query_to": 245,
+                  "hit_from": 6,
+                  "hit_to": 246,
+                  "align_len": 241,
+                  "gaps": 0,
+                  "qseq": "LLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "LFLLVFFLSPTAEAGEIIGGHEAKPHSRPYMAYLHIMHQTTEFRCGGFLIREDFILTAAHCFGSSINVTLGAHNIKEKEKMQQLIPVKKAIPHPDYNPKNFNNDIMLLQLKRKAKQTAAVKLLRLPRAKARVKPGQVCSVAGWGRMAPIGKYPDTLQEVELEVQQDQECEDHLANYYNNNTEICVGDPSTKRASFKGDSGGPLVCKNVAQGIVSYGRNNGNPPRVCTKVSRFLHWIKKTMK",
+                  "midline": "L LL F L P A+AGEIIGGHEAKPHSRPYMAYL I  Q +  RCGGFLIR+DF+LTAAHC+GSSINVTLGAHNIKE+E  QQ IPVK+ IPHP YNPKNF+NDIMLLQL+RKAK+T AV+ LRLP  KA+VKPGQ CSVAGWG+ AP+GK+  TLQEV++ VQ+D++CE  L +YY++  E+CVGDP  K+ SFKGDSGGPLVC  VAQGIVSYGRNNG PPR CTKVS F+HWIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 40,
+              "description": [
+                {
+                  "id": "gi|593762180|ref|XP_007119743.1|",
+                  "accession": "XP_007119743",
+                  "title": "PREDICTED: granzyme B [Physeter catodon]",
+                  "taxid": 9755,
+                  "sciname": "Physeter catodon"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 377.481,
+                  "score": 968,
+                  "evalue": 5.58699e-129,
+                  "identity": 187,
+                  "positive": 212,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPLLLLLTFLLLPRAKAGEIIGGHEAKPHSRPYMAFLQIWDQDDQKRCGGFLIREDFVLTAAHCWGSSVNVTLGAHNIKDRERTQQVIPVRKAIPHPDYNKKNYSNDIMLLKLERKAKQTAAVRPLSLPRGKARVKPGQVCRVAGWGLVA-MGRYSDTLQEVKLTIQEDQKCESHLHSYYNNAIQLCVGDPKENKASFKGDSGGPLVCNNVAQGIVSYGQKNGSPPRACTKVSGFLPWIKKTMK",
+                  "midline": "MQP+LLLL FLLLPRA AGEIIGGHEAKPHSRPYMA+L IWDQ   KRCGGFLIR+DFVLTAAHCWGSS+NVTLGAHNIK++E TQQ IPV++ IPHP YN KN+SNDIMLL+LERKAK+T AV+PL LP  KA+VKPGQ C VAGWG  A +G++S TLQEVK+T+QED+KCES L  YY++ I+LCVGDP+  K SFKGDSGGPLVCN VAQGIVSYG+ NG PPRACTKVS F+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 41,
+              "description": [
+                {
+                  "id": "gi|562830320|ref|XP_006144675.1|",
+                  "accession": "XP_006144675",
+                  "title": "PREDICTED: granzyme B-like [Tupaia chinensis]",
+                  "taxid": 246437,
+                  "sciname": "Tupaia chinensis"
+                }
+              ],
+              "len": 353,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 379.793,
+                  "score": 974,
+                  "evalue": 3.34862e-128,
+                  "identity": 177,
+                  "positive": 203,
+                  "query_from": 5,
+                  "query_to": 245,
+                  "hit_from": 110,
+                  "hit_to": 350,
+                  "align_len": 241,
+                  "gaps": 0,
+                  "qseq": "LLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "LFLLVFFLSPTAEAGEIIGGHEAKPHSRPYMAYLHIMHQTTEFRCGGFLIREDFILTAAHCFGSSINVTLGAHNIKEKEKMQQLIPVKKAIPHPDYNPKNFNNDIMLLQLKRKAKQTAAVKLLRLPRAKARVKPGQVCSVAGWGRMAPIGKYPDTLQEVELEVQQDQECEDHLANYYNNNTEICVGDPSTKRASFKGDSGGPLVCKNVAQGIVSYGRNNGNPPRVCTKVSRFLHWIKKTMK",
+                  "midline": "L LL F L P A+AGEIIGGHEAKPHSRPYMAYL I  Q +  RCGGFLIR+DF+LTAAHC+GSSINVTLGAHNIKE+E  QQ IPVK+ IPHP YNPKNF+NDIMLLQL+RKAK+T AV+ LRLP  KA+VKPGQ CSVAGWG+ AP+GK+  TLQEV++ VQ+D++CE  L +YY++  E+CVGDP  K+ SFKGDSGGPLVC  VAQGIVSYGRNNG PPR CTKVS F+HWIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 42,
+              "description": [
+                {
+                  "id": "gi|470649351|ref|XP_004328199.1|",
+                  "accession": "XP_004328199",
+                  "title": "PREDICTED: granzyme B [Tursiops truncatus]",
+                  "taxid": 9739,
+                  "sciname": "Tursiops truncatus"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 374.4,
+                  "score": 960,
+                  "evalue": 9.89634e-128,
+                  "identity": 176,
+                  "positive": 201,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 16,
+                  "hit_to": 246,
+                  "align_len": 232,
+                  "gaps": 1,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PRAKSGEIIGGHEAKPHSRPYMAFLQIWDQDDQKRCGGFLIREDFVLTAAHCWGSSVNVTLGAHNIKDRERTQQVIPVRRAIPHPGYNEKNYSNDIMLLKLERKVKQTAAVRPLSLPRRKARVKPGRVCSVAGWGQVA-LGTYSDTLQEVKLTIQKDQKCELYLHNYYNNAIQLCVGDPKENKASFKGDSGGPLVCNNVAQGIVSYGQKNGSPPRACTKVSSFLPWIKKTMK",
+                  "midline": "PRA +GEIIGGHEAKPHSRPYMA+L IWDQ   KRCGGFLIR+DFVLTAAHCWGSS+NVTLGAHNIK++E TQQ IPV+R IPHP YN KN+SNDIMLL+LERK K+T AV+PL LP  KA+VKPG+ CSVAGWGQ A LG +S TLQEVK+T+Q+D+KCE  L +YY++ I+LCVGDP+  K SFKGDSGGPLVCN VAQGIVSYG+ NG PPRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 43,
+              "description": [
+                {
+                  "id": "gi|602723514|ref|XP_007471896.1|",
+                  "accession": "XP_007471896",
+                  "title": "PREDICTED: granzyme B [Lipotes vexillifer]",
+                  "taxid": 118797,
+                  "sciname": "Lipotes vexillifer"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 371.318,
+                  "score": 952,
+                  "evalue": 1.67083e-126,
+                  "identity": 175,
+                  "positive": 199,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 17,
+                  "hit_to": 246,
+                  "align_len": 231,
+                  "gaps": 1,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RAKAGEIIGGHEAKPHSRPYMAFLQIWGQDDQKRCGGFLIREDFVLTAAHCWGSSVNVTLGAHNIKDRERTRQLIPVRRAILHPGYNEKNYSNDIMLLKLERKAKQTAAVRPLSLPRGKARVKPGQVCSVAGWGQVA-TGTYSDTLQEVKLTIQEDQTCESNLHNYYNNAIQLCVGDPKENKASFKGDSGGPLVCNHVAQGIVSYGQKNGSPPRACTKVSSFLPWIKKTMK",
+                  "midline": "RA AGEIIGGHEAKPHSRPYMA+L IW Q   KRCGGFLIR+DFVLTAAHCWGSS+NVTLGAHNIK++E T+Q IPV+R I HP YN KN+SNDIMLL+LERKAK+T AV+PL LP  KA+VKPGQ CSVAGWGQ A  G +S TLQEVK+T+QED+ CES+L +YY++ I+LCVGDP+  K SFKGDSGGPLVCN VAQGIVSYG+ NG PPRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 44,
+              "description": [
+                {
+                  "id": "gi|466074549|ref|XP_004283156.1|",
+                  "accession": "XP_004283156",
+                  "title": "PREDICTED: granzyme B [Orcinus orca]",
+                  "taxid": 9733,
+                  "sciname": "Orcinus orca"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 371.318,
+                  "score": 952,
+                  "evalue": 2.01139e-126,
+                  "identity": 175,
+                  "positive": 198,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 17,
+                  "hit_to": 246,
+                  "align_len": 231,
+                  "gaps": 1,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RAKAGEIIGGHEVKPHSRPYMAFLQIWDQDDQKRCGGFLIRQDFVLTAAHCWGSSVNVTLGAHNIKDRERTQQVIPVRRAIPHPGYNEKNYSNDIMLLKLERKVKQTAAVRPLSLPRRKARVKPGRVCSVAGWGQVA-LGTYSDTLQEVKLTIQKDQKCELYLHNYYNNAIQLCVGDPKENKASFKGDSGGPLVCNNVAQGIVSYGQKNGSPPRACTKVSSFLPWIKKTMK",
+                  "midline": "RA AGEIIGGHE KPHSRPYMA+L IWDQ   KRCGGFLIR DFVLTAAHCWGSS+NVTLGAHNIK++E TQQ IPV+R IPHP YN KN+SNDIMLL+LERK K+T AV+PL LP  KA+VKPG+ CSVAGWGQ A LG +S TLQEVK+T+Q+D+KCE  L +YY++ I+LCVGDP+  K SFKGDSGGPLVCN VAQGIVSYG+ NG PPRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 45,
+              "description": [
+                {
+                  "id": "gi|744582813|ref|XP_010984482.1|",
+                  "accession": "XP_010984482",
+                  "title": "PREDICTED: granzyme B [Camelus dromedarius]",
+                  "taxid": 9838,
+                  "sciname": "Camelus dromedarius"
+                }
+              ],
+              "len": 261,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 362.844,
+                  "score": 930,
+                  "evalue": 5.66506e-123,
+                  "identity": 170,
+                  "positive": 199,
+                  "query_from": 17,
+                  "query_to": 245,
+                  "hit_from": 19,
+                  "hit_to": 248,
+                  "align_len": 230,
+                  "gaps": 1,
+                  "qseq": "DAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTA-PLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "NAGEIIGGHEAKPHSRPYMAYLQIWNQDVRSRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKKQERTQQVIPVRKAIRHPDYNKRNYANDIMLLQLQRKAKQTAAVRPLRLPGDRARVKPGQACDVAGWGRVAVAMNNYPDTLQEVKLIVQEDQKCESHLRNYYNNIIQLCVGDPKKKKASFKGDSGGPLVCDNVAQGIVSYGQNDGSTPRACTKVSSFLPWIKKTMK",
+                  "midline": "+AGEIIGGHEAKPHSRPYMAYL IW+Q    RCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV++ I HP YN +N++NDIMLLQL+RKAK+T AV+PLRLP ++A+VKPGQ C VAGWG+ A  +  +  TLQEVK+ VQED+KCES LR+YY++ I+LCVGDP+ KK SFKGDSGGPLVC+ VAQGIVSYG+N+G  PRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 46,
+              "description": [
+                {
+                  "id": "gi|821030335|ref|XP_012353430.1|",
+                  "accession": "XP_012353430",
+                  "title": "PREDICTED: granzyme H [Nomascus leucogenys]",
+                  "taxid": 61853,
+                  "sciname": "Nomascus leucogenys"
+                }
+              ],
+              "len": 278,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 362.459,
+                  "score": 929,
+                  "evalue": 1.62138e-122,
+                  "identity": 186,
+                  "positive": 204,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 35,
+                  "hit_to": 277,
+                  "align_len": 246,
+                  "gaps": 3,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQPILLLLALLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQERTQQFIPVKTAMPHPAYNPENFSNDIMLLQLKRKAKWTTAVRPLRLPSSKAQVKPGQVCSVAGWGYVSK-STLATTLQEVSLTVQKDRECERLFS--YNRATEICVGDPKKAQTGFKGDSGGPLVCKDVAQGIFSQGNTKGTPPGVYIRVSHFLPWIKRTMKR",
+                  "midline": "MQPILLLLA LLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQFIPVK  +PHPAYNP+NFSNDIMLLQL+RKAK T AV+PLRLPS+KAQVKPGQ CSVAGWG  +     + TLQEV +TVQ+DR+CE      Y+   E+CVGDP+  +T FKGDSGGPLVC  VAQGI S G   G PP    +VS F+ WIK+TMKR"
+                }
+              ]
+            },
+            {
+              "num": 47,
+              "description": [
+                {
+                  "id": "gi|742138086|ref|XP_010841689.1|",
+                  "accession": "XP_010841689",
+                  "title": "PREDICTED: granzyme B-like [Bison bison bison]",
+                  "taxid": 43346,
+                  "sciname": "Bison bison bison"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 360.918,
+                  "score": 925,
+                  "evalue": 2.15837e-122,
+                  "identity": 182,
+                  "positive": 208,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MKPLLLLVAFLLTPRAKAGEIIGGHEAKPHSRPYMAYLQYWNQDVQSRCGGFLIRQDFVLTAAHCHGSSINVTLGAHNIKQQERTQQVIRVRRAISHPDYNPKNFSNDIMLLKLERKAKQTSAVKPLSLPRAKARVKPGQTCSVAGWGRDS-RGTYADTLQEVKLIVQEDQKCEAYLRNFYNRAIQLCVGDPKTKKASFKGDSGGPLVCDNVAQGIVSYGQKDGSTPRAFTKVSSFLPWIKKTMK",
+                  "midline": "M+P+LLL+AFLL PRA AGEIIGGHEAKPHSRPYMAYL  W+Q    RCGGFLIR DFVLTAAHC GSSINVTLGAHNIK+QE TQQ I V+R I HP YNPKNFSNDIMLL+LERKAK+T AV+PL LP  KA+VKPGQTCSVAGWG+ +  G ++ TLQEVK+ VQED+KCE+ LR++Y+  I+LCVGDP+ KK SFKGDSGGPLVC+ VAQGIVSYG+ +G  PRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 48,
+              "description": [
+                {
+                  "id": "gi|826302209|ref|XP_012502759.1|",
+                  "accession": "XP_012502759",
+                  "title": "PREDICTED: granzyme B [Propithecus coquereli]",
+                  "taxid": 379532,
+                  "sciname": "Propithecus coquereli"
+                }
+              ],
+              "len": 269,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 357.066,
+                  "score": 915,
+                  "evalue": 1.39755e-120,
+                  "identity": 172,
+                  "positive": 201,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 250,
+                  "align_len": 237,
+                  "gaps": 4,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKR--CGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLR--HYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PGAEAGEIIGGHEAKPHSRPYMAFLQIWDVGSQKRHNCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQEKTQQVIHVRRATRHPAYSSTDHSSDIMLLQLKTKARRTAAVRPLKLPTGKARVKPGKECIVAGWGRTAPVSKDSDTLQEVMLTVQEDKECESLARPPYRYDKTIEICVGDPKIKKASFKGDSGGPLMCDNVAQGIISHGKGNGMPPRVCTRVSSFLPWIKKTMKR",
+                  "midline": "P A+AGEIIGGHEAKPHSRPYMA+L IWD  S KR  CGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ I V+R   HPAY+  + S+DIMLLQL+ KA+RT AV+PL+LP+ KA+VKPG+ C VAGWG+TAP+ K S TLQEV +TVQED++CES  R  + YD TIE+CVGDP+IKK SFKGDSGGPL+C+ VAQGI+S+G+ NGMPPR CT+VSSF+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 49,
+              "description": [
+                {
+                  "id": "gi|852775537|ref|XP_012880796.1|",
+                  "accession": "XP_012880796",
+                  "title": "PREDICTED: granzyme B-like [Dipodomys ordii]",
+                  "taxid": 10020,
+                  "sciname": "Dipodomys ordii"
+                }
+              ],
+              "len": 253,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 356.295,
+                  "score": 913,
+                  "evalue": 1.71403e-120,
+                  "identity": 165,
+                  "positive": 193,
+                  "query_from": 14,
+                  "query_to": 247,
+                  "hit_from": 14,
+                  "hit_to": 247,
+                  "align_len": 234,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "PTAKTGKIIGGHEAKPHSRPYMAYLENLDGYSLRQCGGFLIREDFVMTAAHCSGRFINVTLGAHNIKEREKTQQVIPVKKAIPHPGYNPRNHSNDIMLLQLQRKAKLTTAVKPLKLPKGRSHVKPGQVCDVAGWGRRTPKGQCSNTLQEVELIVQEDQMCESHLEGYYNSVSQICVGDPKMKSSSFKGDSGGPLVCNNVAQGIISYGKANGTPPRACTKISKFSHWIKKNMKRY",
+                  "midline": "P A  G+IIGGHEAKPHSRPYMAYL   D  SL++CGGFLIR+DFV+TAAHC G  INVTLGAHNIKE+E TQQ IPVK+ IPHP YNP+N SNDIMLLQL+RKAK T AV+PL+LP  ++ VKPGQ C VAGWG+  P G+ S+TLQEV++ VQED+ CES L  YY+S  ++CVGDP++K +SFKGDSGGPLVCN VAQGI+SYG+ NG PPRACTK+S F HWIKK MKRY"
+                }
+              ]
+            },
+            {
+              "num": 50,
+              "description": [
+                {
+                  "id": "gi|76647341|ref|XP_585453.2|",
+                  "accession": "XP_585453",
+                  "title": "PREDICTED: granzyme B [Bos taurus]",
+                  "taxid": 9913,
+                  "sciname": "Bos taurus"
+                },
+                {
+                  "id": "gi|297488123|ref|XP_002696692.1|",
+                  "accession": "XP_002696692",
+                  "title": "PREDICTED: granzyme B [Bos taurus]",
+                  "taxid": 9913,
+                  "sciname": "Bos taurus"
+                },
+                {
+                  "id": "gi|296475449|tpg|DAA17564.1|",
+                  "accession": "DAA17564",
+                  "title": "TPA: granzyme B (granzyme 2, cytotoxic T-lymphocyte-associated serine esterase 1)-like [Bos taurus]",
+                  "taxid": 9913,
+                  "sciname": "Bos taurus"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 354.755,
+                  "score": 909,
+                  "evalue": 5.44223e-120,
+                  "identity": 178,
+                  "positive": 206,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MKPLLLLVAFLLTPRAKAGEIIGGHEAKPHSRPYMAYLQYWNQDVQSRCGGFLVRQDFVLTAAHCNGSSIKVTLGAHNIKQQERTQQVIRVRRAISHPDYNPKNFSNDIMLLKLERKAKQTSAVKPLSLPRAKARVKPGQTCSVAGWGRDS-TDTYADTLQEVKLIVQEDQKCEAYLRNFYNRAIQLCVGDPKTKKASFQGDSGGPLVCDNVAQGIVSYGKRDGSTPRAFTKVSSFLPWIKKTMK",
+                  "midline": "M+P+LLL+AFLL PRA AGEIIGGHEAKPHSRPYMAYL  W+Q    RCGGFL+R DFVLTAAHC GSSI VTLGAHNIK+QE TQQ I V+R I HP YNPKNFSNDIMLL+LERKAK+T AV+PL LP  KA+VKPGQTCSVAGWG+ +    ++ TLQEVK+ VQED+KCE+ LR++Y+  I+LCVGDP+ KK SF+GDSGGPLVC+ VAQGIVSYG+ +G  PRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 51,
+              "description": [
+                {
+                  "id": "gi|556727104|ref|XP_005959308.1|",
+                  "accession": "XP_005959308",
+                  "title": "PREDICTED: granzyme B [Pantholops hodgsonii]",
+                  "taxid": 59538,
+                  "sciname": "Pantholops hodgsonii"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 353.984,
+                  "score": 907,
+                  "evalue": 1.02444e-119,
+                  "identity": 177,
+                  "positive": 208,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPLLLLMAFLLTPRAKAGEIIGGREAKPHSRPYMAYLQYWNQDGQCRCGGFLVREDFVLTAAHCHGSSMNVTLGAHNIKQQERTQQVIGVRRAICHPDYNPKNFSNDIMLLKLKRKAKQTSAVKPLRLPRAKARVKPGQVCSVAGWGKDS-TGTYADTLQEVKLTVQEDRRCEAYLRNYYNRANQLCVGDPKTKKATFKGDSGGPLVCDNVAEGIVSYGQKDGSTPRAFTKVSTFLPWIKKTMK",
+                  "midline": "MQP+LLL+AFLL PRA AGEIIGG EAKPHSRPYMAYL  W+Q    RCGGFL+R+DFVLTAAHC GSS+NVTLGAHNIK+QE TQQ I V+R I HP YNPKNFSNDIMLL+L+RKAK+T AV+PLRLP  KA+VKPGQ CSVAGWG+ +  G ++ TLQEVK+TVQEDR+CE+ LR+YY+   +LCVGDP+ KK +FKGDSGGPLVC+ VA+GIVSYG+ +G  PRA TKVS+F+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 52,
+              "description": [
+                {
+                  "id": "gi|594062333|ref|XP_006055226.1|",
+                  "accession": "XP_006055226",
+                  "title": "PREDICTED: granzyme B isoform X1 [Bubalus bubalis]",
+                  "taxid": 89462,
+                  "sciname": "Bubalus bubalis"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 353.984,
+                  "score": 907,
+                  "evalue": 1.10571e-119,
+                  "identity": 178,
+                  "positive": 206,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MKPLLLLVAFLLTPRAKAGEIIGGHEAKPHSRPYMAYLQYWNQDVRRRCGGFLVRQDFVLTAAHCHGSSINVTLGAHNIKQQERTQQVILVRTAISHPDYNPKTFSNDIMLLKLEREAKQTSAVKPLSLPRAKARVKPGQTCSVAGWGRDS-TGTYADTLQEVKLTVQEDGKCEAYLHDYYNRAIQLCVGDPKTKKASFQGDSGGPLVCDNVAQGIVSYGKSDGSTPRAFTKVSSFLPWIKKTMK",
+                  "midline": "M+P+LLL+AFLL PRA AGEIIGGHEAKPHSRPYMAYL  W+Q   +RCGGFL+R DFVLTAAHC GSSINVTLGAHNIK+QE TQQ I V+  I HP YNPK FSNDIMLL+LER+AK+T AV+PL LP  KA+VKPGQTCSVAGWG+ +  G ++ TLQEVK+TVQED KCE+ L  YY+  I+LCVGDP+ KK SF+GDSGGPLVC+ VAQGIVSYG+++G  PRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 53,
+              "description": [
+                {
+                  "id": "gi|471377608|ref|XP_004376613.1|",
+                  "accession": "XP_004376613",
+                  "title": "PREDICTED: granzyme B [Trichechus manatus latirostris]",
+                  "taxid": 127582,
+                  "sciname": "Trichechus manatus latirostris"
+                }
+              ],
+              "len": 252,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 353.214,
+                  "score": 905,
+                  "evalue": 2.8521e-119,
+                  "identity": 167,
+                  "positive": 189,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 14,
+                  "hit_to": 244,
+                  "align_len": 232,
+                  "gaps": 1,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PEAETGEIIGGHEARPHSHPYMAFLQFWKQKEKKRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKEQEKTQQHIPVRRAIRHPDYNEKTISNDIMLLQLETEAQRMAAVRPIRLPGKKAQVRPGQVCSVAGWGQVAPMDKYAATLQEVALTVQEDKKCESYFNN-YSSDSEVCVGDPKKKMASFKGDSGGPLVCNNMAQGIVSYGRKDGTSPRVFTKVSSFLLWIKETMK",
+                  "midline": "P A+ GEIIGGHEA+PHS PYMA+L  W QK  KRCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIKEQE TQQ IPV+R I HP YN K  SNDIMLLQLE +A+R  AV+P+RLP  KAQV+PGQ CSVAGWGQ AP+ K++ TLQEV +TVQED+KCES   + Y S  E+CVGDP+ K  SFKGDSGGPLVCN +AQGIVSYGR +G  PR  TKVSSF+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 54,
+              "description": [
+                {
+                  "id": "gi|440898114|gb|ELR49680.1|",
+                  "accession": "ELR49680",
+                  "title": "Granzyme B, partial [Bos mutus]",
+                  "taxid": 72004,
+                  "sciname": "Bos mutus"
+                }
+              ],
+              "len": 266,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 353.599,
+                  "score": 906,
+                  "evalue": 3.39363e-119,
+                  "identity": 176,
+                  "positive": 206,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 21,
+                  "hit_to": 264,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MKPLLLLVAFLLTPRAKAGEIIGGHEAKPHSRPYMAYLQYWNQDVQSRCGGFLVRQDFVLTAAHCNGSSINIILGAHNIKQQERTQQIIGVRRAISHPDYNPKTFSNDIMLLKLKREAKQTSAVKPLSLPGAKARVKPGQTCSVAGWGRNS-TGAYADTLQEVKLTVQKDGKCEAYLHNYYNSAIQLCVGDPKAKKASFQGDSGGPLVCDNVAQGIVSYGKRDGSTPRAFTKVSSFLPWIKKTMK",
+                  "midline": "M+P+LLL+AFLL PRA AGEIIGGHEAKPHSRPYMAYL  W+Q    RCGGFL+R DFVLTAAHC GSSIN+ LGAHNIK+QE TQQ I V+R I HP YNPK FSNDIMLL+L+R+AK+T AV+PL LP  KA+VKPGQTCSVAGWG+ +  G ++ TLQEVK+TVQ+D KCE+ L +YY+S I+LCVGDP+ KK SF+GDSGGPLVC+ VAQGIVSYG+ +G  PRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 55,
+              "description": [
+                {
+                  "id": "gi|555986163|ref|XP_005904946.1|",
+                  "accession": "XP_005904946",
+                  "title": "PREDICTED: granzyme B [Bos mutus]",
+                  "taxid": 72004,
+                  "sciname": "Bos mutus"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 352.443,
+                  "score": 903,
+                  "evalue": 5.20211e-119,
+                  "identity": 176,
+                  "positive": 206,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MKPLLLLVAFLLTPRAKAGEIIGGHEAKPHSRPYMAYLQYWNQDVQSRCGGFLVRQDFVLTAAHCNGSSINIILGAHNIKQQERTQQIIGVRRAISHPDYNPKTFSNDIMLLKLKREAKQTSAVKPLSLPGAKARVKPGQTCSVAGWGRNS-TGAYADTLQEVKLTVQKDGKCEAYLHNYYNSAIQLCVGDPKAKKASFQGDSGGPLVCDNVAQGIVSYGKRDGSTPRAFTKVSSFLPWIKKTMK",
+                  "midline": "M+P+LLL+AFLL PRA AGEIIGGHEAKPHSRPYMAYL  W+Q    RCGGFL+R DFVLTAAHC GSSIN+ LGAHNIK+QE TQQ I V+R I HP YNPK FSNDIMLL+L+R+AK+T AV+PL LP  KA+VKPGQTCSVAGWG+ +  G ++ TLQEVK+TVQ+D KCE+ L +YY+S I+LCVGDP+ KK SF+GDSGGPLVC+ VAQGIVSYG+ +G  PRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 56,
+              "description": [
+                {
+                  "id": "gi|219521990|ref|NP_001137182.1|",
+                  "accession": "NP_001137182",
+                  "title": "granzyme B precursor [Sus scrofa]",
+                  "taxid": 9823,
+                  "sciname": "Sus scrofa"
+                },
+                {
+                  "id": "gi|216408333|gb|ACJ72857.1|",
+                  "accession": "ACJ72857",
+                  "title": "granzyme B [Sus scrofa]",
+                  "taxid": 9823,
+                  "sciname": "Sus scrofa"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 352.058,
+                  "score": 902,
+                  "evalue": 7.00575e-119,
+                  "identity": 168,
+                  "positive": 194,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 17,
+                  "hit_to": 246,
+                  "align_len": 231,
+                  "gaps": 1,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RAEAGEIIGGHEAKPHSRPYMAYLQIQDQDNRSRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKKQEETQQVIPVRKAIRHPDYNEKRISNDIMLLQLERKAKLTKAVKTLGLPGAKARVKPGQVCSVAGWGQVE-RGIYTDTLQEVKLTLQKDQECDSYLPNYYNGNTQLCVGDPKKKQATFKGDSGGPLVCNNVAQGIVSYGKKDGTPPRACTKVSSFLPWIKKIMK",
+                  "midline": "RA+AGEIIGGHEAKPHSRPYMAYL I DQ +  RCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV++ I HP YN K  SNDIMLLQLERKAK T+AV+ L LP  KA+VKPGQ CSVAGWGQ    G ++ TLQEVK+T+Q+D++C+S L +YY+   +LCVGDP+ K+ +FKGDSGGPLVCN VAQGIVSYG+ +G PPRACTKVSSF+ WIKK MK"
+                }
+              ]
+            },
+            {
+              "num": 57,
+              "description": [
+                {
+                  "id": "gi|560913233|ref|XP_006182893.1|",
+                  "accession": "XP_006182893",
+                  "title": "PREDICTED: granzyme B [Camelus ferus]",
+                  "taxid": 419612,
+                  "sciname": "Camelus ferus"
+                }
+              ],
+              "len": 261,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 351.673,
+                  "score": 901,
+                  "evalue": 1.67288e-118,
+                  "identity": 167,
+                  "positive": 196,
+                  "query_from": 17,
+                  "query_to": 245,
+                  "hit_from": 21,
+                  "hit_to": 248,
+                  "align_len": 230,
+                  "gaps": 3,
+                  "qseq": "DAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTA-PLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "NAGEIIGGHEAKPHSRPYMAYLQIWNQDDRSRCGGFLIREDFVLTAAHCWGSSINVTLGAHNIKKQERTQQVIPVRKAIRHPDYNKRNYANDIMLLQLQRKAKQTAAVRPLRLPGDRARVKP--ACDVAGWGRVAVAMNNYPDTLQEVKLIVQEDQKCESHLRNYYNNIIQLCVGDPKKKKASFKGDSGGPLVCDNVAQGIVSYGQKDGSTPRACTKVSSFLPWIKKTMK",
+                  "midline": "+AGEIIGGHEAKPHSRPYMAYL IW+Q    RCGGFLIR+DFVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV++ I HP YN +N++NDIMLLQL+RKAK+T AV+PLRLP ++A+VKP   C VAGWG+ A  +  +  TLQEVK+ VQED+KCES LR+YY++ I+LCVGDP+ KK SFKGDSGGPLVC+ VAQGIVSYG+ +G  PRACTKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 58,
+              "description": [
+                {
+                  "id": "gi|478493735|ref|XP_004421217.1|",
+                  "accession": "XP_004421217",
+                  "title": "PREDICTED: granzyme B-like [Ceratotherium simum simum]",
+                  "taxid": 73337,
+                  "sciname": "Ceratotherium simum simum"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 350.903,
+                  "score": 899,
+                  "evalue": 2.1505e-118,
+                  "identity": 165,
+                  "positive": 199,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 245,
+                  "align_len": 245,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPLMFLLAFLLPPRAEAGKIIGGHEAKPHSRPYMVFVQILVKETMKMCGGALVREDFVLTAAHCWGSSISVTLGAHNIQKRERTQQVIPVRRAIPHPDFNHNNMSNDIMLLELARKAKQTVAVRPLSLPWSKAQVRPGQVCSVAGWGSVTPIGPTSDTLQEVELTVQEDRECESRYPGVYSGATQICVGDPKEQKSSFKGDSGSPLVCKNVIQGIVSYGRTDRTPPAAYTKVSSFLPWIKKTMK",
+                  "midline": "MQP++ LLAFLL PRA+AG+IIGGHEAKPHSRPYM ++ I  ++++K CGG L+R+DFVLTAAHCWGSSI+VTLGAHNI+++E TQQ IPV+R IPHP +N  N SNDIMLL+L RKAK+T AV+PL LP +KAQV+PGQ CSVAGWG   P+G  S TLQEV++TVQEDR+CES     Y    ++CVGDP+ +K+SFKGDSG PLVC  V QGIVSYGR +  PP A TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 59,
+              "description": [
+                {
+                  "id": "gi|31542926|ref|NP_612526.2|",
+                  "accession": "NP_612526",
+                  "title": "granzyme-like protein 1 precursor [Rattus norvegicus]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                },
+                {
+                  "id": "gi|392353543|ref|XP_002728303.2|",
+                  "accession": "XP_002728303",
+                  "title": "PREDICTED: granzyme B [Rattus norvegicus]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                },
+                {
+                  "id": "gi|128371|sp|P18291.1|GRAB_RAT",
+                  "accession": "P18291",
+                  "title": "RecName: Full=Granzyme B; AltName: Full=Fragmentin; AltName: Full=Natural killer cell protease 1; AltName: Full=RNKP-1; Flags: Precursor",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                },
+                {
+                  "id": "gi|206690|gb|AAA42055.1|",
+                  "accession": "AAA42055",
+                  "title": "Rat natural killer cell protease 1 (RNKP-1) precursor [Rattus norvegicus]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                },
+                {
+                  "id": "gi|149064053|gb|EDM14323.1|",
+                  "accession": "EDM14323",
+                  "title": "rCG23561 [Rattus norvegicus]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 350.132,
+                  "score": 897,
+                  "evalue": 3.48011e-118,
+                  "identity": 164,
+                  "positive": 193,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 247,
+                  "align_len": 234,
+                  "gaps": 1,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKS-LKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PKTEAGEIIGGHEAKPHSRPYMAYLQIMDEYSGSKKCGGFLIREDFVLTAAHCSGSKINVTLGAHNIKEQEKMQQIIPVVKIIPHPAYNSKTISNDIMLLKLKSKAKRSSAVKPLNLPRRNVKVKPGDVCYVAGWGKLGPMGKYSDTLQEVELTVQEDQKCESYLKNYFDKANEICAGDPKIKRASFRGDSGGPLVCKKVAAGIVSYGQNDGSTPRAFTKVSTFLSWIKKTMKK",
+                  "midline": "P+ +AGEIIGGHEAKPHSRPYMAYL I D+ S  K+CGGFLIR+DFVLTAAHC GS INVTLGAHNIKEQE  QQ IPV + IPHPAYN K  SNDIMLL+L+ KAKR+ AV+PL LP    +VKPG  C VAGWG+  P+GK+S TLQEV++TVQED+KCES L++Y+D   E+C GDP+IK+ SF+GDSGGPLVC KVA GIVSYG+N+G  PRA TKVS+F+ WIKKTMK+"
+                }
+              ]
+            },
+            {
+              "num": 60,
+              "description": [
+                {
+                  "id": "gi|831246429|ref|XP_003804163.2|",
+                  "accession": "XP_003804163",
+                  "title": "PREDICTED: granzyme B [Otolemur garnettii]",
+                  "taxid": 30611,
+                  "sciname": "Otolemur garnettii"
+                }
+              ],
+              "len": 255,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 348.591,
+                  "score": 893,
+                  "evalue": 2.07984e-117,
+                  "identity": 166,
+                  "positive": 192,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 16,
+                  "hit_to": 248,
+                  "align_len": 233,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PRAEAGEIIGGHEAKPHSRPYMAYLQYWYQRTPKYCGGFLIRKDFVLTAAHCNGSSMNVTLGAHNIKEQEKTQQFIHVRKAIPHPDYDSEVYTNDIMLLQLDRKAKRTAAVQPIRLPRVTSRVTPGMVCSVAGWGRIATLGPSSDTLQEVTLTVQEDEKCESHYPKNYNGSIQICVGDPKLKKCSFQGDSGGPLVCDNVAQGIVSYGRKNGSPPRVFTKVTSFLPWIHKTMKR",
+                  "midline": "PRA+AGEIIGGHEAKPHSRPYMAYL  W Q++ K CGGFLIR DFVLTAAHC GSS+NVTLGAHNIKEQE TQQFI V++ IPHP Y+ + ++NDIMLLQL+RKAKRT AVQP+RLP   ++V PG  CSVAGWG+ A LG  S TLQEV +TVQED KCES     Y+ +I++CVGDP++KK SF+GDSGGPLVC+ VAQGIVSYGR NG PPR  TKV+SF+ WI KTMKR"
+                }
+              ]
+            },
+            {
+              "num": 61,
+              "description": [
+                {
+                  "id": "gi|589961925|ref|XP_006993526.1|",
+                  "accession": "XP_006993526",
+                  "title": "PREDICTED: granzyme B-like [Peromyscus maniculatus bairdii]",
+                  "taxid": 230844,
+                  "sciname": "Peromyscus maniculatus bairdii"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 347.821,
+                  "score": 891,
+                  "evalue": 3.07592e-117,
+                  "identity": 171,
+                  "positive": 198,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 246,
+                  "align_len": 246,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MKLLLLLLAFSLPPRTKAGEIIGGHEAKPHSRPYMAYLEITDGDVTRRCGGCLIREDFVLTAAHCKGSKINVTLGAHNIKEQEKTQQIIPVARIIPHPAYNHQKILNDIMLLKLEKKAKRTQAVRPLNLPRRKVDVNPGDVCSVAGWGRLAPGDKYSNTLQEVELEIQKDQECESHLKGYYNKTNEICAGDPKIKRASYKGDSGGPLVCKKAAAGIVSFGRTNGSAPRAFTRVSSFLSWIKKTMKR",
+                  "midline": "M+ +LLLLAF L PR  AGEIIGGHEAKPHSRPYMAYL I D    +RCGG LIR+DFVLTAAHC GS INVTLGAHNIKEQE TQQ IPV R IPHPAYN +   NDIMLL+LE+KAKRT+AV+PL LP  K  V PG  CSVAGWG+ AP  K+S+TLQEV++ +Q+D++CES L+ YY+ T E+C GDP+IK+ S+KGDSGGPLVC K A GIVS+GR NG  PRA T+VSSF+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 62,
+              "description": [
+                {
+                  "id": "gi|301771308|ref|XP_002921078.1|",
+                  "accession": "XP_002921078",
+                  "title": "PREDICTED: granzyme B-like [Ailuropoda melanoleuca]",
+                  "taxid": 9646,
+                  "sciname": "Ailuropoda melanoleuca"
+                }
+              ],
+              "len": 258,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 347.436,
+                  "score": 890,
+                  "evalue": 5.57182e-117,
+                  "identity": 170,
+                  "positive": 203,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 246,
+                  "align_len": 246,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQT-APLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MRSLLLLLAFCLPSRAKAGEIIGGHEAKAHSRPYMAYLRIQNQDGETKCGGFLIQENFVLTAAHCWGSSVKVTLGAHNIQKQEKTQQVIPVKTAIPHPDYNPKNFSNDIMLLKLERRAQQTAAVRPLRLPGTKNRVRPGQVCSVAGWGRVDALIRRYPDTLQEVRLTVQDDQECKSRFPKYYDRTIQLCVGDPNEKKSSFRGDSGGPLVCNNVAQGIVSFGRKEGTPPRVYTKISSFLPWIKKTMK",
+                  "midline": "M+ +LLLLAF L  RA AGEIIGGHEAK HSRPYMAYL I +Q    +CGGFLI+++FVLTAAHCWGSS+ VTLGAHNI++QE TQQ IPVK  IPHP YNPKNFSNDIMLL+LER+A++T AV+PLRLP  K +V+PGQ CSVAGWG+  A + ++  TLQEV++TVQ+D++C+S    YYD TI+LCVGDP  KK+SF+GDSGGPLVCN VAQGIVS+GR  G PPR  TK+SSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 63,
+              "description": [
+                {
+                  "id": "gi|635126210|ref|XP_007984545.1|",
+                  "accession": "XP_007984545",
+                  "title": "PREDICTED: granzyme H [Chlorocebus sabaeus]",
+                  "taxid": 60711,
+                  "sciname": "Chlorocebus sabaeus"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 346.665,
+                  "score": 888,
+                  "evalue": 7.7587e-117,
+                  "identity": 177,
+                  "positive": 196,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLIPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKGKKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQFIPVKRAIPHPAYNPKNFSNDVMLLQLERKAKRTTAVQPLRLPSSKVQVRPGQVCSVAGWGRVS-TGTLATTLQEVLLTVQKDWECERLFHGNYSKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSYGRINGTPPGVYMKVSHFLSWIKRTMK",
+                  "midline": "MQP LLLLAFLL+P A   EIIGGHEAKPHSRPYMA++   D+K  KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQFIPVKR IPHPAYNPKNFSND+MLLQLERKAKRT AVQPLRLPS+K QV+PGQ CSVAGWG+ +  G  + TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI SYGR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 64,
+              "description": [
+                {
+                  "id": "gi|426258709|ref|XP_004022950.1|",
+                  "accession": "XP_004022950",
+                  "title": "PREDICTED: granzyme B-like isoform X2 [Ovis aries]",
+                  "taxid": 9940,
+                  "sciname": "Ovis aries"
+                }
+              ],
+              "len": 256,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 347.051,
+                  "score": 889,
+                  "evalue": 7.78951e-117,
+                  "identity": 165,
+                  "positive": 192,
+                  "query_from": 18,
+                  "query_to": 245,
+                  "hit_from": 28,
+                  "hit_to": 254,
+                  "align_len": 228,
+                  "gaps": 1,
+                  "qseq": "AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "SGEIIGGREAKPHSRPYMAYLQYWNQDVQSRCGGFLVREDFVLTAAHCHGSSMNVTLGAHNIKQQERTQQVIGVRRAICHPDYNPKNFSNDIMLLKLERKAKQTSAVKPLRLPRAKARVKPGQVCSVAGWGRDS-TGSYADTLQEVKLTVQEDGRCEAYLRNYYNRANQLCVGDPKTKKATFKGDSGGPLVCDNVAQGIVSYGREDGSTPRAFTKVSTFLPWIKKTMK",
+                  "midline": "+GEIIGG EAKPHSRPYMAYL  W+Q    RCGGFL+R+DFVLTAAHC GSS+NVTLGAHNIK+QE TQQ I V+R I HP YNPKNFSNDIMLL+LERKAK+T AV+PLRLP  KA+VKPGQ CSVAGWG+ +  G ++ TLQEVK+TVQED +CE+ LR+YY+   +LCVGDP+ KK +FKGDSGGPLVC+ VAQGIVSYGR +G  PRA TKVS+F+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 65,
+              "description": [
+                {
+                  "id": "gi|725559185|ref|XP_010333283.1|",
+                  "accession": "XP_010333283",
+                  "title": "PREDICTED: granzyme H isoform X1 [Saimiri boliviensis boliviensis]",
+                  "taxid": 39432,
+                  "sciname": "Saimiri boliviensis boliviensis"
+                }
+              ],
+              "len": 250,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 345.895,
+                  "score": 886,
+                  "evalue": 2.223e-116,
+                  "identity": 164,
+                  "positive": 186,
+                  "query_from": 20,
+                  "query_to": 245,
+                  "hit_from": 24,
+                  "hit_to": 248,
+                  "align_len": 226,
+                  "gaps": 1,
+                  "qseq": "EIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "EIIGGHEAKPHSRPYMAFVQFLDKKSKKRCGGILVRKDFVMTAAHCWGSSINVTLGAHNIKEQERTQQFIPVKRAIPHPAYNPENFSSDIMLLKLERKAKQTYAVQPLRLPSSKAQVKPGQVCSVAGWGRVS-MDTLATTLQEVLLTVQKDQECEYVFHAYYSRATEICVGDPEKTKTGFKGDSGGPLVCKNVVQGIFSYGKNNGTPPGVYIKVSHFLPWIKRTMK",
+                  "midline": "EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFV+TAAHCWGSSINVTLGAHNIKEQE TQQFIPVKR IPHPAYNP+NFS+DIMLL+LERKAK+T AVQPLRLPS+KAQVKPGQ CSVAGWG+ + +   + TLQEV +TVQ+D++CE     YY    E+CVGDPE  KT FKGDSGGPLVC  V QGI SYG+NNG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 66,
+              "description": [
+                {
+                  "id": "gi|403264022|ref|XP_003924292.1|",
+                  "accession": "XP_003924292",
+                  "title": "PREDICTED: granzyme H isoform X2 [Saimiri boliviensis boliviensis]",
+                  "taxid": 39432,
+                  "sciname": "Saimiri boliviensis boliviensis"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 345.51,
+                  "score": 885,
+                  "evalue": 2.30824e-116,
+                  "identity": 164,
+                  "positive": 186,
+                  "query_from": 20,
+                  "query_to": 245,
+                  "hit_from": 20,
+                  "hit_to": 244,
+                  "align_len": 226,
+                  "gaps": 1,
+                  "qseq": "EIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "EIIGGHEAKPHSRPYMAFVQFLDKKSKKRCGGILVRKDFVMTAAHCWGSSINVTLGAHNIKEQERTQQFIPVKRAIPHPAYNPENFSSDIMLLKLERKAKQTYAVQPLRLPSSKAQVKPGQVCSVAGWGRVS-MDTLATTLQEVLLTVQKDQECEYVFHAYYSRATEICVGDPEKTKTGFKGDSGGPLVCKNVVQGIFSYGKNNGTPPGVYIKVSHFLPWIKRTMK",
+                  "midline": "EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFV+TAAHCWGSSINVTLGAHNIKEQE TQQFIPVKR IPHPAYNP+NFS+DIMLL+LERKAK+T AVQPLRLPS+KAQVKPGQ CSVAGWG+ + +   + TLQEV +TVQ+D++CE     YY    E+CVGDPE  KT FKGDSGGPLVC  V QGI SYG+NNG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 67,
+              "description": [
+                {
+                  "id": "gi|795418467|ref|XP_011946524.1|",
+                  "accession": "XP_011946524",
+                  "title": "PREDICTED: granzyme H [Cercocebus atys]",
+                  "taxid": 9531,
+                  "sciname": "Cercocebus atys"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 344.739,
+                  "score": 883,
+                  "evalue": 4.34406e-116,
+                  "identity": 179,
+                  "positive": 196,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKSKKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQFIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTTAVQPLRLPSSKIQVKPGQVCSVAGWGRVS-TGTLATTLQEVLLTVQKDWECERLFHANYRKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSHGRINGTPPGVYMKVSHFLPWIKRTMK",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQFIPVKR IPHPAYNPKNFSNDIMLLQLERKAKRT AVQPLRLPS+K QVKPGQ CSVAGWG+ +  G  + TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI S+GR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 68,
+              "description": [
+                {
+                  "id": "gi|544446617|ref|XP_005561051.1|",
+                  "accession": "XP_005561051",
+                  "title": "PREDICTED: granzyme H isoform X1 [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 344.354,
+                  "score": 882,
+                  "evalue": 7.33091e-116,
+                  "identity": 178,
+                  "positive": 196,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKSKKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTTAVQPLRLPSSKVQVKPGQVCSVAGWGRVS-TGTLANTLQEVLLTVQKDWECERLFHANYSKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSHGRINGTPPGVYMKVSHFLPWIKRTMK",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNPKNFSNDIMLLQLERKAKRT AVQPLRLPS+K QVKPGQ CSVAGWG+ +  G  ++TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI S+GR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 69,
+              "description": [
+                {
+                  "id": "gi|829984625|ref|XP_012607748.1|",
+                  "accession": "XP_012607748",
+                  "title": "PREDICTED: granzyme B-like [Microcebus murinus]",
+                  "taxid": 30608,
+                  "sciname": "Microcebus murinus"
+                }
+              ],
+              "len": 323,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 347.051,
+                  "score": 889,
+                  "evalue": 8.19852e-116,
+                  "identity": 170,
+                  "positive": 205,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 248,
+                  "align_len": 248,
+                  "gaps": 2,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLR--HYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQLLLLLLAFILPPGAQAGEIIGGHEAKPHSRPYMAFLQYWDRGTQRTCGGFLIREDFVLTAAHCWGSPINVTLGAHNIRKQEKTQQVIRVRRAMRHPAYNLNDYSNDIMLLQLETKARLTAAVRPLKLPTGKAQVKPGKECLVAGWGRTSLRSKVSDTLQEVMLTVQEDKECESLAQPPYHYHKAMEICVGDPKINKSSFKGDSGGPLVCDNVAQGIISHGKGNGMPPRVCTKVSRFLPWIKKIMKR",
+                  "midline": "MQ +LLLLAF+L P A AGEIIGGHEAKPHSRPYMA+L  WD+ + + CGGFLIR+DFVLTAAHCWGS INVTLGAHNI++QE TQQ I V+R + HPAYN  ++SNDIMLLQLE KA+ T AV+PL+LP+ KAQVKPG+ C VAGWG+T+   K S TLQEV +TVQED++CES  +  ++Y   +E+CVGDP+I K+SFKGDSGGPLVC+ VAQGI+S+G+ NGMPPR CTKVS F+ WIKK MKR"
+                }
+              ]
+            },
+            {
+              "num": 70,
+              "description": [
+                {
+                  "id": "gi|402875862|ref|XP_003901713.1|",
+                  "accession": "XP_003901713",
+                  "title": "PREDICTED: granzyme H [Papio anubis]",
+                  "taxid": 9555,
+                  "sciname": "Papio anubis"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 343.969,
+                  "score": 881,
+                  "evalue": 9.11694e-116,
+                  "identity": 178,
+                  "positive": 196,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKSKKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQFIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKQTTAVQPLRLPSSKVQVKPGQVCSVAGWGRVS-TGTLATTLQEVLLTVQKDWECERLFHANYSKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSHGRINGTPPGVYMKVSHFLPWIKRTMK",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQFIPVKR IPHPAYNPKNFSNDIMLLQLERKAK+T AVQPLRLPS+K QVKPGQ CSVAGWG+ +  G  + TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI S+GR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 71,
+              "description": [
+                {
+                  "id": "gi|852775578|ref|XP_012880811.1|",
+                  "accession": "XP_012880811",
+                  "title": "PREDICTED: granzyme B-like [Dipodomys ordii]",
+                  "taxid": 10020,
+                  "sciname": "Dipodomys ordii"
+                }
+              ],
+              "len": 253,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 343.969,
+                  "score": 881,
+                  "evalue": 1.31972e-115,
+                  "identity": 160,
+                  "positive": 189,
+                  "query_from": 14,
+                  "query_to": 247,
+                  "hit_from": 14,
+                  "hit_to": 247,
+                  "align_len": 234,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "PTAKTGDIIGGHEAKPHSRPYMAYVEYFCGDSLYQCGGFLIREDFVMTAAHCLGRFINVTLGAHNIKEREKTQQVIPVKKAIPHPGYNPKNFSKDIMLLQLQRKAKLTTAVKPLKLPKGRSHVKPGQVCEVAGWGQMTPNGQCSNTLQEVELTVQEDQRCESHLESDYNSVSQICVGDPKMKRSFFMGDSGGPLVCNNVAQGIISYTIPNGTPPQVCTKISKFSHWIKKNMKRY",
+                  "midline": "P A  G+IIGGHEAKPHSRPYMAY+  +   SL +CGGFLIR+DFV+TAAHC G  INVTLGAHNIKE+E TQQ IPVK+ IPHP YNPKNFS DIMLLQL+RKAK T AV+PL+LP  ++ VKPGQ C VAGWGQ  P G+ S+TLQEV++TVQED++CES L   Y+S  ++CVGDP++K++ F GDSGGPLVCN VAQGI+SY   NG PP+ CTK+S F HWIKK MKRY"
+                }
+              ]
+            },
+            {
+              "num": 72,
+              "description": [
+                {
+                  "id": "gi|194207237|ref|XP_001488328.2|",
+                  "accession": "XP_001488328",
+                  "title": "PREDICTED: granzyme B-like isoform X1 [Equus caballus]",
+                  "taxid": 9796,
+                  "sciname": "Equus caballus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 343.584,
+                  "score": 880,
+                  "evalue": 1.35186e-115,
+                  "identity": 162,
+                  "positive": 188,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 14,
+                  "hit_to": 245,
+                  "align_len": 232,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PGTEAGEIIGGHEARPHSRPYMALVQFLVEENKHRCGGVLVRQDFVLTAAHCWGSSFKVTLGAHDIEKQETTQQNFSVKAAIPHPDYNPKNYSNDIMLLKLERKAKLTAAVRTLSLPRAKAQVRPRQVCRVAGWGIVSPMGSFSDTLQEVELTVQQDRECESYLRNYYNSTTQLCVGDPKEKKSSFKGDSGGPLVCKNVIHGIVSYGRNNGTPPRAFTKVSSFLSWIKKTMK",
+                  "midline": "P  +AGEIIGGHEA+PHSRPYMA +    +++  RCGG L+R DFVLTAAHCWGSS  VTLGAH+I++QE TQQ   VK  IPHP YNPKN+SNDIMLL+LERKAK T AV+ L LP  KAQV+P Q C VAGWG  +P+G  S TLQEV++TVQ+DR+CES LR+YY+ST +LCVGDP+ KK+SFKGDSGGPLVC  V  GIVSYGRNNG PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 73,
+              "description": [
+                {
+                  "id": "gi|355693191|gb|EHH27794.1|",
+                  "accession": "EHH27794",
+                  "title": "hypothetical protein EGK_18078 [Macaca mulatta]",
+                  "taxid": 9544,
+                  "sciname": "Macaca mulatta"
+                },
+                {
+                  "id": "gi|355778490|gb|EHH63526.1|",
+                  "accession": "EHH63526",
+                  "title": "hypothetical protein EGM_16512 [Macaca fascicularis]",
+                  "taxid": 9541,
+                  "sciname": "Macaca fascicularis"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 343.584,
+                  "score": 880,
+                  "evalue": 1.42548e-115,
+                  "identity": 178,
+                  "positive": 195,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKSKKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPKNFSNDIMLLQLERKAKRTTAVQPLRLPSSKVQVKPGQVCSVAGWGRVS-TGTLATTLQEVLLTVQKDWECERLFHANYSKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSHGRINGTPPGVYMKVSHFLPWIKRTMK",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNPKNFSNDIMLLQLERKAKRT AVQPLRLPS+K QVKPGQ CSVAGWG+ +  G  + TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI S+GR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 74,
+              "description": [
+                {
+                  "id": "gi|71059873|emb|CAJ18480.1|",
+                  "accession": "CAJ18480",
+                  "title": "Gzmb [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 343.199,
+                  "score": 879,
+                  "evalue": 2.11367e-115,
+                  "identity": 163,
+                  "positive": 188,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 15,
+                  "hit_to": 245,
+                  "align_len": 231,
+                  "gaps": 0,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RTKAGEIIGGHEVKPHSRPYMALLSIKDQQPEAICGGFLIREDFVLTAAHCEGSIINVTLGAHNIKEQEKTQQVIPMVKCIPHPDYNPKTFSNDIMLLKLKSKAKRTRAVRPLNLPRRNVNVKPGDVCYVAGWGRMAPMGKYSNTLQEVELTVQKDRECESYFKNRYNKTNQICVGDPKTKRASFRGDSGGPLVCKKVAAGIVSYGYKDGSPPRAFTKVSSFLSWIKKTMK",
+                  "midline": "R  AGEIIGGHE KPHSRPYMA L I DQ+    CGGFLIR+DFVLTAAHC GS INVTLGAHNIKEQE TQQ IP+ + IPHP YNPK FSNDIMLL+L+ KAKRTRAV+PL LP     VKPG  C VAGWG+ AP+GK+S+TLQEV++TVQ+DR+CES  ++ Y+ T ++CVGDP+ K+ SF+GDSGGPLVC KVA GIVSYG  +G PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 75,
+              "description": [
+                {
+                  "id": "gi|664781486|ref|XP_008510054.1|",
+                  "accession": "XP_008510054",
+                  "title": "PREDICTED: granzyme B-like [Equus przewalskii]",
+                  "taxid": 9798,
+                  "sciname": "Equus przewalskii"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 342.813,
+                  "score": 878,
+                  "evalue": 3.12945e-115,
+                  "identity": 162,
+                  "positive": 190,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 14,
+                  "hit_to": 245,
+                  "align_len": 232,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PGTEAGEIIGGHEAAPHSRPYMAFVLSVTEKERKNCGGVLVREDFVLTAAHCRGSSMMVTLGAHNIKKQERTQQFISVRGAIPHPHYNSENINNDIMLLKLERKAKLTAAVQPLSLHWGKTQVRPGEVCSVAGWGRVSLMGSFSDTLQEVELTVQQDRECESYLRNYYNSTTQLCVGDPKEKKSSFKGDSGGPLVCKNVIHGIVSYGRNNGTPPRAFTKVSSFLSWIKKTMK",
+                  "midline": "P  +AGEIIGGHEA PHSRPYMA+++   +K  K CGG L+R+DFVLTAAHC GSS+ VTLGAHNIK+QE TQQFI V+  IPHP YN +N +NDIMLL+LERKAK T AVQPL L   K QV+PG+ CSVAGWG+ + +G  S TLQEV++TVQ+DR+CES LR+YY+ST +LCVGDP+ KK+SFKGDSGGPLVC  V  GIVSYGRNNG PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 76,
+              "description": [
+                {
+                  "id": "gi|795627383|ref|XP_011733071.1|",
+                  "accession": "XP_011733071",
+                  "title": "PREDICTED: granzyme H isoform X1 [Macaca nemestrina]",
+                  "taxid": 9545,
+                  "sciname": "Macaca nemestrina"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 342.428,
+                  "score": 877,
+                  "evalue": 4.42926e-115,
+                  "identity": 177,
+                  "positive": 195,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLDEKSRKRCGGILVRKDFVLTAAHCLGSSINVTLGAHNIKEQERTQQIIPVKRAIPHPAYNPENFSNDIMLLQLERKAKRTTAVQPLRLPSSKVQVKPGQVCSVAGWGRVS-TGTLAATLQEVLLTVQKDWECERLFHANYSKATEICVGDPKTTKTGFKGDSGGPLVCKRVAQGIFSHGRINGTPPGVYMKVSHFLPWIKRTMK",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++   D+KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQ IPVKR IPHPAYNP+NFSNDIMLLQLERKAKRT AVQPLRLPS+K QVKPGQ CSVAGWG+ +  G  + TLQEV +TVQ+D +CE      Y    E+CVGDP+  KT FKGDSGGPLVC +VAQGI S+GR NG PP    KVS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 77,
+              "description": [
+                {
+                  "id": "gi|507556287|ref|XP_004661903.1|",
+                  "accession": "XP_004661903",
+                  "title": "PREDICTED: granzyme B [Jaculus jaculus]",
+                  "taxid": 51337,
+                  "sciname": "Jaculus jaculus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 342.043,
+                  "score": 876,
+                  "evalue": 5.11098e-115,
+                  "identity": 161,
+                  "positive": 186,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 246,
+                  "align_len": 233,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PRAKAGEIIGGHEAKPHSRPYMAFLQIFKQDSLIKCGGFLIREDFVLTAAHCSGSSINVTLGAHNIKKPERTQQIISETRLIPHPDYTSNDYSNDIMLLKLERKAKLTAAVQPIKLPTRKTQVNPGDMCDVAGWGMKTPLGKSSDTLQEAELQVQEDQKCESHLPGYYNIASEICAGDPKIKRSSFKGDSGGPLICKNVVQGIISYGRNDGSTPRAFTKISSFLPWIRKNMKR",
+                  "midline": "PRA AGEIIGGHEAKPHSRPYMA+L I+ Q SL +CGGFLIR+DFVLTAAHC GSSINVTLGAHNIK+ E TQQ I   R IPHP Y   ++SNDIMLL+LERKAK T AVQP++LP+ K QV PG  C VAGWG   PLGK S TLQE ++ VQED+KCES L  YY+   E+C GDP+IK++SFKGDSGGPL+C  V QGI+SYGRN+G  PRA TK+SSF+ WI+K MKR"
+                }
+              ]
+            },
+            {
+              "num": 78,
+              "description": [
+                {
+                  "id": "gi|478493725|ref|XP_004421212.1|",
+                  "accession": "XP_004421212",
+                  "title": "PREDICTED: granzyme B [Ceratotherium simum simum]",
+                  "taxid": 73337,
+                  "sciname": "Ceratotherium simum simum"
+                }
+              ],
+              "len": 248,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 341.658,
+                  "score": 875,
+                  "evalue": 6.9451e-115,
+                  "identity": 162,
+                  "positive": 190,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 16,
+                  "hit_to": 246,
+                  "align_len": 231,
+                  "gaps": 0,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RAKAGQIIGGHETKPHSRPYMAFVQFLANERQYRCGGVLVRKDFVLTAAHCWGSSISVTLGAHNIQEQEKTQQAIPVSKAICHQDYNSKNFSNDIMLLKLARKAKQTAAVRPLSLPWGKAQVRPGQVCSVAGWGQVYQKGPYSDTLQEVELTIQKDQECESHLRNYYNSTIQLCAGDPKEKKSSFKGDSGGPLLCKNVIQGIVSYGRSDGSPPRAYTKVSSFLPWIKKTMK",
+                  "midline": "RA AG+IIGGHE KPHSRPYMA++     +   RCGG L+R DFVLTAAHCWGSSI+VTLGAHNI+EQE TQQ IPV + I H  YN KNFSNDIMLL+L RKAK+T AV+PL LP  KAQV+PGQ CSVAGWGQ    G +S TLQEV++T+Q+D++CES LR+YY+STI+LC GDP+ KK+SFKGDSGGPL+C  V QGIVSYGR++G PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 79,
+              "description": [
+                {
+                  "id": "gi|126352430|ref|NP_001075350.1|",
+                  "accession": "NP_001075350",
+                  "title": "granzyme B precursor [Equus caballus]",
+                  "taxid": 9796,
+                  "sciname": "Equus caballus"
+                },
+                {
+                  "id": "gi|89142811|emb|CAJ66084.1|",
+                  "accession": "CAJ66084",
+                  "title": "granzyme B precursor [Equus caballus]",
+                  "taxid": 9796,
+                  "sciname": "Equus caballus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 341.658,
+                  "score": 875,
+                  "evalue": 7.65002e-115,
+                  "identity": 162,
+                  "positive": 188,
+                  "query_from": 14,
+                  "query_to": 245,
+                  "hit_from": 14,
+                  "hit_to": 245,
+                  "align_len": 232,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "PGTEAGEIIGGHEARPHSRPYMALVQFLVEEKKHRCGGVLVRQDFVLTAAHCWGSSFKVTLGAHDIEKQETTQQNFSVKAAIPHPDYNPKNYSNDIMLLKLERKAKLTVAVRTLSLPRAKAQVRPRQVCRVAGWGRVSLMGSFSDTLQEVELTVQQDRECESYLRNYYNSTTQLCVGDPKEKKSSFKGDSGGPLVCKNVIQGIVSYGRNNGTPPRAFTKVSSFLPWIKKTMK",
+                  "midline": "P  +AGEIIGGHEA+PHSRPYMA +    ++   RCGG L+R DFVLTAAHCWGSS  VTLGAH+I++QE TQQ   VK  IPHP YNPKN+SNDIMLL+LERKAK T AV+ L LP  KAQV+P Q C VAGWG+ + +G  S TLQEV++TVQ+DR+CES LR+YY+ST +LCVGDP+ KK+SFKGDSGGPLVC  V QGIVSYGRNNG PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 80,
+              "description": [
+                {
+                  "id": "gi|7305123|ref|NP_038570.1|",
+                  "accession": "NP_038570",
+                  "title": "granzyme B(G,H) precursor [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|121584|sp|P04187.1|GRAB_MOUSE",
+                  "accession": "P04187",
+                  "title": "RecName: Full=Granzyme B(G,H); AltName: Full=CTLA-1; AltName: Full=Cytotoxic cell protease 1; Short=CCP1; AltName: Full=Fragmentin-2; Flags: Precursor",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|50587|emb|CAA27715.1|",
+                  "accession": "CAA27715",
+                  "title": "unnamed protein product [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|201027|gb|AAB61756.1|",
+                  "accession": "AAB61756",
+                  "title": "serine protease precursor [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|309154|gb|AAA37383.1|",
+                  "accession": "AAA37383",
+                  "title": "T-cell specific protein CCPI precursor [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|12805245|gb|AAH02085.1|",
+                  "accession": "AAH02085",
+                  "title": "Granzyme B [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|74186131|dbj|BAE34234.1|",
+                  "accession": "BAE34234",
+                  "title": "unnamed protein product [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|148704255|gb|EDL36202.1|",
+                  "accession": "EDL36202",
+                  "title": "granzyme B [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                },
+                {
+                  "id": "gi|225085|prf||1208368A",
+                  "accession": "1208368A",
+                  "title": "cytotoxic T lymphocyte-associated gene",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 341.658,
+                  "score": 875,
+                  "evalue": 8.07854e-115,
+                  "identity": 162,
+                  "positive": 187,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 15,
+                  "hit_to": 245,
+                  "align_len": 231,
+                  "gaps": 0,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RTKAGEIIGGHEVKPHSRPYMALLSIKDQQPEAICGGFLIREDFVLTAAHCEGSIINVTLGAHNIKEQEKTQQVIPMVKCIPHPDYNPKTFSNDIMLLKLKSKAKRTRAVRPLNLPRRNVNVKPGDVCYVAGWGRMAPMGKYSNTLQEVELTVQKDRECESYFKNRYNKTNQICAGDPKTKRASFRGDSGGPLVCKKVAAGIVSYGYKDGSPPRAFTKVSSFLSWIKKTMK",
+                  "midline": "R  AGEIIGGHE KPHSRPYMA L I DQ+    CGGFLIR+DFVLTAAHC GS INVTLGAHNIKEQE TQQ IP+ + IPHP YNPK FSNDIMLL+L+ KAKRTRAV+PL LP     VKPG  C VAGWG+ AP+GK+S+TLQEV++TVQ+DR+CES  ++ Y+ T ++C GDP+ K+ SF+GDSGGPLVC KVA GIVSYG  +G PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 81,
+              "description": [
+                {
+                  "id": "gi|532058708|ref|XP_005372043.1|",
+                  "accession": "XP_005372043",
+                  "title": "PREDICTED: granzyme B-like [Microtus ochrogaster]",
+                  "taxid": 79684,
+                  "sciname": "Microtus ochrogaster"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 340.887,
+                  "score": 873,
+                  "evalue": 1.73263e-114,
+                  "identity": 162,
+                  "positive": 182,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 246,
+                  "align_len": 233,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PRTEAGKIIGGHEVRPHSRPYMVYLQIMDQNSQKTCGGFLIREDFVLTAAHCSGSLINVTLGAHNIKEEEKTQQIIPVAKIIPYPTYNAKKILNDIMLLKLERKAKRTKAVKPLNLPRRNVQVKPGDCCYVAGWGKLAPTGPFPKTLQEVELTVQEDEECESHLQGYYNKTTEICAGDPNSKRASFSGDSGGPLVCKKAAAGIVSYGRADGSTPRAFTKVSSFLSWIKKTMKR",
+                  "midline": "PR +AG+IIGGHE +PHSRPYM YL I DQ S K CGGFLIR+DFVLTAAHC GS INVTLGAHNIKE+E TQQ IPV + IP+P YN K   NDIMLL+LERKAKRT+AV+PL LP    QVKPG  C VAGWG+ AP G    TLQEV++TVQED +CES L+ YY+ T E+C GDP  K+ SF GDSGGPLVC K A GIVSYGR +G  PRA TKVSSF+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 82,
+              "description": [
+                {
+                  "id": "gi|281341989|gb|EFB17573.1|",
+                  "accession": "EFB17573",
+                  "title": "hypothetical protein PANDA_009914, partial [Ailuropoda melanoleuca]",
+                  "taxid": 9646,
+                  "sciname": "Ailuropoda melanoleuca"
+                }
+              ],
+              "len": 238,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 339.732,
+                  "score": 870,
+                  "evalue": 3.62812e-114,
+                  "identity": 159,
+                  "positive": 191,
+                  "query_from": 18,
+                  "query_to": 245,
+                  "hit_from": 9,
+                  "hit_to": 237,
+                  "align_len": 229,
+                  "gaps": 1,
+                  "qseq": "AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQT-APLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "SGEIIGGHEAKAHSRPYMAYLRIQNQDGETKCGGFLIQENFVLTAAHCWGSSVKVTLGAHNIQKQEKTQQVIPVKTAIPHPDYNPKNFSNDIMLLKLERRAQQTAAVRPLRLPGTKNRVRPGQVCSVAGWGRVDALIRRYPDTLQEVRLTVQDDQECKSRFPKYYDRTIQLCVGDPNEKKSSFRGDSGGPLVCNNVAQGIVSFGRKEGTPPRVYTKISSFLPWIKKTMK",
+                  "midline": "+GEIIGGHEAK HSRPYMAYL I +Q    +CGGFLI+++FVLTAAHCWGSS+ VTLGAHNI++QE TQQ IPVK  IPHP YNPKNFSNDIMLL+LER+A++T AV+PLRLP  K +V+PGQ CSVAGWG+  A + ++  TLQEV++TVQ+D++C+S    YYD TI+LCVGDP  KK+SF+GDSGGPLVCN VAQGIVS+GR  G PPR  TK+SSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 83,
+              "description": [
+                {
+                  "id": "gi|675689142|ref|XP_009004095.1|",
+                  "accession": "XP_009004095",
+                  "title": "PREDICTED: granzyme H isoform X3 [Callithrix jacchus]",
+                  "taxid": 9483,
+                  "sciname": "Callithrix jacchus"
+                }
+              ],
+              "len": 245,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 339.347,
+                  "score": 869,
+                  "evalue": 5.6069e-114,
+                  "identity": 165,
+                  "positive": 192,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 243,
+                  "align_len": 245,
+                  "gaps": 2,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPFLLLSAFLLPPGTGTEEIIGGHEAKPHSYHYMAFVQFLDKKS-KGCGGILVRKDFVMTAAYCWGSSINVTLGAHNIKEQERTQQFIPVRRAFPHPAYNPEIFSSDIMLLQLERKAKQTSAVQTLRQPSSKAQVKPGQVCSVAGWGRVS-MGTLATTLQEVLLTVQKDQECEYVFHAYYSRATKICVGDPKKTKTGFKGDSGGPLVCKNVVQGVFSYGKNNGMPPGVYIEVSHFLPWIKRTMK",
+                  "midline": "MQP LLL AFLL P     EIIGGHEAKPHS  YMA++   D+KS K CGG L+R DFV+TAA+CWGSSINVTLGAHNIKEQE TQQFIPV+R  PHPAYNP+ FS+DIMLLQLERKAK+T AVQ LR PS+KAQVKPGQ CSVAGWG+ + +G  + TLQEV +TVQ+D++CE     YY    ++CVGDP+  KT FKGDSGGPLVC  V QG+ SYG+NNGMPP    +VS F+ WIK+TMK"
+                }
+              ]
+            },
+            {
+              "num": 84,
+              "description": [
+                {
+                  "id": "gi|354479856|ref|XP_003502125.1|",
+                  "accession": "XP_003502125",
+                  "title": "PREDICTED: granzyme B [Cricetulus griseus]",
+                  "taxid": 10029,
+                  "sciname": "Cricetulus griseus"
+                },
+                {
+                  "id": "gi|625236244|ref|XP_007609309.1|",
+                  "accession": "XP_007609309",
+                  "title": "PREDICTED: granzyme B [Cricetulus griseus]",
+                  "taxid": 10029,
+                  "sciname": "Cricetulus griseus"
+                },
+                {
+                  "id": "gi|344255426|gb|EGW11530.1|",
+                  "accession": "EGW11530",
+                  "title": "Natural killer cell protease 1 [Cricetulus griseus]",
+                  "taxid": 10029,
+                  "sciname": "Cricetulus griseus"
+                }
+              ],
+              "len": 262,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 339.732,
+                  "score": 870,
+                  "evalue": 7.44872e-114,
+                  "identity": 159,
+                  "positive": 186,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 246,
+                  "align_len": 233,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PGTKAGEIIGGHEAKPHSRPYMAYLQIMDRDTLKRCGGFLIREDFVLTAAHCSGSSINVTLGAHNIKEKEETQQIIPVAKAIPHPDYNSKKILNDIMLLKLKRKAKRTKAVRPLNLPRRGVHVKPGDMCYVAGWGKMAVNGNFANALQEVELIVQKDQECESYLQDYYNKAVEICAGDPTIKRASFSGDSGGPLVCKKVAAGIVSFGKNDSSTPRAFTRVSSFLSWIKKTMKR",
+                  "midline": "P   AGEIIGGHEAKPHSRPYMAYL I D+ +LKRCGGFLIR+DFVLTAAHC GSSINVTLGAHNIKE+E TQQ IPV + IPHP YN K   NDIMLL+L+RKAKRT+AV+PL LP     VKPG  C VAGWG+ A  G  ++ LQEV++ VQ+D++CES L+ YY+  +E+C GDP IK+ SF GDSGGPLVC KVA GIVS+G+N+   PRA T+VSSF+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 85,
+              "description": [
+                {
+                  "id": "gi|524950791|ref|XP_005075406.1|",
+                  "accession": "XP_005075406",
+                  "title": "PREDICTED: granzyme B(G,H)-like [Mesocricetus auratus]",
+                  "taxid": 10036,
+                  "sciname": "Mesocricetus auratus"
+                }
+              ],
+              "len": 296,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 340.887,
+                  "score": 873,
+                  "evalue": 8.50303e-114,
+                  "identity": 161,
+                  "positive": 192,
+                  "query_from": 8,
+                  "query_to": 246,
+                  "hit_from": 63,
+                  "hit_to": 295,
+                  "align_len": 239,
+                  "gaps": 6,
+                  "qseq": "LAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "LAFL------SGEIIGGQEAKPHSRPYMAYLEIMNRDTRSRCGGFLIREDFVLTAAHCSGSSINVTLGAHNIKEKEETQQIIPVAKAIPHPDYNPKDYSNDLMLLKLKRKAKRTKAVRPLNLPRRKVQVKPGDKCYVAGWGQLAPKGNFANTLQEVELTVQRDQECESYLKGYYNKAIEICAGDPKIKRASFKGDSGGPLVCKKAAAGIVALGYDDGSTPEVFTRVSSFLSWIKKTMKQ",
+                  "midline": "LAFL      +GEIIGG EAKPHSRPYMAYL I ++ +  RCGGFLIR+DFVLTAAHC GSSINVTLGAHNIKE+E TQQ IPV + IPHP YNPK++SND+MLL+L+RKAKRT+AV+PL LP  K QVKPG  C VAGWGQ AP G  ++TLQEV++TVQ D++CES L+ YY+  IE+C GDP+IK+ SFKGDSGGPLVC K A GIV+ G ++G  P   T+VSSF+ WIKKTMK+"
+                }
+              ]
+            },
+            {
+              "num": 86,
+              "description": [
+                {
+                  "id": "gi|74198657|dbj|BAE39803.1|",
+                  "accession": "BAE39803",
+                  "title": "unnamed protein product [Mus musculus]",
+                  "taxid": 10090,
+                  "sciname": "Mus musculus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 338.961,
+                  "score": 868,
+                  "evalue": 9.91023e-114,
+                  "identity": 161,
+                  "positive": 186,
+                  "query_from": 15,
+                  "query_to": 245,
+                  "hit_from": 15,
+                  "hit_to": 245,
+                  "align_len": 231,
+                  "gaps": 0,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "RTKAGEIIGGHEVKPHSRPYMALLSIKDQQPEAICGGFLIREDFVLTAAHCEGSIINVTLGAHNIKEQEKTQQVIPMVKCIPHPDYNPKTFSNDIMLLKLKSKAKRTRAVRPLNLPRRNVNVKPGDVCYVAGWGRMAAMGKYSNTLQEVELTVQKDRECESYFKNRYNKTNQICAGDPKTKRASFRGDSGGPLVCKKVAAGIVSYGYKDGSPPRAFTKVSSFLSWIKKTMK",
+                  "midline": "R  AGEIIGGHE KPHSRPYMA L I DQ+    CGGFLIR+DFVLTAAHC GS INVTLGAHNIKEQE TQQ IP+ + IPHP YNPK FSNDIMLL+L+ KAKRTRAV+PL LP     VKPG  C VAGWG+ A +GK+S+TLQEV++TVQ+DR+CES  ++ Y+ T ++C GDP+ K+ SF+GDSGGPLVC KVA GIVSYG  +G PPRA TKVSSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 87,
+              "description": [
+                {
+                  "id": "gi|674062717|ref|XP_008838142.1|",
+                  "accession": "XP_008838142",
+                  "title": "PREDICTED: LOW QUALITY PROTEIN: granzyme B-like [Nannospalax galili]",
+                  "taxid": 1026970,
+                  "sciname": "Nannospalax galili"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 338.576,
+                  "score": 867,
+                  "evalue": 1.14029e-113,
+                  "identity": 164,
+                  "positive": 190,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQRLLILLAFFLPPRMRAGEIIGGYEAKPHSRPYMAFVKILDKNLWKQCGGFLIREDFVLTAAHCLGSSMNVILGAHNIKEQEKTQQVIPVAKAIPHPDYNPEKILNDIMLLKLKSKAQRTKAVQTLKLPTGKAQVKPGSLCYVAGWGDTDARGTPSNTLQEVKIKVQADQVCESSFAN-YDKNTEMCVGDPKTNHAFFQGDSGGPLVCKNVAQGIVSYGRKDGTTPEVYTKVSSFLHWIKKTMK",
+                  "midline": "MQ +L+LLAF L PR  AGEIIGG+EAKPHSRPYMA++ I D+   K+CGGFLIR+DFVLTAAHC GSS+NV LGAHNIKEQE TQQ IPV + IPHP YNP+   NDIMLL+L+ KA+RT+AVQ L+LP+ KAQVKPG  C VAGWG T   G  S+TLQEVK+ VQ D+ CES   + YD   E+CVGDP+     F+GDSGGPLVC  VAQGIVSYGR +G  P   TKVSSF+HWIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 88,
+              "description": [
+                {
+                  "id": "gi|829984671|ref|XP_012607761.1|",
+                  "accession": "XP_012607761",
+                  "title": "PREDICTED: granzyme B-like [Microcebus murinus]",
+                  "taxid": 30608,
+                  "sciname": "Microcebus murinus"
+                }
+              ],
+              "len": 267,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 339.347,
+                  "score": 869,
+                  "evalue": 1.3349e-113,
+                  "identity": 161,
+                  "positive": 193,
+                  "query_from": 14,
+                  "query_to": 246,
+                  "hit_from": 14,
+                  "hit_to": 248,
+                  "align_len": 235,
+                  "gaps": 2,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLR--HYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "PGAQAGEIIGGHEAKPHSRPYMAFLQYWDQGTQRTCGGFLIREDFVLTAAHCWGSPINVTLGAHNIRKQEKTQQVIRVRRAMRHPAYNLNDYSNDIMLLQLETKARLTAAVRPLKLPTGKAQVKPGKECLVAGWGRTSLRSKVSDTLQEVMLTVQEDKECESLAQPPYHYHKAMEICVGDPKINKSSFKGDSGGPLVCDNVVQGIISHGKGNGKPPRVCTKVSHFLPWIKKTMKR",
+                  "midline": "P A AGEIIGGHEAKPHSRPYMA+L  WDQ + + CGGFLIR+DFVLTAAHCWGS INVTLGAHNI++QE TQQ I V+R + HPAYN  ++SNDIMLLQLE KA+ T AV+PL+LP+ KAQVKPG+ C VAGWG+T+   K S TLQEV +TVQED++CES  +  ++Y   +E+CVGDP+I K+SFKGDSGGPLVC+ V QGI+S+G+ NG PPR CTKVS F+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 89,
+              "description": [
+                {
+                  "id": "gi|10835840|pdb|1FI8|A",
+                  "accession": "1FI8_A",
+                  "title": "Chain A, Rat Granzyme B [n66q] Complexed To Ecotin [81-84 Iepd]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                },
+                {
+                  "id": "gi|10835843|pdb|1FI8|B",
+                  "accession": "1FI8_B",
+                  "title": "Chain B, Rat Granzyme B [n66q] Complexed To Ecotin [81-84 Iepd]",
+                  "taxid": 10116,
+                  "sciname": "Rattus norvegicus"
+                }
+              ],
+              "len": 228,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 337.035,
+                  "score": 863,
+                  "evalue": 2.35634e-113,
+                  "identity": 159,
+                  "positive": 186,
+                  "query_from": 21,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 227,
+                  "align_len": 227,
+                  "gaps": 1,
+                  "qseq": "IIGGHEAKPHSRPYMAYLMIWDQKS-LKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "IIGGHEAKPHSRPYMAYLQIMDEYSGSKKCGGFLIREDFVLTAAHCSGSKIQVTLGAHNIKEQEKMQQIIPVVKIIPHPAYNSKTISNDIMLLKLKSKAKRSSAVKPLNLPRRNVKVKPGDVCYVAGWGKLGPMGKYSDTLQEVELTVQEDQKCESYLKNYFDKANEICAGDPKIKRASFRGDSGGPLVCKKVAAGIVSYGQNDGSTPRAFTKVSTFLSWIKKTMKK",
+                  "midline": "IIGGHEAKPHSRPYMAYL I D+ S  K+CGGFLIR+DFVLTAAHC GS I VTLGAHNIKEQE  QQ IPV + IPHPAYN K  SNDIMLL+L+ KAKR+ AV+PL LP    +VKPG  C VAGWG+  P+GK+S TLQEV++TVQED+KCES L++Y+D   E+C GDP+IK+ SF+GDSGGPLVC KVA GIVSYG+N+G  PRA TKVS+F+ WIKKTMK+"
+                }
+              ]
+            },
+            {
+              "num": 90,
+              "description": [
+                {
+                  "id": "gi|15529990|ref|NP_219491.1|",
+                  "accession": "NP_219491",
+                  "title": "granzyme H isoform 1 precursor [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|121590|sp|P20718.1|GRAH_HUMAN",
+                  "accession": "P20718",
+                  "title": "RecName: Full=Granzyme H; AltName: Full=CCP-X; AltName: Full=Cathepsin G-like 2; Short=CTSGL2; AltName: Full=Cytotoxic T-lymphocyte proteinase; AltName: Full=Cytotoxic serine protease C; Short=CSP-C; Flags: Precursor",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|181157|gb|AAA74885.1|",
+                  "accession": "AAA74885",
+                  "title": "cytotoxic serine proteinase [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|181164|gb|AAA03248.1|",
+                  "accession": "AAA03248",
+                  "title": "cytotoxin serine protease-C precursor [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|183155|gb|AAA03514.1|",
+                  "accession": "AAA03514",
+                  "title": "cytotoxic T-lymphocyte-associated serine esterase 1 [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|338430|gb|AAA76859.1|",
+                  "accession": "AAA76859",
+                  "title": "serine protease [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|20381278|gb|AAH27974.1|",
+                  "accession": "AAH27974",
+                  "title": "Granzyme H (cathepsin G-like 2, protein h-CCPX) [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|119586409|gb|EAW66005.1|",
+                  "accession": "EAW66005",
+                  "title": "granzyme H (cathepsin G-like 2, protein h-CCPX), isoform CRA_b [Homo sapiens]",
+                  "taxid": 9606,
+                  "sciname": "Homo sapiens"
+                },
+                {
+                  "id": "gi|123982506|gb|ABM82994.1|",
+                  "accession": "ABM82994",
+                  "title": "granzyme H (cathepsin G-like 2, protein h-CCPX) [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                },
+                {
+                  "id": "gi|123997171|gb|ABM86187.1|",
+                  "accession": "ABM86187",
+                  "title": "granzyme H (cathepsin G-like 2, protein h-CCPX) [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                },
+                {
+                  "id": "gi|307684832|dbj|BAJ20456.1|",
+                  "accession": "BAJ20456",
+                  "title": "granzyme H [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                },
+                {
+                  "id": "gi|649100435|gb|AIC48905.1|",
+                  "accession": "AIC48905",
+                  "title": "GZMH, partial [synthetic construct]",
+                  "taxid": 32630,
+                  "sciname": "synthetic construct"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 337.421,
+                  "score": 864,
+                  "evalue": 4.0815e-113,
+                  "identity": 176,
+                  "positive": 194,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 245,
+                  "align_len": 246,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQPFLLLLAFLLTPGAGTEEIIGGHEAKPHSRPYMAFVQFLQEKSRKRCGGILVRKDFVLTAAHCQGSSINVTLGAHNIKEQERTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKWTTAVRPLRLPSSKAQVKPGQLCSVAGWGYVS-MSTLATTLQEVLLTVQKDCQCERLFHGNYSRATEICVGDPKKTQTGFKGDSGGPLVCKDVAQGILSYGNKKGTPPGVYIKVSHFLPWIKRTMKR",
+                  "midline": "MQP LLLLAFLL P A   EIIGGHEAKPHSRPYMA++    +KS KRCGG L+R DFVLTAAHC GSSINVTLGAHNIKEQE TQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAK T AV+PLRLPS+KAQVKPGQ CSVAGWG  + +   + TLQEV +TVQ+D +CE      Y    E+CVGDP+  +T FKGDSGGPLVC  VAQGI+SYG   G PP    KVS F+ WIK+TMKR"
+                }
+              ]
+            },
+            {
+              "num": 91,
+              "description": [
+                {
+                  "id": "gi|591345806|ref|XP_007098167.1|",
+                  "accession": "XP_007098167",
+                  "title": "PREDICTED: granzyme B [Panthera tigris altaica]",
+                  "taxid": 74533,
+                  "sciname": "Panthera tigris altaica"
+                }
+              ],
+              "len": 255,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 335.495,
+                  "score": 859,
+                  "evalue": 2.6617e-112,
+                  "identity": 169,
+                  "positive": 203,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQPLLLLLAFFLPSRAKAGEIIGGHEAKPHSRPYMAYLWIQNREVCSKCGGFLIQEKFVLTAAHCWGSSINVTLGAHNIKKQEKTQQIIPVRRAIPHPDYNPKNYSNDIILLQLVKKAKLTAAVRPLGLPKGKDRVRPGQVCRVAGWGQMA-TGRYPDTLQEVELIMQEDQECKSRFPNYYNHKTQLCVGDPKEKKSSFQGDSGGPLLCNNVAQGIVSYGPKDGAPPRAYTKVTSFLPWIKKTMR",
+                  "midline": "MQP+LLLLAF L  RA AGEIIGGHEAKPHSRPYMAYL I +++   +CGGFLI++ FVLTAAHCWGSSINVTLGAHNIK+QE TQQ IPV+R IPHP YNPKN+SNDI+LLQL +KAK T AV+PL LP  K +V+PGQ C VAGWGQ A  G++  TLQEV++ +QED++C+S   +YY+   +LCVGDP+ KK+SF+GDSGGPL+CN VAQGIVSYG  +G PPRA TKV+SF+ WIKKTM+"
+                }
+              ]
+            },
+            {
+              "num": 92,
+              "description": [
+                {
+                  "id": "gi|671032464|ref|XP_008707039.1|",
+                  "accession": "XP_008707039",
+                  "title": "PREDICTED: granzyme B-like isoform X1 [Ursus maritimus]",
+                  "taxid": 29073,
+                  "sciname": "Ursus maritimus"
+                }
+              ],
+              "len": 260,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 335.88,
+                  "score": 860,
+                  "evalue": 2.70707e-112,
+                  "identity": 161,
+                  "positive": 189,
+                  "query_from": 16,
+                  "query_to": 245,
+                  "hit_from": 18,
+                  "hit_to": 248,
+                  "align_len": 231,
+                  "gaps": 1,
+                  "qseq": "ADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQT-APLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "AKAGEIIGGHEAKAHSRPYMAYLRIQNQDGETTCGGFLIQENFVLTAAHCSGSSIKVTLGAHNIQKQEKTQQVIPVKTAIPHPDYNPKNHSNDIMLLKLERKAQQTAAVRPLRLPGTKNRVRPGQVCSVAGWGRVDAQIRRYPDTLQEVRLTVQDDQECKSRFPKYYDRTIQLCVGDPNEKKSSFRGDSGGPLVCNNVAQGIVSFGRKEGTPPRVYTKISSFLPWIKKTMK",
+                  "midline": "A AGEIIGGHEAK HSRPYMAYL I +Q     CGGFLI+++FVLTAAHC GSSI VTLGAHNI++QE TQQ IPVK  IPHP YNPKN SNDIMLL+LERKA++T AV+PLRLP  K +V+PGQ CSVAGWG+  A + ++  TLQEV++TVQ+D++C+S    YYD TI+LCVGDP  KK+SF+GDSGGPLVCN VAQGIVS+GR  G PPR  TK+SSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 93,
+              "description": [
+                {
+                  "id": "gi|291403665|ref|XP_002718156.1|",
+                  "accession": "XP_002718156",
+                  "title": "PREDICTED: granzyme H isoform X3 [Oryctolagus cuniculus]",
+                  "taxid": 9986,
+                  "sciname": "Oryctolagus cuniculus"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 334.724,
+                  "score": 857,
+                  "evalue": 4.44533e-112,
+                  "identity": 163,
+                  "positive": 184,
+                  "query_from": 16,
+                  "query_to": 245,
+                  "hit_from": 16,
+                  "hit_to": 245,
+                  "align_len": 231,
+                  "gaps": 2,
+                  "qseq": "ADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYG-RNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "AEAGEIIGGHEAKPHSRPYMAYLQYWKDNRKRTCGGFLVREDFVLTAAHCHGSSINVTLGAHNIKQQERTQQVIPVRRAIPHKDYKQKGYINDIMLLQLERKAKKTKAVQPISLPRGKAQVKPGQVCQVAGWGQDAS-GTLATTLQEVELTVQQDQECESLFRGYYSRATEICVGDPETKKSSFKGDSGGPLVCNNVAQGIVSYGPKERNPPPVVYTKISSFLPWIKKTMK",
+                  "midline": "A+AGEIIGGHEAKPHSRPYMAYL  W     + CGGFL+R+DFVLTAAHC GSSINVTLGAHNIK+QE TQQ IPV+R IPH  Y  K + NDIMLLQLERKAK+T+AVQP+ LP  KAQVKPGQ C VAGWGQ A  G  + TLQEV++TVQ+D++CES  R YY    E+CVGDPE KK+SFKGDSGGPLVCN VAQGIVSYG +    PP   TK+SSF+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 94,
+              "description": [
+                {
+                  "id": "gi|345803893|ref|XP_547752.3|",
+                  "accession": "XP_547752",
+                  "title": "PREDICTED: granzyme B [Canis lupus familiaris]",
+                  "taxid": 9615,
+                  "sciname": "Canis lupus familiaris"
+                }
+              ],
+              "len": 259,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 334.339,
+                  "score": 856,
+                  "evalue": 9.67284e-112,
+                  "identity": 167,
+                  "positive": 189,
+                  "query_from": 9,
+                  "query_to": 246,
+                  "hit_from": 11,
+                  "hit_to": 249,
+                  "align_len": 239,
+                  "gaps": 1,
+                  "qseq": "AFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQT-APLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "AFCLPSGAKAGEIIGGHEAKPHSRPYMALLQIENPSRQIKCGGFLIQAMFVLTAAHCWGSSIKVTLGAHNIKEQEKTQQVIPVRRAIPHPDYSPKNYSNDIMLLLLERKAKLTAAVKTLPLPRGKARVRPGQVCSVAGWGQIEAKIRRYPDTLQEVSLEVQKDSECEFLLPKYYDSTTQLCVGNPKETKSSFQGDSGGPLVCNNVAQGIVSYGLKNGTPPRAYTKISSFLPWIKKTMKR",
+                  "midline": "AF L   A AGEIIGGHEAKPHSRPYMA L I +     +CGGFLI+  FVLTAAHCWGSSI VTLGAHNIKEQE TQQ IPV+R IPHP Y+PKN+SNDIMLL LERKAK T AV+ L LP  KA+V+PGQ CSVAGWGQ  A + ++  TLQEV + VQ+D +CE  L  YYDST +LCVG+P+  K+SF+GDSGGPLVCN VAQGIVSYG  NG PPRA TK+SSF+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 95,
+              "description": [
+                {
+                  "id": "gi|831246427|ref|XP_012668274.1|",
+                  "accession": "XP_012668274",
+                  "title": "PREDICTED: granzyme H [Otolemur garnettii]",
+                  "taxid": 30611,
+                  "sciname": "Otolemur garnettii"
+                }
+              ],
+              "len": 251,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 333.183,
+                  "score": 853,
+                  "evalue": 1.96647e-111,
+                  "identity": 161,
+                  "positive": 190,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 246,
+                  "align_len": 246,
+                  "gaps": 0,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQPFLLLLAFLMPSRAGTEEIIGGNKAKPHSRPYMAFLQFLAKENRKRCGGVLVRNDFVLTAAHCWGSSMNVTLGAHNIKEQEKTQQVIHVRRSIPHEAYNPNTFANDIMLLQLERKARRTTAVQPLKLPSSTGGAMPEMVCSMAGWGRTAPGGKLSDTLQEVMLTVQKDQECKSRFPNNYNRITQICVGDPKKKKAAFKGDSGGPLVCKDRVQGIFSCGPANGTPPGVFIKVSHFLPWIKKTMKR",
+                  "midline": "MQP LLLLAFL+  RA   EIIGG++AKPHSRPYMA+L    +++ KRCGG L+R+DFVLTAAHCWGSS+NVTLGAHNIKEQE TQQ I V+R IPH AYNP  F+NDIMLLQLERKA+RT AVQPL+LPS+     P   CS+AGWG+TAP GK S TLQEV +TVQ+D++C+S   + Y+   ++CVGDP+ KK +FKGDSGGPLVC    QGI S G  NG PP    KVS F+ WIKKTMKR"
+                }
+              ]
+            },
+            {
+              "num": 96,
+              "description": [
+                {
+                  "id": "gi|743718718|ref|XP_010953103.1|",
+                  "accession": "XP_010953103",
+                  "title": "PREDICTED: granzyme H-like isoform X1 [Camelus bactrianus]",
+                  "taxid": 9837,
+                  "sciname": "Camelus bactrianus"
+                }
+              ],
+              "len": 250,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 332.798,
+                  "score": 852,
+                  "evalue": 2.3896e-111,
+                  "identity": 163,
+                  "positive": 194,
+                  "query_from": 1,
+                  "query_to": 246,
+                  "hit_from": 1,
+                  "hit_to": 249,
+                  "align_len": 251,
+                  "gaps": 7,
+                  "qseq": "MQPILLLLAFLLLPRAD-----AGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKR",
+                  "hseq": "MQPLLLVMA-VLLPAGRGQPSLSGEIIGGHEAKPHSRPYMAFVQFLDQERMRRCGGVLVQKDFVLTAAHCRGSSINVTLGAHNIKKQEGTQQVVPVRRAIPHPDYNPKDHSSDIMLLQLQRKAKQTAAVRPLRLPGGRARVKPGQACGVAGWGQVA-VGVPATTLQEAVLTVQEDRVCESLFPGYYSRATQICVGDPSTVKTSFKGDSGGPLVCKNLVQGIFSCGKQNGTPPGVFTKVSHFLPWIKRTMKR",
+                  "midline": "MQP+LL++A +LLP        +GEIIGGHEAKPHSRPYMA++   DQ+ ++RCGG L++ DFVLTAAHC GSSINVTLGAHNIK+QE TQQ +PV+R IPHP YNPK+ S+DIMLLQL+RKAK+T AV+PLRLP  +A+VKPGQ C VAGWGQ A +G  + TLQE  +TVQEDR CES    YY    ++CVGDP   KTSFKGDSGGPLVC  + QGI S G+ NG PP   TKVS F+ WIK+TMKR"
+                }
+              ]
+            },
+            {
+              "num": 97,
+              "description": [
+                {
+                  "id": "gi|664779075|ref|XP_008508845.1|",
+                  "accession": "XP_008508845",
+                  "title": "PREDICTED: granzyme B-like [Equus przewalskii]",
+                  "taxid": 9798,
+                  "sciname": "Equus przewalskii"
+                }
+              ],
+              "len": 246,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 332.413,
+                  "score": 851,
+                  "evalue": 3.1221e-111,
+                  "identity": 164,
+                  "positive": 196,
+                  "query_from": 1,
+                  "query_to": 245,
+                  "hit_from": 1,
+                  "hit_to": 244,
+                  "align_len": 245,
+                  "gaps": 1,
+                  "qseq": "MQPILLLLAFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "MQTLLLLLAILVSPGAEAGEIIGGHEVKPHSRPYMAFVRYLIKEKRKNCGGVLVRQDIVLTAAHCWGSSIKVTLGAHNIKKQEKTQQVIPVKEAIPHPHYNSKKIANDIMILKLERKAELTTAVQPISLPWGTAQVRPGEVCSVAGWGRVTPNGRGSYTLQEVELTVQQDRVCESYLRN-YNSNTQLCVGDPKERKSSFKGDSGGPLVCDNVIQGIVSYGQINGKPPRVFTKVSSFLPWIKRIMK",
+                  "midline": "MQ +LLLLA L+ P A+AGEIIGGHE KPHSRPYMA++    ++  K CGG L+R D VLTAAHCWGSSI VTLGAHNIK+QE TQQ IPVK  IPHP YN K  +NDIM+L+LERKA+ T AVQP+ LP   AQV+PG+ CSVAGWG+  P G+ S+TLQEV++TVQ+DR CES LR+ Y+S  +LCVGDP+ +K+SFKGDSGGPLVC+ V QGIVSYG+ NG PPR  TKVSSF+ WIK+ MK"
+                }
+              ]
+            },
+            {
+              "num": 98,
+              "description": [
+                {
+                  "id": "gi|585194278|ref|XP_006748321.1|",
+                  "accession": "XP_006748321",
+                  "title": "PREDICTED: granzyme B [Leptonychotes weddellii]",
+                  "taxid": 9713,
+                  "sciname": "Leptonychotes weddellii"
+                }
+              ],
+              "len": 259,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 332.798,
+                  "score": 852,
+                  "evalue": 3.81648e-111,
+                  "identity": 163,
+                  "positive": 189,
+                  "query_from": 9,
+                  "query_to": 245,
+                  "hit_from": 11,
+                  "hit_to": 248,
+                  "align_len": 238,
+                  "gaps": 1,
+                  "qseq": "AFLLLPRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWG-QTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMK",
+                  "hseq": "AFCLPSGAKAGEIIGGHEAKPHSRPYMAYLRIQNKNGQSQCGGFLIHKKFVLTAAHCYGRSIKVTLGAHNIKEQERTQQVIPVKTAIPHPDYNPKNHSNDIMLLQLEREAKQTAAVRPLRLPTGKTRVRPGQVCSVAGWGWVNAKIHRYPDTLQVVRLAVQEDQECKSRFPGYYDRTIQLCVGDPMEEKSSFQGDSGGPLVCNNVAQGIVSFGPKNGTPPRVYTKISTFLPWIKKTMK",
+                  "midline": "AF L   A AGEIIGGHEAKPHSRPYMAYL I ++    +CGGFLI   FVLTAAHC+G SI VTLGAHNIKEQE TQQ IPVK  IPHP YNPKN SNDIMLLQLER+AK+T AV+PLRLP+ K +V+PGQ CSVAGWG   A + ++  TLQ V++ VQED++C+S    YYD TI+LCVGDP  +K+SF+GDSGGPLVCN VAQGIVS+G  NG PPR  TK+S+F+ WIKKTMK"
+                }
+              ]
+            },
+            {
+              "num": 99,
+              "description": [
+                {
+                  "id": "gi|513005606|ref|XP_004864268.1|",
+                  "accession": "XP_004864268",
+                  "title": "PREDICTED: granzyme B [Heterocephalus glaber]",
+                  "taxid": 10181,
+                  "sciname": "Heterocephalus glaber"
+                },
+                {
+                  "id": "gi|351709037|gb|EHB11956.1|",
+                  "accession": "EHB11956",
+                  "title": "Granzyme B [Heterocephalus glaber]",
+                  "taxid": 10181,
+                  "sciname": "Heterocephalus glaber"
+                }
+              ],
+              "len": 253,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 332.028,
+                  "score": 850,
+                  "evalue": 5.08615e-111,
+                  "identity": 156,
+                  "positive": 186,
+                  "query_from": 14,
+                  "query_to": 247,
+                  "hit_from": 14,
+                  "hit_to": 247,
+                  "align_len": 234,
+                  "gaps": 0,
+                  "qseq": "PRADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "PGAKAGEIIGGHEAKPHSRPYMAYLQIWSKNSQKKCGGFLIQEKFVLTAAHCLGSTINVTLGAHNIKKLEKTQQVITVRKAIPHPDYNSIIFSNDIMLLQLEKKAKLTKDVQPLSLPKAKSQVKPGSLCHVAGWGRLVPEGEYPSTLQEAGVTVQKDQECETCFKTHYNSITEMCVGDPKVKNASFKGDSGGPLVCNNVAQGIVSYGRKDGTTPCVYTKISHFLQWIKKTMKQH",
+                  "midline": "P A AGEIIGGHEAKPHSRPYMAYL IW + S K+CGGFLI++ FVLTAAHC GS+INVTLGAHNIK+ E TQQ I V++ IPHP YN   FSNDIMLLQLE+KAK T+ VQPL LP  K+QVKPG  C VAGWG+  P G++  TLQE  +TVQ+D++CE+  + +Y+S  E+CVGDP++K  SFKGDSGGPLVCN VAQGIVSYGR +G  P   TK+S F+ WIKKTMK++"
+                }
+              ]
+            },
+            {
+              "num": 100,
+              "description": [
+                {
+                  "id": "gi|918583015|ref|XP_005377048.2|",
+                  "accession": "XP_005377048",
+                  "title": "PREDICTED: granzyme B(G,H)-like [Chinchilla lanigera]",
+                  "taxid": 34839,
+                  "sciname": "Chinchilla lanigera"
+                }
+              ],
+              "len": 247,
+              "hsps": [
+                {
+                  "num": 1,
+                  "bit_score": 331.643,
+                  "score": 849,
+                  "evalue": 7.31301e-111,
+                  "identity": 157,
+                  "positive": 185,
+                  "query_from": 15,
+                  "query_to": 247,
+                  "hit_from": 15,
+                  "hit_to": 247,
+                  "align_len": 233,
+                  "gaps": 0,
+                  "qseq": "RADAGEIIGGHEAKPHSRPYMAYLMIWDQKSLKRCGGFLIRDDFVLTAAHCWGSSINVTLGAHNIKEQEPTQQFIPVKRPIPHPAYNPKNFSNDIMLLQLERKAKRTRAVQPLRLPSNKAQVKPGQTCSVAGWGQTAPLGKHSHTLQEVKMTVQEDRKCESDLRHYYDSTIELCVGDPEIKKTSFKGDSGGPLVCNKVAQGIVSYGRNNGMPPRACTKVSSFVHWIKKTMKRY",
+                  "hseq": "RTRAEEIIGGHEVKPHSRPYMAYLQIQCNNSPTKCGGFLIHEKFVLTAAHCAGSSINVTLGAHNIQQQEKTQQVIRVRKALPHPEYNPKIFTNDIMLLQLEKKANLTKAVQLLRLPKGKTRVKPGTLCQVAGWGRLAPNGRFPNTLQEVELTVQKDKECETRFQKHYDSATEMCVGDPKIKKASYQGDSGGPLVCNNVAQGIVSYGPKNGTPPRVYTKVSRFLSWIKKTMKHH",
+                  "midline": "R  A EIIGGHE KPHSRPYMAYL I    S  +CGGFLI + FVLTAAHC GSSINVTLGAHNI++QE TQQ I V++ +PHP YNPK F+NDIMLLQLE+KA  T+AVQ LRLP  K +VKPG  C VAGWG+ AP G+  +TLQEV++TVQ+D++CE+  + +YDS  E+CVGDP+IKK S++GDSGGPLVCN VAQGIVSYG  NG PPR  TKVS F+ WIKKTMK +"
+                }
+              ]
+            }
+          ],
+          "stat": {
+            "db_num": 70861097,
+            "db_len": 25660401164,
+            "hsp_len": 146,
+            "eff_space": 1546782781202,
+            "kappa": 0.041,
+            "lambda": 0.267,
+            "entropy": 0.14
+          }
+        }
+      }
+    }
+  }
+}
