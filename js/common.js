@@ -22,7 +22,7 @@ var xScaleMax = 600;
 var yScaleMin = 0;
 var yScaleMax = 350;
 
-var widthBtnBars = 60;
+var widthBtnBars = 30;
 
 var colorAt0 = "#0000FF";
 var colorAt50 = "#00FF00";
@@ -46,7 +46,7 @@ var x_axis_bottom_x_translate = 140;
 var x_axis_bottom_y_translate = 5;
 
 var QueryDropDownX_translate = 10;
-var QueryDropDownY_translate = 25;
+var QueryDropDownY_translate = 19;
 
 var hitBarX_translate = 140;
 var hitBarY_translate = 10;
@@ -56,6 +56,14 @@ var hitTextY_translate = 10;
 
 var ellipse = "...";
 var overlapThreshold = 20.0;
+
+var barHeight = 10;
+
+var queryYValue = 10;
+var queryGapLineYValue = 14;
+
+var hitYValue = 22;
+var hitGapLineYValue = 26;
 
 var canvas;
 var index = 0;
@@ -237,6 +245,21 @@ function drawOverviewBars(blast_data, numberOfHits) {
                 && blast_data[i].gaps == blast_data[regions].gaps) {
 
                 numOfOrganisms++;
+                //qrySeqLength = qseq[i+j].length;
+                //hitSeqLength = hseq[i+j].length;
+                //qStart = parseInt(queryFromValues[i+j]);
+                //qLen = parseInt(queryToValues[i+j]);
+                //hStart = parseInt(hitFromValues[i+j]);
+                //hLen = parseInt(hitToValues[i+j]);
+                //queryFullLength = qLen - qStart + 1;
+                //
+                //queryBars.select("#queryRect"+(i+j)).style("cursor","pointer")
+                //    .attr("alignmentInfo", "def:" + def[i+j] + "::Query:"+ queryFromValues[i+j] + " - " + queryToValues[i+j] +
+                //    "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+                //    "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+                //    "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+                //    "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
+                //    .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
                 organismNames.push(blast_data[i].organism);
                 i = i + blast_data[i].num_of_regions_left;
                 continue;
@@ -271,7 +294,7 @@ function drawOverviewBars(blast_data, numberOfHits) {
 
     //overviewHeight = 60 + ((numberOfHits-1) * 60);
 
-    yScaleMax = 65 + ((organismDetails.length -1) * 60);
+    yScaleMax = 55 + ((organismDetails.length -1) * widthBtnBars);
     overviewHeight = yScaleMax;
 
     if(overviewHeight < 300) {
@@ -343,7 +366,7 @@ function addAxes(xScale, yScale, organismDetails) {
         .attr('id','bottomxaxis')
         .call(xAxis);
 
-    var	yAxisRightDropDown = d3.svg.axis()
+    var	yAxisLeftDropDown = d3.svg.axis()
         .orient('right')
         .scale(yScale)
         .tickSize(0)
@@ -355,14 +378,14 @@ function addAxes(xScale, yScale, organismDetails) {
     var selectStart = '<select class="form-control">';
     var selectEnd = "</select>";
 
-    var dropdownStart = "<div class='btn-group'>";
-    var btnStart = "<button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>";
-    var btnEnd = "<span class='caret'></span></button>";
-    var ulStart = "<ul class='dropdown-menu'>";
-    var liStart = "<li><a href='#'>";
-    var liEnd = "</a></li>";
-    var ulEnd = "</ul>";
-    var dropdownEnd = "</div>";
+    //var dropdownStart = "<div class='btn-group'>";
+    //var btnStart = "<button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>";
+    //var btnEnd = "<span class='caret'></span></button>";
+    //var ulStart = "<ul class='dropdown-menu'>";
+    //var liStart = "<li><a href='#'>";
+    //var liEnd = "</a></li>";
+    //var ulEnd = "</ul>";
+    //var dropdownEnd = "</div>";
 
     //<div class="btn-group">
     //    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
@@ -378,7 +401,7 @@ function addAxes(xScale, yScale, organismDetails) {
     canvas.append('g')
         //.attr("transform", "translate(782,24)")
         .attr('id','rightyaxisDropDown')
-        .call(yAxisRightDropDown)
+        .call(yAxisLeftDropDown)
         .selectAll('.tick')
         .attr("transform", function (d,i) {return "translate(" + QueryDropDownX_translate + "," + (QueryDropDownY_translate + (i*widthBtnBars)) + ")"})
         .append("foreignObject")
@@ -418,12 +441,16 @@ function addAxes(xScale, yScale, organismDetails) {
         });
 }
 
-//Catch on click event on bars
+//Catch the click events on bars
 function clickedOnBar(evt) {
-    var svgobj = evt.target;
+    var svgObj = evt.target;
 
-    var alignmentInfo = svgobj.getAttribute('alignmentInfo').split("::");
+    var alignmentInfo = svgObj.getAttribute('alignmentInfo').split("::");
 
+    fillTableWithValues(alignmentInfo);
+}
+
+function fillTableWithValues(alignmentInfo) {
     var def = alignmentInfo[0].split("def:")[1];
     var qryOrSub = alignmentInfo[1].split(":")[1];
     var score = alignmentInfo[2].split(":")[1];
@@ -463,8 +490,6 @@ function clickedOnBar(evt) {
     var midLine = alignmentInfo[11].split(":")[1];
     var hSeq = alignmentInfo[14].split(":")[1];
 
-
-
     for(var qryStart=0, sbjStart =0 ; qryStart < qrySeqLength && sbjStart < hitSeqLength;) {
         qryEnd = qryStart+perLine > qrySeqLength ? qrySeqLength : qryStart+perLine;
         sbjEnd = sbjStart+perLine > hitSeqLength ? hitSeqLength : sbjStart+perLine;
@@ -481,28 +506,26 @@ function clickedOnBar(evt) {
                 .append($('<td>').text(qStart).attr("class","text-left"))
                 .append($('<td>').text(qSeq.substring(qryStart, qryEnd).trim()))
                 .append($('<td>').text(qEnd))
-            )
+        )
             .append($('<tr>')
                 .append($('<td>').text(""))
                 .append($('<td>').text(""))
                 .append($('<td>').text(midLine.substring(sbjStart, sbjEnd)))
                 .append($('<td>').text(""))
-            )
+        )
             .append($('<tr>')
                 .attr("class","row-bottom-padding")
                 .append($('<td>').html(sbjSymbol))
                 .append($('<td>').text(hStart).attr("class","text-left"))
                 .append($('<td>').text(hSeq.substring(sbjStart, sbjEnd).trim()))
                 .append($('<td>').text(hEnd))
-            );
+        );
 
         qryStart= qryStart+perLine;
         sbjStart = sbjStart+perLine;
         qStart= qStart+perLine-gapsInQry;
         hStart = hStart+perLine-gapsInSub;
     }
-
-
 }
 
 //Add the Query bars to the graph
@@ -520,25 +543,25 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
     for(var i= 0, k=0; i<queryFromValues.length;k++) {
 
         queryBars.append('rect')
-            .attr('height',15)
-            .attr({'x':xScale(queryFromValues[i]),'y':(10 + (k*widthBtnBars))})
+            .attr('height',barHeight)
+            .attr({'x':xScale(queryFromValues[i]),'y':(queryYValue + (k*widthBtnBars))})
             .style('fill',colorScale(queryToValues[i] - queryFromValues[i] + 1))
             .attr('width',xScale(queryToValues[i] - queryFromValues[i]))
             .attr('id', "queryRect"+i)
             .attr('class', "bars")
             .attr('onclick', "clickedOnBar(evt)");
 
-        queryTexts.append('text')
-            .attr({'x':xScale(parseInt(queryFromValues[i])),'y':(9 + (k*widthBtnBars))})
-            .text(queryFromValues[i])
-            .style({'fill':'#000','font-size':'10px'})
-            .attr("id","queryFromText"+i);
-
-        queryTexts.append('text')
-            .attr({'x':xScale(parseInt(queryToValues[i])-10),'y':(9 + (k*widthBtnBars))})
-            .text(queryToValues[i])
-            .style({'fill':'#000','font-size':'10px'})
-            .attr("id","queryToText"+i);
+        //queryTexts.append('text')
+        //    .attr({'x':xScale(parseInt(queryFromValues[i])),'y':(9 + (k*widthBtnBars))})
+        //    .text(queryFromValues[i])
+        //    .style({'fill':'#000','font-size':'10px'})
+        //    .attr("id","queryFromText"+i);
+        //
+        //queryTexts.append('text')
+        //    .attr({'x':xScale(parseInt(queryToValues[i])-10),'y':(9 + (k*widthBtnBars))})
+        //    .text(queryToValues[i])
+        //    .style({'fill':'#000','font-size':'10px'})
+        //    .attr("id","queryToText"+i);
 
         var qrySeqLength = queryFromValues[i] + qseq[i].length;
         var hitSeqLength = hseq[i].length;
@@ -561,41 +584,41 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
 
         for(var j=1; j<numOfRegionsLeft[i]; j++) {
             queryBars.append('rect')
-                .attr('height',15)
-                .attr({'x':xScale(queryFromValues[i+j]),'y':(10 + (k*widthBtnBars))})
+                .attr('height',barHeight)
+                .attr({'x':xScale(queryFromValues[i+j]),'y':(queryYValue + (k*widthBtnBars))})
                 .style('fill',colorScale(queryToValues[i+j] - queryFromValues[i+j] + 1))
                 .attr('width',xScale(queryToValues[i+j] - queryFromValues[i+j]));
 
             queryBars.append('rect')
-                .attr('height',15)
-                .attr({'x':xScale(queryFromValues[i+j]),'y':(10 + (k*widthBtnBars))})
+                .attr('height',barHeight)
+                .attr({'x':xScale(queryFromValues[i+j]),'y':(queryYValue + (k*widthBtnBars))})
                 .attr('width',xScale(queryToValues[i+j] - queryFromValues[i+j]))
                 .attr('fill', 'url(#pattern' + j +')')
                 .attr("id","queryRect"+(i+j))
                 .attr('class', "bars")
                 .attr('onclick', "clickedOnBar(evt)");
 
-            if(xScale(parseInt(queryToValues[i+j])-25) - xScale(parseInt(queryFromValues[i+j])+5) < overlapThreshold) {
-                queryTexts.append('text')
-                    .attr({'x':xScale((parseInt(queryToValues[i+j])-25 + parseInt(queryFromValues[i+j])+5)/2),'y':(6 + (k*widthBtnBars))})
-                    .text(ellipse)
-                    .style({'fill':'#000000','font-size':'20px'})
-                    .style("cursor","pointer")
-                    .attr("id","queryEllipse"+(i+j))
-                    .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
-            } else {
-                queryTexts.append('text')
-                    .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
-                    .text(queryFromValues[i+j])
-                    .style({'fill':'#000000','font-size':'10px'})
-                    .attr("id","queryFromText"+(i+j));
-
-                queryTexts.append('text')
-                    .attr({'x':xScale(parseInt(queryToValues[i+j])-25),'y':(9 + (k*widthBtnBars))})
-                    .text(queryToValues[i+j])
-                    .style({'fill':'#000000','font-size':'10px'})
-                    .attr("id","queryToText"+(i+j));
-            }
+            //if(xScale(parseInt(queryToValues[i+j])-25) - xScale(parseInt(queryFromValues[i+j])+5) < overlapThreshold) {
+            //    queryTexts.append('text')
+            //        .attr({'x':xScale((parseInt(queryToValues[i+j])-25 + parseInt(queryFromValues[i+j])+5)/2),'y':(6 + (k*widthBtnBars))})
+            //        .text(ellipse)
+            //        .style({'fill':'#000000','font-size':'20px'})
+            //        .style("cursor","pointer")
+            //        .attr("id","queryEllipse"+(i+j))
+            //        .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
+            //} else {
+            //    queryTexts.append('text')
+            //        .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
+            //        .text(queryFromValues[i+j])
+            //        .style({'fill':'#000000','font-size':'10px'})
+            //        .attr("id","queryFromText"+(i+j));
+            //
+            //    queryTexts.append('text')
+            //        .attr({'x':xScale(parseInt(queryToValues[i+j])-25),'y':(9 + (k*widthBtnBars))})
+            //        .text(queryToValues[i+j])
+            //        .style({'fill':'#000000','font-size':'10px'})
+            //        .attr("id","queryToText"+(i+j));
+            //}
 
 
             qrySeqLength = qseq[i+j].length;
@@ -644,9 +667,9 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
             if(x>1) {
 
                 bars.append('rect')
-                    .attr('height',15)
+                    .attr('height',barHeight)
                     .style("z-index", "18")
-                    .attr({'x':xScale(initialValue),'y':(10 + (k*widthBtnBars))})
+                    .attr({'x':xScale(initialValue),'y':(queryYValue + (k*widthBtnBars))})
                     .style('fill',gapColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","queryRectGapBackground"+(i+l));
@@ -656,7 +679,7 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
                 bars.append('rect')
                     .attr('height',2)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(16 + (k*widthBtnBars))})
+                    .attr({'x':xScale(initialValue),'y':(queryGapLineYValue + (k*widthBtnBars))})
                     .style('fill',gapLineColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","queryRectGap"+(i+l));
@@ -684,27 +707,27 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
 
     for(var i= 0, k=0; i<hitFromValues.length;k++) {
         hitBars.append('rect')
-            .attr('height',15)
-            .attr({'x':xScale(hitFromValues[i]),'y':(27 + (k*widthBtnBars))})
+            .attr('height',barHeight)
+            .attr({'x':xScale(hitFromValues[i]),'y':(hitYValue + (k*widthBtnBars))})
             .style('fill',colorScale(hitToValues[i] - hitFromValues[i]+1))
             .attr('width',xScale(hitToValues[i] - hitFromValues[i]))
             .attr("id","hitRect"+i)
             .attr('class', "bars")
             .attr('onclick', "clickedOnBar(evt)");
 
-        hitTexts.append('text')
-            .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(52 + (k*widthBtnBars))})
-            .text(hitFromValues[i])
-            .style({'fill':'#000','font-size':'10px'})
-            .style("z-index", "10")
-            .attr("id","hitFromText"+i);
-
-        hitTexts.append('text')
-            .attr({'x':xScale(parseInt(hitToValues[i])-25),'y':(52 + (k*widthBtnBars))})
-            .text(hitToValues[i])
-            .style({'fill':'#000','font-size':'10px'})
-            .style("z-index", "10")
-            .attr("id","hitToText"+i);
+        //hitTexts.append('text')
+        //    .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(52 + (k*widthBtnBars))})
+        //    .text(hitFromValues[i])
+        //    .style({'fill':'#000','font-size':'10px'})
+        //    .style("z-index", "10")
+        //    .attr("id","hitFromText"+i);
+        //
+        //hitTexts.append('text')
+        //    .attr({'x':xScale(parseInt(hitToValues[i])-25),'y':(52 + (k*widthBtnBars))})
+        //    .text(hitToValues[i])
+        //    .style({'fill':'#000','font-size':'10px'})
+        //    .style("z-index", "10")
+        //    .attr("id","hitToText"+i);
 
         var qrySeqLength = qseq[i].length;
         var hitSeqLength = hseq[i].length;
@@ -727,14 +750,14 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
 
         for(var j=1; j<numOfRegionsLeft[i]; j++) {
             hitBars.append('rect')
-                .attr('height',15)
-                .attr({'x':xScale(hitFromValues[i+j]),'y':(27 + (k*widthBtnBars))})
+                .attr('height',barHeight)
+                .attr({'x':xScale(hitFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
                 .style('fill',colorScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j]) + 1))
                 .attr('width',xScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j])));
 
             hitBars.append('rect')
-                .attr('height',15)
-                .attr({'x':xScale(hitFromValues[i+j]),'y':(27 + (k*widthBtnBars))})
+                .attr('height',barHeight)
+                .attr({'x':xScale(hitFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
                 .attr('width',xScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j])))
                 .attr('fill', 'url(#pattern' + j +')')
                 .attr("id","hitRect"+(i+j))
@@ -758,35 +781,35 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
                 .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
 
 
-            if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
-
-                hitTexts.append('text')
-                    .attr({'x':xScale((parseInt(hitToValues[i+j])-25 + parseInt(hitFromValues[i+j])+2)/2),'y':(50 + (k*widthBtnBars))})
-                    .text(ellipse)
-                    .style({'fill':'#000000','font-size':'20px'})
-                    .style("cursor","pointer")
-                    .attr("id","hitEllipse"+(i+j))
-                    .attr('onclick', "clickedOnBar(evt)")
-                    .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
-                    "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
-                    "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
-                    "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
-                    "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-                    .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
-            } else {
-
-                hitTexts.append('text')
-                    .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
-                    .text(hitFromValues[i+j])
-                    .style({'fill':'#000000','font-size':'10px'})
-                    .attr("id","hitFromText"+(i+j));
-
-                hitTexts.append('text')
-                    .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
-                    .text(hitToValues[i+j])
-                    .style({'fill':'#000000','font-size':'10px'})
-                    .attr("id","hitToText"+(i+j));
-            }
+            //if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
+            //
+            //    hitTexts.append('text')
+            //        .attr({'x':xScale((parseInt(hitToValues[i+j])-25 + parseInt(hitFromValues[i+j])+2)/2),'y':(50 + (k*widthBtnBars))})
+            //        .text(ellipse)
+            //        .style({'fill':'#000000','font-size':'20px'})
+            //        .style("cursor","pointer")
+            //        .attr("id","hitEllipse"+(i+j))
+            //        .attr('onclick', "clickedOnBar(evt)")
+            //        .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
+            //        "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
+            //        "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
+            //        "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
+            //        "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
+            //        .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
+            //} else {
+            //
+            //    hitTexts.append('text')
+            //        .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
+            //        .text(hitFromValues[i+j])
+            //        .style({'fill':'#000000','font-size':'10px'})
+            //        .attr("id","hitFromText"+(i+j));
+            //
+            //    hitTexts.append('text')
+            //        .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
+            //        .text(hitToValues[i+j])
+            //        .style({'fill':'#000000','font-size':'10px'})
+            //        .attr("id","hitToText"+(i+j));
+            //}
 
 
 
@@ -819,9 +842,9 @@ function addHitGaps(gaps, i, sequ, bars, xScale, k) {
             if(x>1) {
 
                 bars.append('rect')
-                    .attr('height',15)
+                    .attr('height',barHeight)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(27 + (k*widthBtnBars))})
+                    .attr({'x':xScale(initialValue),'y':(hitYValue + (k*widthBtnBars))})
                     .style('fill',gapColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","hitRectGapBackground"+(i+l));
@@ -831,7 +854,7 @@ function addHitGaps(gaps, i, sequ, bars, xScale, k) {
                 bars.append('rect')
                     .attr('height',2)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(33 + (k*widthBtnBars))})
+                    .attr({'x':xScale(initialValue),'y':(hitGapLineYValue + (k*widthBtnBars))})
                     .style('fill',gapLineColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
                     .attr("id","hitRectGap"+(i+l));
