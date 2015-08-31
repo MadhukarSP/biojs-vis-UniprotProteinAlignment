@@ -22,7 +22,7 @@
     /*width: 60%;*/
     height: auto;
     max-height: 350px;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
     padding-left: 0px;
 }
