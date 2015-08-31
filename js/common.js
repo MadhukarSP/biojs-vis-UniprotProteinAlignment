@@ -83,6 +83,16 @@ $(document).ready(function() {
         },
         track: true
     });
+
+    //$('.dropDownMenu option:selected').on('change',
+    //    function() {
+    //
+    //        var end = this.value;
+    //
+    //        console.log("value?: "+ end);
+    //
+    //    }
+    //);
 });
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
@@ -229,6 +239,14 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var positives = [];
     var numOfOrganisms = 1;
     var flag=1;
+    var qStart = 0;
+    var qLen = 0;
+    var hStart = 0;
+    var hLen = 0;
+    var queryFullLength = 0;
+    var alignmentInfoStart = "name='";
+    var alignmentInfoEnd = "'";
+    var alignmentInfo = "";
 
     for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
@@ -245,29 +263,49 @@ function drawOverviewBars(blast_data, numberOfHits) {
                 && blast_data[i].gaps == blast_data[regions].gaps) {
 
                 numOfOrganisms++;
-                //qrySeqLength = qseq[i+j].length;
-                //hitSeqLength = hseq[i+j].length;
-                //qStart = parseInt(queryFromValues[i+j]);
-                //qLen = parseInt(queryToValues[i+j]);
-                //hStart = parseInt(hitFromValues[i+j]);
-                //hLen = parseInt(hitToValues[i+j]);
-                //queryFullLength = qLen - qStart + 1;
-                //
-                //queryBars.select("#queryRect"+(i+j)).style("cursor","pointer")
-                //    .attr("alignmentInfo", "def:" + def[i+j] + "::Query:"+ queryFromValues[i+j] + " - " + queryToValues[i+j] +
-                //    "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
-                //    "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
-                //    "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
-                //    "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-                //    .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
-                organismNames.push(blast_data[i].organism);
+                qStart = parseInt(blast_data[i].query_from);
+                qLen = parseInt(blast_data[i].query_to);
+                hStart = parseInt(blast_data[i].hit_from);
+                hLen = parseInt(blast_data[i].hit_to);
+                queryFullLength = qLen - qStart + 1;
+
+                alignmentInfo = alignmentInfoStart + "def:" + blast_data[i].def
+                                + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
+                                + "::eValue:" + blast_data[i].evalue
+                                + "::Identities:" + blast_data[i].identity + "/" + queryFullLength
+                                + "::Positives:" + blast_data[i].positive + "/" + queryFullLength
+                                + "::Gaps:" + blast_data[i].gaps + "/" + queryFullLength
+                                + "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen + "::QueryLen:"+ queryFullLength
+                                + "::QuerySeq:" + blast_data[i].qseq + "::midLineSeq:"+ blast_data[i].midLine
+                                + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i].hseq
+                                + alignmentInfoEnd;
+
+                organismNames.push(blast_data[i].organism + "-->" + alignmentInfo);
+
                 i = i + blast_data[i].num_of_regions_left;
                 continue;
             }
         }
 
         if(flag == 1) {
-            organismNames.push(blast_data[i].organism);
+            qStart = parseInt(blast_data[i].query_from);
+            qLen = parseInt(blast_data[i].query_to);
+            hStart = parseInt(blast_data[i].hit_from);
+            hLen = parseInt(blast_data[i].hit_to);
+            queryFullLength = qLen - qStart + 1;
+
+            alignmentInfo = alignmentInfoStart + "def:" + blast_data[i].def
+                            + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
+                            + "::eValue:" + blast_data[i].evalue
+                            + "::Identities:" + blast_data[i].identity + "/" + queryFullLength
+                            + "::Positives:" + blast_data[i].positive + "/" + queryFullLength
+                            + "::Gaps:" + blast_data[i].gaps + "/" + queryFullLength
+                            + "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen + "::QueryLen:"+ queryFullLength
+                            + "::QuerySeq:" + blast_data[i].qseq + "::midLineSeq:"+ blast_data[i].midLine
+                            + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i].hseq
+                            + alignmentInfoEnd;
+
+            organismNames.push(blast_data[i].organism + "-->" + alignmentInfo);
             organismDetails.push(numOfOrganisms + ","+ organismNames);
             numOfOrganisms = 1;
             organismNames = [];
@@ -373,30 +411,18 @@ function addAxes(xScale, yScale, organismDetails) {
         .tickFormat(function(d,i){return "";})
         .tickValues(d3.range(organismDetails.length));
 
-    var optionStart = "<option>";
+    var leftAngle = "<";
+    var rightAngle = ">";
+    var optionName = "option";
     var optionEnd = "</option>";
-    var selectStart = '<select class="form-control">';
+    var selectStart = 'select class="form-control dropDownMenu"';
+    var selectIdStart = 'id="dropDownMenuID';
+    var selectIdEnd = '"';
     var selectEnd = "</select>";
-
-    //var dropdownStart = "<div class='btn-group'>";
-    //var btnStart = "<button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>";
-    //var btnEnd = "<span class='caret'></span></button>";
-    //var ulStart = "<ul class='dropdown-menu'>";
-    //var liStart = "<li><a href='#'>";
-    //var liEnd = "</a></li>";
-    //var ulEnd = "</ul>";
-    //var dropdownEnd = "</div>";
-
-    //<div class="btn-group">
-    //    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">Success <span class="caret"></span></button>
-    //    <ul class="dropdown-menu">
-    //    <li><a href="#">Action</a></li>
-    //    <li><a href="#">Another action</a></li>
-    //    <li><a href="#">Something else here</a></li>
-    //    <li class="divider"></li>
-    //    <li><a href="#">Separated link</a></li>
-    //    </ul>
-    //    </div>
+    var space = " ";
+    var titleStart = "title='";
+    var titleEnd = "'";
+    var counter = 1;
 
     canvas.append('g')
         //.attr("transform", "translate(782,24)")
@@ -417,28 +443,48 @@ function addAxes(xScale, yScale, organismDetails) {
             var optionValues = "";
 
             if(organismDetails[i].split(',').length > 2) {
-                optionValues = selectStart + optionStart + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
+
+                optionValues = leftAngle + selectStart + selectIdStart + counter++ + selectIdEnd + rightAngle + leftAngle + optionName + rightAngle
+                                + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
+
                 for(var k=1; k< organismDetails[i].split(',').length;k++) {
-                    optionValues = optionValues + optionStart + organismDetails[i].split(',')[k] + optionEnd;
+                    optionValues = optionValues + leftAngle + optionName
+                                    + space + titleStart + organismDetails[i].split(',')[k].split("-->")[0] + titleEnd
+                                    + space + organismDetails[i].split(',')[k].split("-->")[1] + rightAngle
+                                    + organismDetails[i].split(',')[k].split("-->")[0] + optionEnd;
                 }
                 optionValues = optionValues + selectEnd;
-
-                //optionValues = dropdownStart + btnStart + (organismDetails[i].split(',').length -1) + " hits" + btnEnd + ulStart;
-                //for(var k=1; k< organismDetails[i].split(',').length;k++) {
-                //    optionValues = optionValues + liStart + organismDetails[i].split(',')[k] + liEnd;
-                //}
-                //optionValues = ulEnd + dropdownEnd;
             } else {
-                optionValues = organismDetails[i].split(',')[1];
+
+                optionValues = organismDetails[i].split(',')[1].split("-->")[0];
             }
 
             return optionValues;
         })
         .attr("title",function(i) {
             if(organismDetails[i].split(',').length <= 2) {
-                return organismDetails[i].split(',')[1];
+                return organismDetails[i].split(',')[1].split("-->")[0];
             }
         });
+
+    var dropDown = d3.selectAll('.dropDownMenu');
+
+    dropDown.on('change', function() {
+        console.log("Vale:"+ this.value);
+        console.log("name:"+ this.id);
+        var selectorVal = "#" + this.id + " option:selected";
+        fillTableWithValues($(selectorVal).attr("name").split("::"));
+    });
+
+    //$('.dropDownMenu option:selected').on('change',
+    //    function() {
+    //
+    //        var end = this.value;
+    //
+    //        console.log("value?: "+ end);
+    //
+    //    }
+    //);
 }
 
 //Catch the click events on bars
