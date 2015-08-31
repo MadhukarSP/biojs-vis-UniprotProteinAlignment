@@ -62,9 +62,7 @@
 
     </svg>
 </div>
-<div id="note" class="col-md-3 text-center" style="padding-top: 18px;">
-    <strong>Note:</strong> Please click on alignment bars to see alignment information
-</div>
+
 
 <div id="xAxis_at_top"></div>
 <div class="outer col-md-7">
@@ -72,13 +70,17 @@
     </div>
 </div>
 <div class="rightTable col-md-5" > <!--style="border:1px solid #eeeeee;border-radius: 10px"-->
-    <div id="tableWrapper">
+    <div id="note" class="text-center" >
+        <strong>Note:</strong> Please click on alignment bars to see alignment information
+    </div>
+    <div id="tableWrapper" hidden>
         <p style="padding-left: 8px"><strong>ALIGNMENT INFORMATION</strong></p>
         <p id="defValue" style="padding-left: 8px"></p>
         <table class="table">
             <thead>
             <tr>
-                <th>From-To</th>
+                <th>Query</th>
+                <th>Subject</th>
                 <th>Score</th>
                 <th>eValue</th>
                 <th>Identity</th>
@@ -88,7 +90,8 @@
             </thead>
             <tbody>
             <tr>
-                <td id="fromToValue"></td>
+                <td id="queryFromTo"></td>
+                <td id="subjectFromTo"></td>
                 <td id="scoreValue"></td>
                 <td id="eValue"></td>
                 <td id="identityValue"></td>

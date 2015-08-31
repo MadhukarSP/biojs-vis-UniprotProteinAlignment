@@ -97,7 +97,7 @@ $(document).ready(function() {
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
 function initializeValues() {
-    $.getJSON("json/NCBI_Output_Query_Seq_2.json", function(data) {
+    $.getJSON("json/UniProt.json", function(data) {
 
         var all_blast_output = [];
 
@@ -470,21 +470,10 @@ function addAxes(xScale, yScale, organismDetails) {
     var dropDown = d3.selectAll('.dropDownMenu');
 
     dropDown.on('change', function() {
-        console.log("Vale:"+ this.value);
-        console.log("name:"+ this.id);
         var selectorVal = "#" + this.id + " option:selected";
         fillTableWithValues($(selectorVal).attr("name").split("::"));
     });
 
-    //$('.dropDownMenu option:selected').on('change',
-    //    function() {
-    //
-    //        var end = this.value;
-    //
-    //        console.log("value?: "+ end);
-    //
-    //    }
-    //);
 }
 
 //Catch the click events on bars
@@ -497,6 +486,10 @@ function clickedOnBar(evt) {
 }
 
 function fillTableWithValues(alignmentInfo) {
+
+    $("#note").hide();
+    $("#tableWrapper").removeAttr("hidden");
+
     var def = alignmentInfo[0].split("def:")[1];
     var qryOrSub = alignmentInfo[1].split(":")[1];
     var score = alignmentInfo[2].split(":")[1];
@@ -504,10 +497,17 @@ function fillTableWithValues(alignmentInfo) {
     var identity = alignmentInfo[4].split(":")[1];
     var positive = alignmentInfo[5].split(":")[1];
     var gaps = alignmentInfo[6].split(":")[1];
+    var qrySeqLength = alignmentInfo[7].split(":")[1] + alignmentInfo[9].split(":")[1];
+    var hitSeqLength = alignmentInfo[14].split(":")[1].length;
+    var qStart = parseInt(alignmentInfo[7].split(":")[1]);
+    var qLen = parseInt(alignmentInfo[8].split(":")[1]);
+    var hStart = parseInt(alignmentInfo[12].split(":")[1]);
+    var hLen = parseInt(alignmentInfo[13].split(":")[1]);
 
     $("#sequenceInfo > tbody").html("");
 
-    $("#fromToValue").text(qryOrSub);
+    $("#queryFromTo").text(qStart + "-" + qLen);
+    $("#subjectFromTo").text(hStart + "-" + hLen);
     $("#defValue").text(def);
     $("#scoreValue").text(score);
     $("#eValue").text(eValue);
@@ -520,12 +520,7 @@ function fillTableWithValues(alignmentInfo) {
     var sbjSymbol="<strong>Sub</strong> ";
     var perLine = 50;
 
-    var qrySeqLength = alignmentInfo[7].split(":")[1] + alignmentInfo[9].split(":")[1];
-    var hitSeqLength = alignmentInfo[14].split(":")[1].length;
-    var qStart = parseInt(alignmentInfo[7].split(":")[1]);
-    var qLen = parseInt(alignmentInfo[8].split(":")[1]);
-    var hStart = parseInt(alignmentInfo[12].split(":")[1]);
-    var hLen = parseInt(alignmentInfo[13].split(":")[1]);
+
     var qryEnd;
     var sbjEnd;
     var gapsInQry;
