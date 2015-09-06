@@ -6,7 +6,7 @@ var height = 220;
 
 //Circle attributes
 var radius = 25;
-var gapColor = "#ffffff";
+var gapColor = "#FFFF00";
 var gapLineColor = "#000000";
 
 //Overview variables
@@ -611,7 +611,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             .attr("title", "Query co-ordinates (" + queryFromValues[i] + " - " + queryToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
-        addQueryGaps(gaps, i, qseq, queryBars, xScale, k);
+        addQueryGaps(gaps, i, qseq, queryBars, xScale, k, qStart);
 
         for(var j=1; j<numOfRegionsLeft[i]; j++) {
             queryBars.append('rect')
@@ -670,7 +670,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
 
 
             //Add gaps only if there is consecutive 3 gaps
-            addQueryGaps(gaps, (i+j) , qseq, queryBars, xScale, k);
+            addQueryGaps(gaps, (i+j) , qseq, queryBars, xScale, k, qStart);
         }
 
         if(numOfRegionsLeft[i] > 1) {
@@ -682,8 +682,9 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
 }
 
 //Add gaps only if there is consecutive 3 gaps
-function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
+function addQueryGaps(gaps, i, sequ, bars, xScale, k, qStart) {
 
+    var gapsInQuery = 0;
     if(gaps[i] > 2) {
         var allGapsInQuery = getAllIndexes(sequ[i], "-");
 
@@ -694,28 +695,30 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k) {
                 x++;
                 l++;
             }
-
+            gapsInQuery = gapsInQuery + x;
             if(x>1) {
 
                 bars.append('rect')
                     .attr('height',barHeight)
                     .style("z-index", "18")
-                    .attr({'x':xScale(initialValue),'y':(queryYValue + (k*widthBtnBars))})
+                    .attr({'x':xScale(parseInt(qStart + initialValue - gapsInQuery)),'y':(queryYValue + (k*widthBtnBars))})
                     .style('fill',gapColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
-                    .attr("id","queryRectGapBackground"+(i+l));
+                    .attr("id","queryRectGapBackground"+i+l);
 
-                bars.select("#queryRectGapBackground"+(i+l)).style("cursor","pointer").attr("title","Query Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+                bars.select("#queryRectGapBackground"+i+l).style("cursor","pointer")
+                    .attr("title","Query Gap ["+ (qStart + parseInt(initialValue)) + " - " + (qStart + parseInt(initialValue+x)) + "]");
 
                 bars.append('rect')
                     .attr('height',2)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(queryGapLineYValue + (k*widthBtnBars))})
+                    .attr({'x':xScale(parseInt(qStart + initialValue - gapsInQuery)),'y':(queryGapLineYValue + (k*widthBtnBars))})
                     .style('fill',gapLineColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
-                    .attr("id","queryRectGap"+(i+l));
+                    .attr("id","queryRectGap"+i+l);
 
-                bars.select("#queryRectGap"+(i+l)).style("cursor","pointer").attr("title","Query Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+                bars.select("#queryRectGap"+i+l).style("cursor","pointer")
+                    .attr("title","Query Gap ["+ (qStart + parseInt(initialValue)) + " - " + (qStart + parseInt(initialValue+x)) + "]");
             }
             l++;
         }
@@ -737,9 +740,10 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
         .attr('id','hitTexts');
 
     for(var i= 0, k=0; i<hitFromValues.length;k++) {
+
         hitBars.append('rect')
             .attr('height',barHeight)
-            .attr({'x':xScale(hitFromValues[i]),'y':(hitYValue + (k*widthBtnBars))})
+            .attr({'x':xScale(queryFromValues[i]),'y':(hitYValue + (k*widthBtnBars))})
             .style('fill',colorScale(hitToValues[i] - hitFromValues[i]+1))
             .attr('width',xScale(hitToValues[i] - hitFromValues[i]))
             .attr("id","hitRect"+i)
@@ -777,18 +781,18 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
             .attr("title", "Subject co-ordinates (" + hitFromValues[i] + " - " + hitToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
-        addHitGaps(gaps, i, hseq, hitBars, xScale, k);
+        addHitGaps(gaps, i, hseq, hitBars, xScale, k, qStart, hStart);
 
         for(var j=1; j<numOfRegionsLeft[i]; j++) {
             hitBars.append('rect')
                 .attr('height',barHeight)
-                .attr({'x':xScale(hitFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
+                .attr({'x':xScale(queryFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
                 .style('fill',colorScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j]) + 1))
                 .attr('width',xScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j])));
 
             hitBars.append('rect')
                 .attr('height',barHeight)
-                .attr({'x':xScale(hitFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
+                .attr({'x':xScale(queryFromValues[i+j]),'y':(hitYValue + (k*widthBtnBars))})
                 .attr('width',xScale(parseInt(hitToValues[i+j]) - parseInt(hitFromValues[i+j])))
                 .attr('fill', 'url(#pattern' + j +')')
                 .attr("id","hitRect"+(i+j))
@@ -844,9 +848,9 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
 
 
 
-
+            //hStart = hStart -1;
             //Add gaps only if there is consecutive 3 gaps
-            addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k);
+            addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k, qStart, hStart);
         }
 
         if(numOfRegionsLeft[i] > 1) {
@@ -858,8 +862,15 @@ function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToVal
 }
 
 //Add gaps only if there is consecutive 3 gaps
-function addHitGaps(gaps, i, sequ, bars, xScale, k) {
+function addHitGaps(gaps, i, sequ, bars, xScale, k, qStart, hStart) {
+
+    hStart = hStart -1;
+    var gapsInHit = 0;
+    var diffValue=0;
     if(gaps[i] > 2) {
+        if(qStart > hStart) {
+            diffValue = qStart - hStart;
+        }
         var allGapsInQuery = getAllIndexes(sequ[i], "-");
 
         for(var l= 0; l<allGapsInQuery.length;) {
@@ -869,28 +880,28 @@ function addHitGaps(gaps, i, sequ, bars, xScale, k) {
                 x++;
                 l++;
             }
-
+            gapsInHit = gapsInHit + x;
             if(x>1) {
 
                 bars.append('rect')
                     .attr('height',barHeight)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(hitYValue + (k*widthBtnBars))})
+                    .attr({'x':xScale(parseInt(qStart + initialValue - gapsInHit)),'y':(hitYValue + (k*widthBtnBars))})
                     .style('fill',gapColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
-                    .attr("id","hitRectGapBackground"+(i+l));
+                    .attr("id","hitRectGapBackground"+i+l);
 
-                bars.select("#hitRectGapBackground"+(i+l)).style("cursor","pointer").attr("title","Subject Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+                bars.select("#hitRectGapBackground"+i+l).style("cursor","pointer").attr("title","Subject Gap ["+ (hStart + parseInt(initialValue)) + " - " + (hStart + parseInt(initialValue+x)) + "]");
 
                 bars.append('rect')
                     .attr('height',2)
                     .style("z-index", "20")
-                    .attr({'x':xScale(initialValue),'y':(hitGapLineYValue + (k*widthBtnBars))})
+                    .attr({'x':xScale(parseInt(qStart + initialValue - gapsInHit)),'y':(hitGapLineYValue + (k*widthBtnBars))})
                     .style('fill',gapLineColor)
                     .attr('width',xScale(parseInt(initialValue+x) - initialValue))
-                    .attr("id","hitRectGap"+(i+l));
+                    .attr("id","hitRectGap"+i+l);
 
-                bars.select("#hitRectGap"+(i+l)).style("cursor","pointer").attr("title","Subject Gap ["+ initialValue + " - " + parseInt(initialValue+x) + "]");
+                bars.select("#hitRectGap"+i+l).style("cursor","pointer").attr("title","Subject Gap ["+ (hStart + parseInt(initialValue)) + " - " + (hStart + parseInt(initialValue+x)) + "]");
             }
             l++;
         }
