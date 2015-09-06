@@ -83,16 +83,6 @@ $(document).ready(function() {
         },
         track: true
     });
-
-    //$('.dropDownMenu option:selected').on('change',
-    //    function() {
-    //
-    //        var end = this.value;
-    //
-    //        console.log("value?: "+ end);
-    //
-    //    }
-    //);
 });
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information

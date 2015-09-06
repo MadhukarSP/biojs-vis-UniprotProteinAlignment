@@ -175,3 +175,19 @@ select.form-control {
     overflow:hidden
 }
 
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow:none;
+    border-radius: 0px;
+    background-color:#aaa;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    -webkit-box-shadow: inset 1px 1px 6px #333;
+    background-color:#666;
+}
+
