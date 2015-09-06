@@ -237,6 +237,9 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var alignmentInfoStart = "name='";
     var alignmentInfoEnd = "'";
     var alignmentInfo = "";
+    var defValue = "";
+
+    var threshold = Math.floor(queryLength / 100);
 
     for(var i=0; i < blast_data.length;) {
         if(blast_data[i].num_of_regions_left != 0) {
@@ -245,12 +248,12 @@ function drawOverviewBars(blast_data, numberOfHits) {
             flag=1;
 
             if(regions < blast_data.length
-                && blast_data[i].query_from == blast_data[regions].query_from
-                && blast_data[i].query_to == blast_data[regions].query_to
-                && blast_data[i].hit_from == blast_data[regions].hit_from
-                && blast_data[i].hit_to == blast_data[regions].hit_to
-                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left
-                && blast_data[i].gaps == blast_data[regions].gaps) {
+                && threshold > (blast_data[regions].query_from - blast_data[i].query_from)
+                && threshold > (blast_data[regions].query_to - blast_data[i].query_to)
+                //&& threshold > (blast_data[regions].hit_from - blast_data[i].hit_from)
+                //&& threshold > (blast_data[regions].hit_to - blast_data[i].hit_to)
+                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left) {
+                //&& blast_data[i].gaps == blast_data[regions].gaps) {
 
                 numOfOrganisms++;
                 qStart = parseInt(blast_data[i].query_from);
@@ -259,7 +262,9 @@ function drawOverviewBars(blast_data, numberOfHits) {
                 hLen = parseInt(blast_data[i].hit_to);
                 queryFullLength = qLen - qStart + 1;
 
-                alignmentInfo = alignmentInfoStart + "def:" + blast_data[i].def
+                defValue = blast_data[i].def.replace(/,/g, " ");
+
+                alignmentInfo = alignmentInfoStart + "def:" + defValue
                                 + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
                                 + "::eValue:" + blast_data[i].evalue
                                 + "::Identities:" + blast_data[i].identity + "/" + queryFullLength
@@ -284,7 +289,9 @@ function drawOverviewBars(blast_data, numberOfHits) {
             hLen = parseInt(blast_data[i].hit_to);
             queryFullLength = qLen - qStart + 1;
 
-            alignmentInfo = alignmentInfoStart + "def:" + blast_data[i].def
+            defValue = blast_data[i].def.replace(/,/g, " ");
+
+            alignmentInfo = alignmentInfoStart + "def:" + defValue
                             + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
                             + "::eValue:" + blast_data[i].evalue
                             + "::Identities:" + blast_data[i].identity + "/" + queryFullLength
@@ -354,6 +361,9 @@ function drawOverviewBars(blast_data, numberOfHits) {
     //Add axes to the graph
     addAxes(xScale, yScale, organismDetails);
 
+    //Add axes to the graph
+    addCheckboxes(organismDetails);
+
     //Add the Query bars to the graph
     addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
         gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
@@ -361,6 +371,49 @@ function drawOverviewBars(blast_data, numberOfHits) {
     //Add the Hit bars to the graph
     addHitBar(xScale, hitFromValues, hitToValues, queryFromValues,queryToValues, colorScale, numOfRegionsLeft,
         gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
+}
+
+function addCheckboxes(organismDetails) {
+
+    var checkboxesOuter = d3.select('#checkboxSelection')
+                            .attr('class', 'col-md-12');
+
+    for(var i=0; i<organismDetails.length; i++) {
+        if(organismDetails[i].split(',').length > 2) {
+
+            for(var k=1; k< organismDetails[i].split(',').length;k++) {
+                checkboxesOuter.append("foreignObject")
+                    .html("<label class=''><input type='checkbox'>" + " - "
+                    + organismDetails[i].split(',')[k].split("-->")[0] + ",&nbsp;" + "</label>")
+            }
+        } else {
+
+            checkboxesOuter.append("foreignObject")
+                .html("<label class=''><input type='checkbox'>" + " - "
+                + organismDetails[i].split(',')[1].split("-->")[0] + ",&nbsp;" + "</label>")
+        }
+        //checkboxesOuter.append("foreignObject")
+            //.attr("width", 160)
+            //.attr("height",35)
+            //.append("xhtml:body")
+            //.style("font", "12px")
+            //.style("z-index", 9)
+            //.html("<label class=''><input type='checkbox'>" + " - " + organismDetails[i].split(',')[1].split("-->")[0]
+            // + ",&nbsp;" + "</label>")
+            //.append("input")
+            //.attr("checked", true)
+            //.attr("type", "checkbox")
+            //.attr("onClick", "change(this)")
+            //.append('label')
+            //.text(" " + organismDetails[i].split(',')[1].split("-->")[0] + " ");
+    }
+
+        //.append('label')
+        //.text("Label name ")
+        //.append("input")
+        //.attr("checked", true)
+        //.attr("type", "checkbox")
+        //.attr("onClick", "change(this)");
 }
 
 //Add axes to the graph
@@ -416,7 +469,7 @@ function addAxes(xScale, yScale, organismDetails) {
 
     canvas.append('g')
         //.attr("transform", "translate(782,24)")
-        .attr('id','rightyaxisDropDown')
+        .attr('id','leftyaxisDropDown')
         .call(yAxisLeftDropDown)
         .selectAll('.tick')
         .attr("transform", function (d,i) {return "translate(" + QueryDropDownX_translate + "," + (QueryDropDownY_translate + (i*widthBtnBars)) + ")"})
