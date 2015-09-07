@@ -378,19 +378,34 @@ function addCheckboxes(organismDetails) {
     var checkboxesOuter = d3.select('#checkboxSelection')
                             .attr('class', 'col-md-12');
 
+    var organismValues = [];
+
     for(var i=0; i<organismDetails.length; i++) {
+
+
+
         if(organismDetails[i].split(',').length > 2) {
 
             for(var k=1; k< organismDetails[i].split(',').length;k++) {
-                checkboxesOuter.append("foreignObject")
-                    .html("<label class=''><input type='checkbox'>" + " - "
-                    + organismDetails[i].split(',')[k].split("-->")[0] + ",&nbsp;" + "</label>")
+
+                if(organismValues.indexOf(organismDetails[i].split(',')[k].split("-->")[0]) == -1) {
+                    organismValues.push(organismDetails[i].split(',')[k].split("-->")[0]);
+
+                    checkboxesOuter.append("foreignObject")
+                        .html("<label class=''><input type='checkbox'>" + " - "
+                        + organismDetails[i].split(',')[k].split("-->")[0] + ",&nbsp;" + "</label>");
+                }
             }
         } else {
 
-            checkboxesOuter.append("foreignObject")
-                .html("<label class=''><input type='checkbox'>" + " - "
-                + organismDetails[i].split(',')[1].split("-->")[0] + ",&nbsp;" + "</label>")
+            if(organismValues.indexOf(organismDetails[i].split(',')[1].split("-->")[0]) == -1) {
+                organismValues.push(organismDetails[i].split(',')[1].split("-->")[0]);
+
+                checkboxesOuter.append("foreignObject")
+                    .html("<label class=''><input type='checkbox'>" + " - "
+                    + organismDetails[i].split(',')[1].split("-->")[0] + ",&nbsp;" + "</label>")
+            }
+
         }
         //checkboxesOuter.append("foreignObject")
             //.attr("width", 160)
@@ -407,13 +422,6 @@ function addCheckboxes(organismDetails) {
             //.append('label')
             //.text(" " + organismDetails[i].split(',')[1].split("-->")[0] + " ");
     }
-
-        //.append('label')
-        //.text("Label name ")
-        //.append("input")
-        //.attr("checked", true)
-        //.attr("type", "checkbox")
-        //.attr("onClick", "change(this)");
 }
 
 //Add axes to the graph
