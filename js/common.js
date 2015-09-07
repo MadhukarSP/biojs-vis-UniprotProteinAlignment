@@ -24,6 +24,10 @@ var yScaleMax = 350;
 
 var widthBtnBars = 30;
 
+var xScale;
+var yScale;
+var colorScale;
+
 var colorAt0 = "#0000FF";
 var colorAt50 = "#00FF00";
 var colorAt100 = "#FF0000";
@@ -68,6 +72,9 @@ var hitGapLineYValue = 26;
 var canvas;
 var index = 0;
 
+var final_output = [];
+var reDrawFlag = false;
+
 $(document).ready(function() {
 
     addPattern();
@@ -82,6 +89,49 @@ $(document).ready(function() {
             height: "100px"
         },
         track: true
+    });
+
+    $("#redraw").on('click', function() {
+        d3.select("#wrapper").selectAll("*").remove();
+        reDrawFlag = true;
+        $("#tableWrapper").css('display', 'none');
+        $("#note").css('display', 'inherit');
+
+        var checkedValues = $('input:checkbox:checked').map(function() {
+            return this.name;
+        }).get();
+
+        console.log("Checked values: "+ checkedValues);
+
+        var selectedValues = [];
+        var numOfRegions = 0;
+
+        for(var i=0; i < final_output.length;i++) {
+            if(final_output[i].num_of_regions_left != 0) {
+
+                if(checkedValues.indexOf(final_output[i].organism) != -1) {
+
+                    selectedValues.push(final_output[i]);
+                    numOfRegions++;
+                    var num_of_regions = final_output[i].num_of_regions_left;
+                    for(var j=1; j < num_of_regions;j++) {
+                        selectedValues.push(final_output[i + j]);
+                        numOfRegions++;
+                    }
+                }
+            }
+        }
+
+        drawOverviewBars(selectedValues, numOfRegions);
+    });
+
+    $("#redrawAll").on('click', function() {
+        d3.select("#wrapper").selectAll("*").remove();
+        reDrawFlag = true;
+        $("#tableWrapper").css('display', 'none');
+        $("#note").css('display', 'inherit');
+
+        drawOverviewBars(final_output, 100);
     });
 });
 
@@ -144,9 +194,6 @@ function initializeValues() {
             all_blast_output.push.apply(all_blast_output, blast_output);
         }
 
-        var final_output = [];
-
-        //if(all_blast_output[currentObj].num_of_regions_left != 0) {
 
         for(var currentObj=0; currentObj< all_blast_output.length;) {
 
@@ -159,11 +206,10 @@ function initializeValues() {
 
             all_blast_output[currentObj].added = "Y";
             final_output.push(all_blast_output[currentObj]);
-            //final_output.push.apply(final_output, all_blast_output[currentObj]);
+
             var num_of_regions = final_output[final_output.length-1].num_of_regions_left;
             for(var i=1; i < num_of_regions;i++) {
                 final_output.push(all_blast_output[currentObj + i]);
-                //final_output.push.apply(final_output, all_blast_output[currentObj+i]);
             }
             var flag=1;
 
@@ -179,11 +225,10 @@ function initializeValues() {
 
                         all_blast_output[j].added = "Y";
                         final_output.push(all_blast_output[j++]);
-                        //final_output.push.apply(final_output, all_blast_output[j++]);
+
                         num_of_regions = final_output[final_output.length-1].num_of_regions_left;
                         for(var i=1; i< num_of_regions;i++) {
                             final_output.push(all_blast_output[j++]);
-                            //final_output.push.apply(final_output, all_blast_output[j++]);
                         }
                         flag=0;
                     }
@@ -201,6 +246,8 @@ function initializeValues() {
             currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
 
         }
+
+        reDrawFlag = false;
 
         //Draw overview bars [Query, Subject and Gaps]
         drawOverviewBars(final_output, numberOfHits);
@@ -343,15 +390,15 @@ function drawOverviewBars(blast_data, numberOfHits) {
         .attr({'width':overviewWidth,'height':overviewHeight});
 
     // X-axis, Y-axis and Color scale information
-    var xScale = d3.scale.linear()
+    xScale = d3.scale.linear()
         .domain([0,queryLength])
         .range([xScaleMin,xScaleMax]);
 
-    var yScale = d3.scale.linear()
+    yScale = d3.scale.linear()
         .domain([0,numberOfHits])
         .range([yScaleMin,yScaleMax]);
 
-    var colorScale = d3.scale.linear()
+    colorScale = d3.scale.linear()
         .domain([0,queryLength/2, queryLength])
         .range([colorAt0, colorAt50, colorAt100]);
 
@@ -359,17 +406,19 @@ function drawOverviewBars(blast_data, numberOfHits) {
     //addPattern();
 
     //Add axes to the graph
-    addAxes(xScale, yScale, organismDetails);
+    addAxes(organismDetails);
 
     //Add axes to the graph
-    addCheckboxes(organismDetails);
+    if(reDrawFlag == false) {
+        addCheckboxes(organismDetails);
+    }
 
     //Add the Query bars to the graph
     addQueryBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
         gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
 
     //Add the Hit bars to the graph
-    addHitBar(xScale, hitFromValues, hitToValues, queryFromValues,queryToValues, colorScale, numOfRegionsLeft,
+    addHitBar(xScale, queryFromValues, queryToValues, hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
         gaps, qseq, hseq, score, eValue,midLine, def, identities, positives);
 }
 
@@ -382,8 +431,6 @@ function addCheckboxes(organismDetails) {
 
     for(var i=0; i<organismDetails.length; i++) {
 
-
-
         if(organismDetails[i].split(',').length > 2) {
 
             for(var k=1; k< organismDetails[i].split(',').length;k++) {
@@ -392,7 +439,8 @@ function addCheckboxes(organismDetails) {
                     organismValues.push(organismDetails[i].split(',')[k].split("-->")[0]);
 
                     checkboxesOuter.append("foreignObject")
-                        .html("<label class=''><input type='checkbox'>" + " - "
+                        .html("<label class=''><input type='checkbox' name='"
+                        + organismDetails[i].split(',')[k].split("-->")[0] + "'>" + " - "
                         + organismDetails[i].split(',')[k].split("-->")[0] + ",&nbsp;" + "</label>");
                 }
             }
@@ -402,59 +450,52 @@ function addCheckboxes(organismDetails) {
                 organismValues.push(organismDetails[i].split(',')[1].split("-->")[0]);
 
                 checkboxesOuter.append("foreignObject")
-                    .html("<label class=''><input type='checkbox'>" + " - "
+                    .html("<label class=''><input type='checkbox' name='"
+                    + organismDetails[i].split(',')[1].split("-->")[0] + "'>" + " - "
                     + organismDetails[i].split(',')[1].split("-->")[0] + ",&nbsp;" + "</label>")
             }
 
         }
-        //checkboxesOuter.append("foreignObject")
-            //.attr("width", 160)
-            //.attr("height",35)
-            //.append("xhtml:body")
-            //.style("font", "12px")
-            //.style("z-index", 9)
-            //.html("<label class=''><input type='checkbox'>" + " - " + organismDetails[i].split(',')[1].split("-->")[0]
-            // + ",&nbsp;" + "</label>")
-            //.append("input")
-            //.attr("checked", true)
-            //.attr("type", "checkbox")
-            //.attr("onClick", "change(this)")
-            //.append('label')
-            //.text(" " + organismDetails[i].split(',')[1].split("-->")[0] + " ");
     }
 }
 
 //Add axes to the graph
-function addAxes(xScale, yScale, organismDetails) {
+function addAxes(organismDetails) {
 
-    //Add x-axis at top
-    var canvas_top_axis = d3.select('#xAxis_at_top')
-        .append('svg')
-        .attr({'width':axesWidth,'height':axesHeight});
-    var	xTopAxis = d3.svg.axis()
-        .orient('top')
-        .scale(xScale);
+    if(reDrawFlag == false) {
+        //Add x-axis at top
+        var canvas_top_axis = d3.select('#xAxis_at_top')
+            .append('svg')
+            .attr({'width':axesWidth,'height':axesHeight});
+        var	xTopAxis = d3.svg.axis()
+            .orient('top')
+            .scale(xScale);
 
-    canvas_top_axis.append('g')
-        .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
-        .attr('id','topxaxis')
-        .call(xTopAxis);
+        canvas_top_axis.append('g')
+            .attr("transform", "translate(" + x_axis_top_x_translate + "," + x_axis_top_y_translate + ")")
+            .attr('id','topxaxis')
+            .call(xTopAxis);
 
-    //Add x-axis at bottom
-    var canvas_bottom_axis = d3.select('#xAxis_at_bottom')
-        .append('svg')
-        .attr({'width':axesWidth,'height':axesHeight});
+        //Add x-axis at bottom
+        var canvas_bottom_axis = d3.select('#xAxis_at_bottom')
+            .append('svg')
+            .attr({'width':axesWidth,'height':axesHeight});
 
-    var	xAxis = d3.svg.axis()
-        .orient('bottom') //Text will be placed at bottom
-        .scale(xScale);
+        var	xAxis = d3.svg.axis()
+            .orient('bottom') //Text will be placed at bottom
+            .scale(xScale);
 
-    canvas_bottom_axis.append('g')
-        //.attr("transform", "translate(180,5)")
-        .attr("transform", "translate(" + x_axis_bottom_x_translate + "," + x_axis_bottom_y_translate + ")")
-        .attr('id','bottomxaxis')
-        .call(xAxis);
+        canvas_bottom_axis.append('g')
+            //.attr("transform", "translate(180,5)")
+            .attr("transform", "translate(" + x_axis_bottom_x_translate + "," + x_axis_bottom_y_translate + ")")
+            .attr('id','bottomxaxis')
+            .call(xAxis);
+    }
 
+    drawDropDowns(organismDetails);
+}
+
+function drawDropDowns(organismDetails) {
     var	yAxisLeftDropDown = d3.svg.axis()
         .orient('right')
         .scale(yScale)
@@ -496,13 +537,13 @@ function addAxes(xScale, yScale, organismDetails) {
             if(organismDetails[i].split(',').length > 2) {
 
                 optionValues = leftAngle + selectStart + selectIdStart + counter++ + selectIdEnd + rightAngle + leftAngle + optionName + rightAngle
-                                + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
+                + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
 
                 for(var k=1; k< organismDetails[i].split(',').length;k++) {
                     optionValues = optionValues + leftAngle + optionName
-                                    + space + titleStart + organismDetails[i].split(',')[k].split("-->")[0] + titleEnd
-                                    + space + organismDetails[i].split(',')[k].split("-->")[1] + rightAngle
-                                    + organismDetails[i].split(',')[k].split("-->")[0] + optionEnd;
+                    + space + titleStart + organismDetails[i].split(',')[k].split("-->")[0] + titleEnd
+                    + space + organismDetails[i].split(',')[k].split("-->")[1] + rightAngle
+                    + organismDetails[i].split(',')[k].split("-->")[0] + optionEnd;
                 }
                 optionValues = optionValues + selectEnd;
             } else {
@@ -524,7 +565,6 @@ function addAxes(xScale, yScale, organismDetails) {
         var selectorVal = "#" + this.id + " option:selected";
         fillTableWithValues($(selectorVal).attr("name").split("::"));
     });
-
 }
 
 //Catch the click events on bars
@@ -538,8 +578,8 @@ function clickedOnBar(evt) {
 
 function fillTableWithValues(alignmentInfo) {
 
-    $("#note").hide();
-    $("#tableWrapper").removeAttr("hidden");
+    $("#note").css("display","none");
+    $("#tableWrapper").css("display","inherit");
 
     var def = alignmentInfo[0].split("def:")[1];
     var qryOrSub = alignmentInfo[1].split(":")[1];
@@ -789,7 +829,7 @@ function addQueryGaps(gaps, i, sequ, bars, xScale, k, qStart) {
 
 
 //Add the hit bars to the graph
-function addHitBar(xScale, hitFromValues, hitToValues,queryFromValues,queryToValues, colorScale, numOfRegionsLeft,
+function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToValues, colorScale, numOfRegionsLeft,
                    gaps, qseq, hseq,  score, eValue, midLine, def, identities, positives) {
 
     var hitBars = canvas.append('g')
