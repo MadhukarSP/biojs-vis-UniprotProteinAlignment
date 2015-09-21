@@ -75,6 +75,8 @@ var index = 0;
 var final_output = [];
 var reDrawFlag = false;
 
+var rectRegionClicked = [];
+
 $(document).ready(function() {
 
     addPattern();
@@ -125,7 +127,7 @@ $(document).ready(function() {
         drawOverviewBars(selectedValues, numOfRegions);
     });
 
-    $("#redrawAll").on('click', function() {
+    $("#reset").on('click', function() {
         d3.select("#wrapper").selectAll("*").remove();
         reDrawFlag = true;
         $("#tableWrapper").css('display', 'none');
@@ -151,14 +153,14 @@ function initializeValues() {
             var blast_output = [];
 
             blast_output.push({
-                "def": dataObj.hits[i]["description"][0]["id"] + dataObj.hits[i]["description"][0]["title"],
+                "def": dataObj.hits[i]["description"][0]["id"] + ", " + dataObj.hits[i]["description"][0]["title"],
                 "score": dataObj.hits[i].hsps[0]["score"],
                 "evalue" : dataObj.hits[i].hsps[0]["evalue"],
                 "identity" : dataObj.hits[i].hsps[0]["identity"],
                 "positive" : dataObj.hits[i].hsps[0]["positive"],
                 "align_len" : dataObj.hits[i].hsps[0]["align_len"],
                 "query_len" : dataObj["query_len"],
-                "organism" : dataObj.hits[i]["description"][0]["sciname"],
+                "organism" : dataObj.hits[i]["description"][0]["sciname"] + " (" +dataObj.hits[i]["description"][0]["id"].split("|")[4] + ")",
                 "query_from" : dataObj.hits[i].hsps[0]["query_from"],
                 "query_to" : dataObj.hits[i].hsps[0]["query_to"],
                 "hit_from" : dataObj.hits[i].hsps[0]["hit_from"],
@@ -173,7 +175,7 @@ function initializeValues() {
 
             for(var j = 1; j < num_of_regions; j++) {
                 blast_output.push({
-                    "def": dataObj.hits[i]["description"][0]["id"] + dataObj.hits[i]["description"][0]["title"],
+                    "def": dataObj.hits[i]["description"][0]["id"] + ", " + dataObj.hits[i]["description"][0]["title"],
                     'score' : dataObj.hits[i].hsps[j]["score"],
                     'evalue' : dataObj.hits[i].hsps[j]["evalue"],
                     "identity" : dataObj.hits[i].hsps[j]["identity"],
@@ -284,6 +286,8 @@ function drawOverviewBars(blast_data, numberOfHits) {
     var alignmentInfoStart = "name='";
     var alignmentInfoEnd = "'";
     var alignmentInfo = "";
+    var region = "";
+    var regionName = "region";
     var defValue = "";
 
     var threshold = Math.floor(queryLength / 100);
@@ -297,10 +301,8 @@ function drawOverviewBars(blast_data, numberOfHits) {
             if(regions < blast_data.length
                 && threshold > (blast_data[regions].query_from - blast_data[i].query_from)
                 && threshold > (blast_data[regions].query_to - blast_data[i].query_to)
-                //&& threshold > (blast_data[regions].hit_from - blast_data[i].hit_from)
-                //&& threshold > (blast_data[regions].hit_to - blast_data[i].hit_to)
-                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left) {
-                //&& blast_data[i].gaps == blast_data[regions].gaps) {
+                && blast_data[i].num_of_regions_left == blast_data[regions].num_of_regions_left
+                && blast_data[i].gaps == blast_data[regions].gaps) {
 
                 numOfOrganisms++;
                 qStart = parseInt(blast_data[i].query_from);
@@ -321,6 +323,27 @@ function drawOverviewBars(blast_data, numberOfHits) {
                                 + "::QuerySeq:" + blast_data[i].qseq + "::midLineSeq:"+ blast_data[i].midLine
                                 + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i].hseq
                                 + alignmentInfoEnd;
+
+                for(var j=1; j<blast_data[i].num_of_regions_left; j++) {
+                    qStart = parseInt(blast_data[i+j].query_from);
+                    qLen = parseInt(blast_data[i+j].query_to);
+                    hStart = parseInt(blast_data[i+j].hit_from);
+                    hLen = parseInt(blast_data[i+j].hit_to);
+                    queryFullLength = qLen - qStart + 1;
+
+                    region = regionName + j + "='" + "def:" + defValue
+                    + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
+                    + "::eValue:" + blast_data[i+j].evalue
+                    + "::Identities:" + blast_data[i+j].identity + "/" + queryFullLength
+                    + "::Positives:" + blast_data[i+j].positive + "/" + queryFullLength
+                    + "::Gaps:" + blast_data[i+j].gaps + "/" + queryFullLength
+                    + "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen + "::QueryLen:"+ queryFullLength
+                    + "::QuerySeq:" + blast_data[i+j].qseq + "::midLineSeq:"+ blast_data[i+j].midLine
+                    + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i+j].hseq
+                    + alignmentInfoEnd;
+
+                    alignmentInfo = alignmentInfo + "-->"+ region;
+                }
 
                 organismNames.push(blast_data[i].organism + "-->" + alignmentInfo);
 
@@ -349,11 +372,34 @@ function drawOverviewBars(blast_data, numberOfHits) {
                             + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i].hseq
                             + alignmentInfoEnd;
 
+            for(var j=1; j<blast_data[i].num_of_regions_left; j++) {
+                qStart = parseInt(blast_data[i+j].query_from);
+                qLen = parseInt(blast_data[i+j].query_to);
+                hStart = parseInt(blast_data[i+j].hit_from);
+                hLen = parseInt(blast_data[i+j].hit_to);
+                queryFullLength = qLen - qStart + 1;
+
+                region = regionName + j + "='" + "def:" + defValue
+                + "::Query:"+ qStart + " - " + qLen + "::Score:" + blast_data[i].score
+                + "::eValue:" + blast_data[i+j].evalue
+                + "::Identities:" + blast_data[i+j].identity + "/" + queryFullLength
+                + "::Positives:" + blast_data[i+j].positive + "/" + queryFullLength
+                + "::Gaps:" + blast_data[i+j].gaps + "/" + queryFullLength
+                + "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen + "::QueryLen:"+ queryFullLength
+                + "::QuerySeq:" + blast_data[i+j].qseq + "::midLineSeq:"+ blast_data[i+j].midLine
+                + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ blast_data[i+j].hseq
+                + alignmentInfoEnd;
+
+                alignmentInfo = alignmentInfo + "-->"+ region;
+            }
+
             organismNames.push(blast_data[i].organism + "-->" + alignmentInfo);
             organismDetails.push(numOfOrganisms + ","+ organismNames);
             numOfOrganisms = 1;
             organismNames = [];
             flag=0;
+
+
         }
 
         identities.push(blast_data[i].identity);
@@ -401,9 +447,6 @@ function drawOverviewBars(blast_data, numberOfHits) {
     colorScale = d3.scale.linear()
         .domain([0,queryLength/2, queryLength])
         .range([colorAt0, colorAt50, colorAt100]);
-
-    ////Add the patterns to the canvas
-    //addPattern();
 
     //Add axes to the graph
     addAxes(organismDetails);
@@ -507,13 +550,15 @@ function drawDropDowns(organismDetails) {
     var rightAngle = ">";
     var optionName = "option";
     var optionEnd = "</option>";
-    var selectStart = 'select class="form-control dropDownMenu"';
+    var selectStart = 'select class="form-control dropDownMenu" data-live-search="true"';
     var selectIdStart = 'id="dropDownMenuID';
     var selectIdEnd = '"';
     var selectEnd = "</select>";
     var space = " ";
     var titleStart = "title='";
     var titleEnd = "'";
+    var dropStart = "dropdownnum='";
+    var dropEnd = "'";
     var counter = 1;
 
     canvas.append('g')
@@ -536,14 +581,20 @@ function drawDropDowns(organismDetails) {
 
             if(organismDetails[i].split(',').length > 2) {
 
-                optionValues = leftAngle + selectStart + selectIdStart + counter++ + selectIdEnd + rightAngle + leftAngle + optionName + rightAngle
+                optionValues = leftAngle + selectStart + selectIdStart + counter++ + selectIdEnd
+                                + space + dropStart + i + dropEnd
+                                + rightAngle + leftAngle + optionName + rightAngle
                 + (organismDetails[i].split(',').length -1) + " hits" + optionEnd;
 
                 for(var k=1; k< organismDetails[i].split(',').length;k++) {
                     optionValues = optionValues + leftAngle + optionName
                     + space + titleStart + organismDetails[i].split(',')[k].split("-->")[0] + titleEnd
-                    + space + organismDetails[i].split(',')[k].split("-->")[1] + rightAngle
-                    + organismDetails[i].split(',')[k].split("-->")[0] + optionEnd;
+                    + space + organismDetails[i].split(',')[k].split("-->")[1];
+                    for(var l=2; l < organismDetails[i].split(',')[k].split("-->").length ; l++) {
+                        optionValues = optionValues + space + organismDetails[i].split(',')[k].split("-->")[l];
+                    }
+                    optionValues = optionValues + rightAngle
+                                    + organismDetails[i].split(',')[k].split("-->")[0] + optionEnd;
                 }
                 optionValues = optionValues + selectEnd;
             } else {
@@ -559,12 +610,25 @@ function drawDropDowns(organismDetails) {
             }
         });
 
+    //$('.selectpicker').selectpicker({});
+
     var dropDown = d3.selectAll('.dropDownMenu');
 
     dropDown.on('change', function() {
         var selectorVal = "#" + this.id + " option:selected";
-        fillTableWithValues($(selectorVal).attr("name").split("::"));
+        var selectedDropDownNum = $(selectorVal).parent().attr("dropdownnum");
+        console.log("Selected value:" + selectedDropDownNum);
+        var selectedRegionNum = rectRegionClicked[selectedDropDownNum].split("region")[1];
+        console.log("selectedRegionNum"+ selectedRegionNum);
+        if(selectedRegionNum == 0) {
+            fillTableWithValues($(selectorVal).attr("name").split("::"));
+        } else {
+            fillTableWithValues($(selectorVal).attr(rectRegionClicked[selectedDropDownNum]).split("::"));
+        }
+
     });
+
+
 }
 
 //Catch the click events on bars
@@ -572,6 +636,14 @@ function clickedOnBar(evt) {
     var svgObj = evt.target;
 
     var alignmentInfo = svgObj.getAttribute('alignmentInfo').split("::");
+    var regionClicked = svgObj.getAttribute('getRegion');
+
+    console.log("Region clicked:" + regionClicked);
+
+    var rectNum = regionClicked.split("/")[0].split("rect")[1];
+    var regionNum = regionClicked.split("/")[1].split("region")[1];
+
+    rectRegionClicked[rectNum] = "region"+regionNum;
 
     fillTableWithValues(alignmentInfo);
 }
@@ -672,6 +744,8 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         .attr("transform", "translate(" + QueryTextX_translate + "," + QueryTextY_translate + ")")
         .attr('id','queryTexts');
 
+    var numOfRectangles = 0;
+
     for(var i= 0, k=0; i<queryFromValues.length;k++) {
 
         queryBars.append('rect')
@@ -704,6 +778,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         var hLen = parseInt(hitToValues[i]);
 
         queryBars.select("#queryRect"+i).style("cursor","pointer")
+            .attr("getRegion", "rect"+ numOfRectangles + "/region0")
             .attr("alignmentInfo", "def:" + def[i] + "::Query:"+ queryFromValues[i] + " - " + queryToValues[i] +
             "::Score:" +score[i] + "::eValue:" + eValue[i] + "::Identities:" + identities[i] + "/" + queryFullLength +
             "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
@@ -762,6 +837,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             queryFullLength = qLen - qStart + 1;
 
             queryBars.select("#queryRect"+(i+j)).style("cursor","pointer")
+                .attr("getRegion", "rect"+ numOfRectangles + "/region"+ j)
                 .attr("alignmentInfo", "def:" + def[i+j] + "::Query:"+ queryFromValues[i+j] + " - " + queryToValues[i+j] +
                 "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
                 "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
@@ -779,6 +855,9 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
         } else {
             i++;
         }
+
+        rectRegionClicked.push("region0");
+        numOfRectangles++;
     }
 }
 
@@ -840,6 +919,8 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
         .attr("transform", "translate(" + hitTextX_translate + "," + hitTextY_translate + ")")
         .attr('id','hitTexts');
 
+    var numOfRectangles = 0;
+
     for(var i= 0, k=0; i<hitFromValues.length;k++) {
 
         hitBars.append('rect')
@@ -874,6 +955,7 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
         var queryFullLength = hLen - hStart + 1;
 
         hitBars.select("#hitRect"+i).style("cursor","pointer")
+            .attr("getRegion", "rect"+ numOfRectangles + "/region0")
             .attr("alignmentInfo", "def:" + def[i] + "::Subject:"+ hitFromValues[i] + " - " + hitToValues[i] +
             "::Score:" +score[i] + "::eValue:" + eValue[i] + "::Identities:" + identities[i] + "/" + queryFullLength +
             "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
@@ -909,6 +991,7 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
             queryFullLength = hLen - hStart + 1;
 
             hitBars.select("#hitRect"+(i+j)).style("cursor","pointer")
+                .attr("getRegion", "rect"+ numOfRectangles + "/region"+ j)
                 .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
                 "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
                 "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
@@ -959,6 +1042,8 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
         } else {
             i++;
         }
+
+        numOfRectangles++;
     }
 }
 
