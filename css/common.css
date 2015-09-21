@@ -21,8 +21,9 @@
 .outer {
     /*width: 60%;*/
     height: auto;
+    min-width: 800px;
     max-height: 350px;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: auto;
     padding-left: 0px;
 }
@@ -191,3 +192,6 @@ select.form-control {
     background-color:#666;
 }
 
+.bootstrap-select {
+    margin-top: 10px;
+}

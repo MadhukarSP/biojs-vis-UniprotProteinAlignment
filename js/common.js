@@ -43,13 +43,13 @@ var QueryBarY_translate = 10;
 var QueryTextX_translate = 140;
 var QueryTextY_translate = 10;
 
-var x_axis_top_x_translate = 140;
+var x_axis_top_x_translate = 60;
 var x_axis_top_y_translate = 20;
 
-var x_axis_bottom_x_translate = 140;
+var x_axis_bottom_x_translate = 60;
 var x_axis_bottom_y_translate = 5;
 
-var QueryDropDownX_translate = 10;
+var QueryDropDownX_translate = 0;
 var QueryDropDownY_translate = 19;
 
 var hitBarX_translate = 140;
@@ -125,6 +125,15 @@ $(document).ready(function() {
         }
 
         drawOverviewBars(selectedValues, numOfRegions);
+    });
+
+    $("#reset").on('click', function() {
+        d3.select("#wrapper").selectAll("*").remove();
+        reDrawFlag = true;
+        $("#tableWrapper").css('display', 'none');
+        $("#note").css('display', 'inherit');
+
+        drawOverviewBars(final_output, 100);
     });
 
     $("#reset").on('click', function() {
