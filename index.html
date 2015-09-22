@@ -76,26 +76,30 @@
 
 
 <div class="col-md-7" style="min-width: 800px">
-    <div class="col-md-1"><strong> SPECIES</strong></div>
-    <div id="xAxis_at_top" class="col-md-7"></div>
-    <div class="col-md-4"> </div>
+
+
+    <div class="col-md-12">
+        <div><strong> SPECIES</strong></div>
+        <div id="xAxis_at_top" style="margin-top: -20px"></div>
+    </div>
 
     <div class="outer col-md-12">
         <div id="wrapper" class="wrapperMargin"></div>
     </div>
 
-    <div class="col-md-1" style="padding-top: 10px"><strong> SPECIES</strong></div>
-    <div id="xAxis_at_bottom" class="col-md-7" style="padding-top: 10px"></div>
-    <div class="col-md-4" style="padding-top: 10px"> </div>
+    <div class="col-md-12">
+        <div style="margin-top: 10px"><strong> SPECIES</strong></div>
+        <div id="xAxis_at_bottom" style="margin-top: -20px"></div>
+    </div>
 
 </div>
 
 
-<div class="rightTable col-md-5" style="min-width: 350px; min-height: 100px; margin-top: 20px; margin-bottom: 20px;"> <!--style="border:1px solid #eeeeee;border-radius: 10px"-->
+<div class="rightTable col-md-5" style="min-width: 350px; min-height: 20px; margin-top: 10px; margin-bottom: 10px; overflow-x: auto"> <!--style="border:1px solid #eeeeee;border-radius: 10px"-->
     <div id="note" class="text-center" style="display: inherit">
         <strong>Note:</strong> Please click on alignment bars to see alignment information
     </div>
-    <div id="tableWrapper" style="display: none">
+    <div id="tableWrapper" style="display: none; min-width: 350px;">
         <p style="padding-left: 8px"><strong>ALIGNMENT INFORMATION</strong></p>
         <p id="defValue" style="padding-left: 8px"></p>
         <table class="table">
@@ -122,7 +126,7 @@
             </tr>
             </tbody>
         </table>
-        <table class="table" id="sequenceInfo">
+        <table class="table" id="sequenceInfo" style="min-width: 350px;">
             <caption style="padding-left: 8px">SEQUENCE INFORMATION</caption>
             <thead>
             <tr>
@@ -138,14 +142,16 @@
     </div>
 </div>
 
+<div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
+    <button type="button" id="redraw"  class="col-md-offset-4 col-md-1 btn btn-success "> Filter </button>
+    <button type="button" id="reset"  class="col-md-offset-1 col-md-1 btn btn-success"> Reset </button>
+</div>
+
 <!--<hr/>-->
 <div id="checkboxSelection"></div>
 
 <!--<hr/>-->
-<div class="col-md-12">
-    <button type="button" id="redraw"  class="col-md-offset-4 col-md-1 btn btn-success "> Filter </button>
-    <button type="button" id="reset"  class="col-md-offset-1 col-md-1 btn btn-success"> Reset </button>
-</div>
+
 
 
 
