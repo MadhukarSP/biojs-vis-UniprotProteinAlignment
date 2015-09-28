@@ -976,7 +976,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
             "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i] + "::midLineSeq:"+ midLine[i] +
             "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i])
-            .attr("title", "Query co-ordinates (" + queryFromValues[i] + " - " + queryToValues[i] + ")");
+            .attr("title", "Query coordinates (" + queryFromValues[i] + " - " + queryToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
         addQueryGaps(gaps, i, qseq, queryBars, xScale, k, qStart);
@@ -1004,7 +1004,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             //        .style({'fill':'#000000','font-size':'20px'})
             //        .style("cursor","pointer")
             //        .attr("id","queryEllipse"+(i+j))
-            //        .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
+            //        .attr("title", "Query coordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
             //} else {
             //    queryTexts.append('text')
             //        .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
@@ -1035,7 +1035,7 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
                 "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
                 "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-                .attr("title", "Query co-ordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
+                .attr("title", "Query coordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
 
 
             //Add gaps only if there is consecutive 3 gaps
@@ -1153,7 +1153,7 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
             "::Positives:" + positives[i] + "/" + queryFullLength + "::Gaps:" + gaps[i] + "/" + queryFullLength +
             "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i] + "::midLineSeq:"+ midLine[i] +
             "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i])
-            .attr("title", "Subject co-ordinates (" + hitFromValues[i] + " - " + hitToValues[i] + ")");
+            .attr("title", "Subject coordinates (" + hitFromValues[i] + " - " + hitToValues[i] + ")");
 
         //Add gaps only if there is consecutive 3 gaps
         addHitGaps(gaps, i, hseq, hitBars, xScale, k, qStart, hStart);
@@ -1189,7 +1189,7 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
                 "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
                 "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
                 "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-                .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
+                .attr("title", "Subject coordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
 
 
             //if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
@@ -1206,7 +1206,7 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
             //        "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
             //        "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
             //        "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-            //        .attr("title", "Subject co-ordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
+            //        .attr("title", "Subject coordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
             //} else {
             //
             //    hitTexts.append('text')
