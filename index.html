@@ -26,11 +26,11 @@
 <!--Add legend to the graph-->
 <div class="col-md-3">
     <strong>Sort by</strong>
-<select class="selectpicker">
-    <option>Identity</option>
-    <option>eValue</option>
-    <option>Score</option>
-</select>
+    <select class="selectpicker" id="sortBy">
+        <option>Identity</option>
+        <option>eValue</option>
+        <option>Score</option>
+    </select>
 </div>
 
 <div id="legend" class="col-md-6">
@@ -76,7 +76,6 @@
 
 
 <div class="col-md-7" style="min-width: 800px">
-
 
     <div class="col-md-12">
         <div><strong> SPECIES</strong></div>
@@ -147,13 +146,7 @@
     <button type="button" id="reset"  class="col-md-offset-1 col-md-1 btn btn-success"> Reset </button>
 </div>
 
-<!--<hr/>-->
 <div id="checkboxSelection"></div>
-
-<!--<hr/>-->
-
-
-
 
 <div id="patternDiv"></div>
 

@@ -76,6 +76,7 @@ var final_output = [];
 var reDrawFlag = false;
 
 var rectRegionClicked = [];
+var temporaryOutput;
 
 $(document).ready(function() {
 
@@ -136,15 +137,197 @@ $(document).ready(function() {
         drawOverviewBars(final_output, 100);
     });
 
-    $("#reset").on('click', function() {
-        d3.select("#wrapper").selectAll("*").remove();
-        reDrawFlag = true;
-        $("#tableWrapper").css('display', 'none');
-        $("#note").css('display', 'inherit');
+    $("#sortBy").on("change", function() {
+        var selectorVal = "#" + this.id + " option:selected";
 
-        drawOverviewBars(final_output, 100);
+        console.log("Selected value: " + $(selectorVal).val());
+
+        if($(selectorVal).val() == "Identity") {
+
+            d3.select("#wrapper").selectAll("*").remove();
+            reDrawFlag = true;
+            $("#tableWrapper").css('display', 'none');
+            $("#note").css('display', 'inherit');
+
+            drawOverviewBars(final_output, 100);
+        } else if($(selectorVal).val() == "eValue") {
+
+            d3.select("#wrapper").selectAll("*").remove();
+            reDrawFlag = true;
+            $("#tableWrapper").css('display', 'none');
+            $("#note").css('display', 'inherit');
+
+            temporaryOutput = rearrange("eValue", final_output);
+
+            drawOverviewBars(temporaryOutput, 100);
+        } else if($(selectorVal).val() == "Score"){
+
+            d3.select("#wrapper").selectAll("*").remove();
+            reDrawFlag = true;
+            $("#tableWrapper").css('display', 'none');
+            $("#note").css('display', 'inherit');
+
+            temporaryOutput = rearrange("Score", final_output);
+
+            drawOverviewBars(temporaryOutput, 100);
+        }
     });
 });
+
+function foobar(el) {
+    setTimeout(function() {
+        foobar_cont(el);
+    }, 5000);
+}
+
+function rearrange(basedOn, output) {
+
+    var tmpOutput = [];
+    var all_blast_output = [];
+    var first_reorder = output.slice(0);
+    var totalLen = first_reorder.length;
+
+    var minValue = 0;
+    var id = 0;
+    var maxScore = 0;
+    var num_of_regions = 0;
+
+    if(basedOn == "eValue") {
+
+        for(var curObj=0; curObj< totalLen;curObj = 0) {
+
+            minValue = first_reorder[curObj].evalue;
+            id = curObj;
+
+            for(var currentObj=curObj + 1; currentObj< totalLen;currentObj++) {
+
+                if(first_reorder[currentObj].added !== undefined) {
+                    if(minValue > first_reorder[currentObj].evalue) {
+                        minValue = first_reorder[currentObj].evalue;
+                        id = currentObj;
+                    }
+
+                }
+            }
+
+            totalLen = totalLen - first_reorder[id].num_of_regions_left;
+
+            all_blast_output.push(first_reorder[id]);
+
+            num_of_regions = all_blast_output[all_blast_output.length-1].num_of_regions_left;
+            for(var i=1; i< num_of_regions;i++) {
+                all_blast_output.push(first_reorder[id+i]);
+            }
+
+            first_reorder.splice(id,num_of_regions);
+        }
+
+    } else if(basedOn == "Score") {
+
+        for(var curObj=0; curObj< totalLen;curObj = 0) {
+
+            maxScore = first_reorder[curObj].score;
+            id = curObj;
+
+            for(var currentObj=curObj + 1; currentObj< totalLen;currentObj++) {
+
+                if(first_reorder[currentObj].added !== undefined) {
+                    if(maxScore < first_reorder[currentObj].score) {
+                        maxScore = first_reorder[currentObj].score;
+                        id = currentObj;
+                    }
+                }
+            }
+
+            totalLen = totalLen - first_reorder[id].num_of_regions_left;
+
+            all_blast_output.push(first_reorder[id]);
+
+            num_of_regions = all_blast_output[all_blast_output.length-1].num_of_regions_left;
+            for(var i=1; i< num_of_regions;i++) {
+                all_blast_output.push(first_reorder[id+i]);
+            }
+
+            first_reorder.splice(id,num_of_regions);
+        }
+    }
+
+    //for(var i=0; i< all_blast_output.length; i++) {
+    //
+    //    if(all_blast_output[i].added !== undefined) {
+    //        all_blast_output[i].added = "N";
+    //    }
+    //}
+    //
+    //for(var currentObj=0; currentObj< all_blast_output.length;) {
+    //
+    //    var nextObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+    //
+    //    if(all_blast_output[currentObj].added == "Y") {
+    //        currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+    //        continue;
+    //    }
+    //
+    //    all_blast_output[currentObj].added = "Y";
+    //    tmpOutput.push(all_blast_output[currentObj]);
+    //
+    //    var num_of_regions = tmpOutput[tmpOutput.length-1].num_of_regions_left;
+    //    for(var i=1; i < num_of_regions;i++) {
+    //        tmpOutput.push(all_blast_output[currentObj + i]);
+    //    }
+    //    var flag=1;
+    //
+    //    for(var j=nextObj; j<all_blast_output.length;) {
+    //
+    //        if(all_blast_output[j].added == "N") {
+    //            if(all_blast_output[currentObj].query_from == all_blast_output[j].query_from
+    //                && all_blast_output[currentObj].query_to == all_blast_output[j].query_to
+    //                && all_blast_output[currentObj].hit_from == all_blast_output[j].hit_from
+    //                && all_blast_output[currentObj].hit_to == all_blast_output[j].hit_to
+    //                && all_blast_output[currentObj].num_of_regions_left == all_blast_output[j].num_of_regions_left
+    //                && all_blast_output[currentObj].gaps == all_blast_output[j].gaps) {
+    //
+    //                all_blast_output[j].added = "Y";
+    //                tmpOutput.push(all_blast_output[j++]);
+    //
+    //                num_of_regions = tmpOutput[tmpOutput.length-1].num_of_regions_left;
+    //                for(var i=1; i< num_of_regions;i++) {
+    //                    tmpOutput.push(all_blast_output[j++]);
+    //                }
+    //                flag=0;
+    //            }
+    //        }
+    //        if(j>=all_blast_output.length) {
+    //            break;
+    //        } else {
+    //            if(flag==1) {
+    //                j = j + all_blast_output[j].num_of_regions_left;
+    //            }
+    //            flag=1;
+    //        }
+    //    }
+    //
+    //    currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
+    //
+    //}
+    //
+    //return tmpOutput;
+
+    var listOfScore = [];
+    var listOfEval = [];
+    for(var i=0; i< all_blast_output.length; i++){
+        if(all_blast_output[i].added !== undefined) {
+            listOfScore.push(all_blast_output[i].score);
+            listOfEval.push(all_blast_output[i].evalue);
+        }
+    }
+
+    console.log("Score:"+ listOfScore);
+    console.log("Evalue:"+ listOfEval);
+
+    return all_blast_output;
+
+}
 
 //Retrieve JSON value and call respective method to display Overview and Alignment information
 function initializeValues() {
