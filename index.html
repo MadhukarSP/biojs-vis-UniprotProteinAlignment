@@ -24,7 +24,9 @@
 <hr>
 
 <!--Add legend to the graph-->
-<div class="col-md-3">
+<div class="container-fluid">
+    <div class="row">
+<div class="col-md-3 col-sm-12">
     <strong>Sort by</strong>
     <select class="selectpicker" id="sortBy">
         <option>Identity</option>
@@ -33,7 +35,7 @@
     </select>
 </div>
 
-<div id="legend" class="col-md-6">
+<div id="legend" class="col-md-6 col-sm-12">
     <svg width="600" height="90">
         <text transform="translate(270,12)">Identity %</text>
         <defs>
@@ -74,19 +76,24 @@
     </svg>
 </div>
 
+<div class="col-md-3 col-sm-12"> </div>
+    </div>
+</div>
 
+<div class="container-fluid">
+    <div class="row">
 <div class="col-md-7" style="min-width: 800px">
 
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <div><strong> SPECIES</strong></div>
         <div id="xAxis_at_top" style="margin-top: -20px"></div>
     </div>
 
-    <div class="outer col-md-12">
+    <div class="outer col-sm-12">
         <div id="wrapper" class="wrapperMargin"></div>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-sm-12">
         <div style="margin-top: 10px"><strong> SPECIES</strong></div>
         <div id="xAxis_at_bottom" style="margin-top: -20px"></div>
     </div>
@@ -140,7 +147,8 @@
         </table>
     </div>
 </div>
-
+</div>
+</div>
 <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px;">
     <button type="button" id="redraw"  class="col-md-offset-4 col-md-1 btn btn-success "> Filter </button>
     <button type="button" id="reset"  class="col-md-offset-1 col-md-1 btn btn-success"> Reset </button>

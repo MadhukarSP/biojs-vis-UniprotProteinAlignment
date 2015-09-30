@@ -1,11 +1,11 @@
 var tooltip;
 
 //Circle position
-var width = 220;
-var height = 220;
-
-//Circle attributes
-var radius = 25;
+//var width = 220;
+//var height = 220;
+//
+////Circle attributes
+//var radius = 25;
 var gapColor = "#FFFF00";
 var gapLineColor = "#000000";
 
@@ -94,6 +94,8 @@ $(document).ready(function() {
         track: true
     });
 
+
+
     $("#redraw").on('click', function() {
         d3.select("#wrapper").selectAll("*").remove();
         reDrawFlag = true;
@@ -174,15 +176,9 @@ $(document).ready(function() {
     });
 });
 
-function foobar(el) {
-    setTimeout(function() {
-        foobar_cont(el);
-    }, 5000);
-}
-
 function rearrange(basedOn, output) {
 
-    var tmpOutput = [];
+    //var tmpOutput = [];
     var all_blast_output = [];
     var first_reorder = output.slice(0);
     var totalLen = first_reorder.length;
@@ -252,78 +248,15 @@ function rearrange(basedOn, output) {
         }
     }
 
-    //for(var i=0; i< all_blast_output.length; i++) {
-    //
+    // Testing purpose
+    //var listOfScore = [];
+    //var listOfEval = [];
+    //for(var i=0; i< all_blast_output.length; i++){
     //    if(all_blast_output[i].added !== undefined) {
-    //        all_blast_output[i].added = "N";
+    //        listOfScore.push(all_blast_output[i].score);
+    //        listOfEval.push(all_blast_output[i].evalue);
     //    }
     //}
-    //
-    //for(var currentObj=0; currentObj< all_blast_output.length;) {
-    //
-    //    var nextObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
-    //
-    //    if(all_blast_output[currentObj].added == "Y") {
-    //        currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
-    //        continue;
-    //    }
-    //
-    //    all_blast_output[currentObj].added = "Y";
-    //    tmpOutput.push(all_blast_output[currentObj]);
-    //
-    //    var num_of_regions = tmpOutput[tmpOutput.length-1].num_of_regions_left;
-    //    for(var i=1; i < num_of_regions;i++) {
-    //        tmpOutput.push(all_blast_output[currentObj + i]);
-    //    }
-    //    var flag=1;
-    //
-    //    for(var j=nextObj; j<all_blast_output.length;) {
-    //
-    //        if(all_blast_output[j].added == "N") {
-    //            if(all_blast_output[currentObj].query_from == all_blast_output[j].query_from
-    //                && all_blast_output[currentObj].query_to == all_blast_output[j].query_to
-    //                && all_blast_output[currentObj].hit_from == all_blast_output[j].hit_from
-    //                && all_blast_output[currentObj].hit_to == all_blast_output[j].hit_to
-    //                && all_blast_output[currentObj].num_of_regions_left == all_blast_output[j].num_of_regions_left
-    //                && all_blast_output[currentObj].gaps == all_blast_output[j].gaps) {
-    //
-    //                all_blast_output[j].added = "Y";
-    //                tmpOutput.push(all_blast_output[j++]);
-    //
-    //                num_of_regions = tmpOutput[tmpOutput.length-1].num_of_regions_left;
-    //                for(var i=1; i< num_of_regions;i++) {
-    //                    tmpOutput.push(all_blast_output[j++]);
-    //                }
-    //                flag=0;
-    //            }
-    //        }
-    //        if(j>=all_blast_output.length) {
-    //            break;
-    //        } else {
-    //            if(flag==1) {
-    //                j = j + all_blast_output[j].num_of_regions_left;
-    //            }
-    //            flag=1;
-    //        }
-    //    }
-    //
-    //    currentObj = currentObj + all_blast_output[currentObj].num_of_regions_left;
-    //
-    //}
-    //
-    //return tmpOutput;
-
-    var listOfScore = [];
-    var listOfEval = [];
-    for(var i=0; i< all_blast_output.length; i++){
-        if(all_blast_output[i].added !== undefined) {
-            listOfScore.push(all_blast_output[i].score);
-            listOfEval.push(all_blast_output[i].evalue);
-        }
-    }
-
-    console.log("Score:"+ listOfScore);
-    console.log("Evalue:"+ listOfEval);
 
     return all_blast_output;
 
@@ -817,8 +750,13 @@ function drawDropDowns(organismDetails) {
         } else {
             fillTableWithValues($(selectorVal).attr(rectRegionClicked[selectedDropDownNum]).split("::"));
         }
-
     });
+
+    //$('.dropDownMenu').tooltip({
+    //    content: function(){
+    //        return $(this).find("option:selected").attr('title');
+    //    }
+    //});
 
 
 }
@@ -949,18 +887,6 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
             .attr('class', "bars")
             .attr('onclick', "clickedOnBar(evt)");
 
-        //queryTexts.append('text')
-        //    .attr({'x':xScale(parseInt(queryFromValues[i])),'y':(9 + (k*widthBtnBars))})
-        //    .text(queryFromValues[i])
-        //    .style({'fill':'#000','font-size':'10px'})
-        //    .attr("id","queryFromText"+i);
-        //
-        //queryTexts.append('text')
-        //    .attr({'x':xScale(parseInt(queryToValues[i])-10),'y':(9 + (k*widthBtnBars))})
-        //    .text(queryToValues[i])
-        //    .style({'fill':'#000','font-size':'10px'})
-        //    .attr("id","queryToText"+i);
-
         var qrySeqLength = queryFromValues[i] + qseq[i].length;
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
@@ -996,29 +922,6 @@ function addQueryBar(xScale, queryFromValues, queryToValues,hitFromValues, hitTo
                 .attr("id","queryRect"+(i+j))
                 .attr('class', "bars")
                 .attr('onclick', "clickedOnBar(evt)");
-
-            //if(xScale(parseInt(queryToValues[i+j])-25) - xScale(parseInt(queryFromValues[i+j])+5) < overlapThreshold) {
-            //    queryTexts.append('text')
-            //        .attr({'x':xScale((parseInt(queryToValues[i+j])-25 + parseInt(queryFromValues[i+j])+5)/2),'y':(6 + (k*widthBtnBars))})
-            //        .text(ellipse)
-            //        .style({'fill':'#000000','font-size':'20px'})
-            //        .style("cursor","pointer")
-            //        .attr("id","queryEllipse"+(i+j))
-            //        .attr("title", "Query coordinates (" + queryFromValues[i+j] + " - " + queryToValues[i+j] + ")");
-            //} else {
-            //    queryTexts.append('text')
-            //        .attr({'x':xScale(parseInt(queryFromValues[i+j])+5),'y':(9 + (k*widthBtnBars))})
-            //        .text(queryFromValues[i+j])
-            //        .style({'fill':'#000000','font-size':'10px'})
-            //        .attr("id","queryFromText"+(i+j));
-            //
-            //    queryTexts.append('text')
-            //        .attr({'x':xScale(parseInt(queryToValues[i+j])-25),'y':(9 + (k*widthBtnBars))})
-            //        .text(queryToValues[i+j])
-            //        .style({'fill':'#000000','font-size':'10px'})
-            //        .attr("id","queryToText"+(i+j));
-            //}
-
 
             qrySeqLength = qseq[i+j].length;
             hitSeqLength = hseq[i+j].length;
@@ -1124,20 +1027,6 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
             .attr('class', "bars")
             .attr('onclick', "clickedOnBar(evt)");
 
-        //hitTexts.append('text')
-        //    .attr({'x':xScale(parseInt(hitFromValues[i])+5),'y':(52 + (k*widthBtnBars))})
-        //    .text(hitFromValues[i])
-        //    .style({'fill':'#000','font-size':'10px'})
-        //    .style("z-index", "10")
-        //    .attr("id","hitFromText"+i);
-        //
-        //hitTexts.append('text')
-        //    .attr({'x':xScale(parseInt(hitToValues[i])-25),'y':(52 + (k*widthBtnBars))})
-        //    .text(hitToValues[i])
-        //    .style({'fill':'#000','font-size':'10px'})
-        //    .style("z-index", "10")
-        //    .attr("id","hitToText"+i);
-
         var qrySeqLength = qseq[i].length;
         var hitSeqLength = hseq[i].length;
         var qStart = parseInt(queryFromValues[i]);
@@ -1191,41 +1080,6 @@ function addHitBar(xScale, queryFromValues,queryToValues,hitFromValues, hitToVal
                 "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
                 .attr("title", "Subject coordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
 
-
-            //if(xScale(parseInt(hitToValues[i+j])-25) - xScale(parseInt(hitFromValues[i+j])+2) < overlapThreshold) {
-            //
-            //    hitTexts.append('text')
-            //        .attr({'x':xScale((parseInt(hitToValues[i+j])-25 + parseInt(hitFromValues[i+j])+2)/2),'y':(50 + (k*widthBtnBars))})
-            //        .text(ellipse)
-            //        .style({'fill':'#000000','font-size':'20px'})
-            //        .style("cursor","pointer")
-            //        .attr("id","hitEllipse"+(i+j))
-            //        .attr('onclick', "clickedOnBar(evt)")
-            //        .attr("alignmentInfo", "def:" + def[i+j] + "::Subject:"+ hitFromValues[i+j] + " - " + hitToValues[i+j] +
-            //        "::Score:" +score[i+j] + "::eValue:" + eValue[i+j] + "::Identities:" + identities[i+j] + "/" + queryFullLength +
-            //        "::Positives:" + positives[i+j] + "/" + queryFullLength + "::Gaps:" + gaps[i+j] + "/" + queryFullLength +
-            //        "::QueryStart:"+ qStart + "::QueryEnd:"+ qLen +"::QueryLen:"+ queryFullLength + "::QuerySeq:"+qseq[i+j] +
-            //        "::midLineSeq:"+ midLine[i+j] + "::SubStart:"+ hStart + "::SubEnd:"+ hLen + "::SubSeq:"+ hseq[i+j])
-            //        .attr("title", "Subject coordinates (" + hitFromValues[i+j] + " - " + hitToValues[i+j] + ")");
-            //} else {
-            //
-            //    hitTexts.append('text')
-            //        .attr({'x':xScale(parseInt(hitFromValues[i+j])+2),'y':(52 + (k*widthBtnBars))})
-            //        .text(hitFromValues[i+j])
-            //        .style({'fill':'#000000','font-size':'10px'})
-            //        .attr("id","hitFromText"+(i+j));
-            //
-            //    hitTexts.append('text')
-            //        .attr({'x':xScale(parseInt(hitToValues[i+j])-25),'y':(52 + (k*widthBtnBars))})
-            //        .text(hitToValues[i+j])
-            //        .style({'fill':'#000000','font-size':'10px'})
-            //        .attr("id","hitToText"+(i+j));
-            //}
-
-
-
-            //hStart = hStart -1;
-            //Add gaps only if there is consecutive 3 gaps
             addHitGaps(gaps, (i+j), hseq, hitBars, xScale, k, qStart, hStart);
         }
 

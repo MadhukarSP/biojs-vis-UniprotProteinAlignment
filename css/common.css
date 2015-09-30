@@ -22,6 +22,7 @@
     /*width: 60%;*/
     height: auto;
     min-width: 800px;
+    max-width: 800px;
     max-height: 350px;
     overflow-x: hidden;
     overflow-y: auto;
